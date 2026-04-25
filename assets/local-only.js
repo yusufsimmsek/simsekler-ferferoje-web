@@ -19,6 +19,15 @@
         display: none !important;
       }
 
+      .w-webflow-badge,
+      .w-webflow-badge > img,
+      .w-webflow-badge * {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+
       .local-template-graphic-hidden {
         display: none !important;
       }
@@ -208,6 +217,27 @@
       });
   }
 
+  function removeWebflowBadge() {
+    document.querySelectorAll(".w-webflow-badge").forEach((badge) => {
+      badge.remove();
+    });
+  }
+
+  function watchForInjectedBadges() {
+    if (!document.body) {
+      return;
+    }
+
+    const observer = new MutationObserver(() => {
+      removeWebflowBadge();
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  }
+
   function normalizePath(pathname) {
     const path = (pathname || "/").replace(/index\.html$/i, "");
     if (!path || path === "/") {
@@ -353,6 +383,8 @@
 
   function boot() {
     injectStyles();
+    removeWebflowBadge();
+    watchForInjectedBadges();
     replaceBrandAssets();
     removeTemplateGraphics();
     simplifyNavigation();
