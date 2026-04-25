@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 420" role="img" aria-labelledby="title desc">
+  <title id="title">Simsekler Muhendislik Marka Isareti</title>
+  <desc id="desc">Gri disli form ve altin C sembolunden olusan Simsekler Muhendislik isareti.</desc>
+  <defs>
+    <mask id="gear-cut">
+      <rect width="620" height="420" fill="black"/>
+      <g transform="translate(212 210)" fill="white">
+        <circle r="165"/>
+        <g id="tooth">
+          <rect x="-28" y="-228" width="56" height="82" rx="14"/>
+        </g>
+        <use href="#tooth"/>
+        <use href="#tooth" transform="rotate(45)"/>
+        <use href="#tooth" transform="rotate(90)"/>
+        <use href="#tooth" transform="rotate(135)"/>
+        <use href="#tooth" transform="rotate(180)"/>
+        <use href="#tooth" transform="rotate(225)"/>
+        <use href="#tooth" transform="rotate(270)"/>
+        <use href="#tooth" transform="rotate(315)"/>
+      </g>
+      <circle cx="212" cy="210" r="102" fill="black"/>
+    </mask>
+  </defs>
+
+  <rect width="430" height="420" fill="#9c9c9c" mask="url(#gear-cut)"/>
+
+  <path
+    d="M 340 78 A 176 176 0 1 0 342 338 L 560 338"
+    fill="none"
+    stroke="#c3a11a"
+    stroke-width="46"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <path
+    d="M 306 118 A 128 128 0 1 0 308 302"
+    fill="none"
+    stroke="#a5a5a5"
+    stroke-width="24"
+    stroke-linecap="round"
+  />
+</svg>
