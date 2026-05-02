@@ -2,6 +2,7 @@
   const disabledHref = "#";
   const fullLogoSrc = "/assets/simseklermuhendislik.png";
   const markLogoSrc = "/assets/simsekler-mark.svg";
+  const servicesHeaderImageSrc = "/assets/services/hizmetler-header.png";
   const homeSectionPaths = new Set(["", "/", "/home-1"]);
   const serviceImageReplacements = new Map([
     ["ferforje", "/assets/services/ferforje.png"],
@@ -57,7 +58,6 @@
     [
       "/hizmetler/kapi-uretimleri",
       [
-        "/assets/services/galleries/kapi-uretimleri/kapi-uretimleri-1.jpg",
         "/assets/services/galleries/kapi-uretimleri/kapi-uretimleri-2.png",
         "/assets/services/galleries/kapi-uretimleri/kapi-uretimleri-3.png",
         "/assets/services/galleries/kapi-uretimleri/kapi-uretimleri-4.png",
@@ -899,6 +899,22 @@
         height: 100%;
         object-fit: cover;
         object-position: center center;
+        transition: opacity 320ms ease, transform 320ms ease;
+      }
+
+      .local-service-gallery-image.is-transitioning {
+        opacity: 0.82;
+        transform: scale(0.992);
+      }
+
+      .local-service-gallery.local-door-gallery .local-service-gallery-stage {
+        aspect-ratio: 16 / 10;
+        background: linear-gradient(180deg, rgba(248, 244, 236, 0.96) 0%, rgba(236, 229, 216, 0.96) 100%);
+      }
+
+      .local-service-gallery.local-door-gallery .local-service-gallery-image {
+        object-fit: contain;
+        padding: 14px;
       }
 
       .local-service-gallery-topbar {
@@ -1047,6 +1063,10 @@
         .local-service-gallery-stage {
           border-radius: 22px;
           aspect-ratio: 5 / 4;
+        }
+
+        .local-service-gallery.local-door-gallery .local-service-gallery-stage {
+          aspect-ratio: 4 / 3;
         }
 
         .local-service-gallery-topbar {
@@ -1319,6 +1339,15 @@
       document.querySelector(".service-details-banner .inner-h1")?.textContent?.trim() || "Hizmet";
     const gallery = document.createElement("div");
     gallery.className = "local-service-gallery";
+    const isDoorGallery = currentPath === "/hizmetler/kapi-uretimleri";
+    if (isDoorGallery) {
+      gallery.classList.add("local-door-gallery");
+    }
+
+    galleryImages.forEach((src) => {
+      const preloadImage = new Image();
+      preloadImage.src = src;
+    });
 
     const thumbsMarkup = galleryImages
       .map(
@@ -1351,9 +1380,11 @@
     const autoplayDelay = 4200;
     let activeIndex = 0;
     let autoplayHandle = null;
+    let isPaused = false;
 
     const render = (nextIndex) => {
       activeIndex = (nextIndex + galleryImages.length) % galleryImages.length;
+      mainImage.classList.add("is-transitioning");
       mainImage.setAttribute("src", galleryImages[activeIndex]);
       mainImage.setAttribute("alt", `${serviceTitle} gorsel ${activeIndex + 1}`);
       counter.textContent = `${activeIndex + 1} / ${galleryImages.length}`;
@@ -1362,21 +1393,30 @@
         button.classList.toggle("is-active", isActive);
         button.setAttribute("aria-pressed", isActive ? "true" : "false");
       });
+      window.setTimeout(() => {
+        mainImage.classList.remove("is-transitioning");
+      }, 260);
     };
 
     const stopAutoplay = () => {
       if (autoplayHandle) {
-        window.clearInterval(autoplayHandle);
+        window.clearTimeout(autoplayHandle);
         autoplayHandle = null;
       }
     };
 
     const startAutoplay = () => {
-      if (galleryImages.length < 2 || autoplayHandle) {
+      if (galleryImages.length < 2 || autoplayHandle || isPaused) {
         return;
       }
-      autoplayHandle = window.setInterval(() => {
+      autoplayHandle = window.setTimeout(() => {
+        autoplayHandle = null;
+        if (document.hidden || isPaused) {
+          startAutoplay();
+          return;
+        }
         render(activeIndex + 1);
+        startAutoplay();
       }, autoplayDelay);
     };
 
@@ -1399,15 +1439,31 @@
       });
     });
 
-    gallery.addEventListener("mouseenter", stopAutoplay);
-    gallery.addEventListener("mouseleave", startAutoplay);
-    gallery.addEventListener("focusin", stopAutoplay);
-    gallery.addEventListener("focusout", startAutoplay);
+    gallery.addEventListener("mouseenter", () => {
+      isPaused = true;
+      stopAutoplay();
+    });
+    gallery.addEventListener("mouseleave", () => {
+      isPaused = false;
+      startAutoplay();
+    });
+    gallery.addEventListener("focusin", () => {
+      isPaused = true;
+      stopAutoplay();
+    });
+    gallery.addEventListener("focusout", (event) => {
+      if (event.relatedTarget instanceof Node && gallery.contains(event.relatedTarget)) {
+        return;
+      }
+      isPaused = false;
+      startAutoplay();
+    });
 
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) {
         stopAutoplay();
       } else {
+        isPaused = false;
         startAutoplay();
       }
     });
@@ -1448,6 +1504,19 @@
       image.removeAttribute("srcset");
       image.removeAttribute("sizes");
       image.setAttribute("alt", projectTitle);
+    });
+  }
+
+  function replaceServicesPageHeaderImage() {
+    if (normalizePath(window.location.pathname) !== "/hizmetler") {
+      return;
+    }
+
+    document.querySelectorAll("img.image-banner-inner").forEach((image) => {
+      image.setAttribute("src", servicesHeaderImageSrc);
+      image.removeAttribute("srcset");
+      image.removeAttribute("sizes");
+      image.setAttribute("alt", "Bodrum ferforje korkuluklu hizmetler banner gorseli");
     });
   }
 
@@ -1808,6 +1877,23 @@
     });
   }
 
+  function removeAboutPageExtraSections() {
+    if (normalizePath(window.location.pathname) !== "/hakkimizda") {
+      return;
+    }
+
+    document.querySelectorAll("section").forEach((section) => {
+      if (section.querySelector(".review-white-background")) {
+        section.remove();
+        return;
+      }
+
+      if (section.querySelector(".collection-list-blog, .collection-item-blog, .blog-image-wrapper")) {
+        section.remove();
+      }
+    });
+  }
+
   function installClickGuard() {
     document.addEventListener("click", (event) => {
       const anchor = event.target.closest("a.local-only-disabled-link");
@@ -2157,12 +2243,14 @@
     enhanceServiceDetailCarousel();
     replaceProjectCardImages();
     replaceProjectDetailImages();
+    replaceServicesPageHeaderImage();
     removeTemplateGraphics();
     simplifyNavigation();
     customizeFooter();
     injectHomeContent();
     localizeContactContent();
     removeUnwantedHomeSections();
+    removeAboutPageExtraSections();
     sanitizeAnchors();
     installClickGuard();
     customizeHeaderButtons();
