@@ -1758,6 +1758,21 @@
     }
 
     document.querySelectorAll("section").forEach((section) => {
+      if (section.querySelector(".collection-list-projects")) {
+        if (section.dataset.localReferencesRefined !== "true") {
+          const heading = section.querySelector(".big-h2");
+          const description = section.querySelector(".right-title-wrapper p");
+          if (heading) {
+            heading.textContent = "Öne Çıkan Referanslarımız.";
+          }
+          if (description) {
+            description.textContent =
+              "Villa kapıları, korkuluklar, çelik pergolalar ve BoardeX uygulamalarında tamamladığımız işlerden öne çıkan örnekler.";
+          }
+          section.dataset.localReferencesRefined = "true";
+        }
+      }
+
       if (section.querySelector(".collection-list-blog, .collection-item-blog, .blog-image-wrapper")) {
         section.remove();
         return;
@@ -1773,7 +1788,11 @@
         return;
       }
 
-      if (text.includes("faydali icerikler")) {
+      if (
+        text.includes("faydali icerikler") ||
+        text.includes("tum bilgiler") ||
+        /faydali icerikler/i.test(section.querySelector(".big-h2, h2, .subtitle-text")?.textContent || "")
+      ) {
         section.remove();
         return;
       }
