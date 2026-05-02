@@ -26,12 +26,12 @@ const indexablePages = new Set([
 
 const pageConfigs = {
   "index.html": {
-    title: "Bodrum Ferforje | Şimşekler Ferforje Bodrum",
+    title: "Çelik Konstrüksiyon ve Metal Tasarım | Şimşekler Mühendislik",
     description:
-      "Bodrum ve Yalıkavak'ta ferforje kapı, villa kapısı, demir kapı ve korkuluk üretimi. Keşif ve teklif için Şimşekler Ferforje ile iletişime geçin.",
+      "Bodrum ve Yalıkavak'ta çelik konstrüksiyon, ferforje, villa kapısı ve korkuluk işlerinde keşiften montaja kurumsal çözümler sunuyoruz.",
     canonical: "/",
     robots: "index,follow",
-    h1: "Bodrum'da ferforje kapı, villa kapısı ve çelik çözümler",
+    h1: "Bodrum'da çelik konstrüksiyon, ferforje ve proje çözümleri",
     replacements: [
       [
         `Bodrum'da ferforje, kapı, çelik konstrüksiyon ve BoardeX uygulamalarını ölçüye özel, estetik ve güvenilir şekilde üretiyoruz.`,
@@ -54,12 +54,12 @@ const pageConfigs = {
     extraSchema: "home",
   },
   "home-1/index.html": {
-    title: "Bodrum Ferforje | Şimşekler Ferforje Bodrum",
+    title: "Çelik Konstrüksiyon ve Metal Tasarım | Şimşekler Mühendislik",
     description:
-      "Bodrum ve Yalıkavak'ta ferforje kapı, villa kapısı, demir kapı ve korkuluk üretimi. Keşif ve teklif için Şimşekler Ferforje ile iletişime geçin.",
+      "Bodrum ve Yalıkavak'ta çelik konstrüksiyon, ferforje, villa kapısı ve korkuluk işlerinde keşiften montaja kurumsal çözümler sunuyoruz.",
     canonical: "/",
     robots: "noindex,follow",
-    h1: "Bodrum'da ferforje kapı, villa kapısı ve çelik çözümler",
+    h1: "Bodrum'da çelik konstrüksiyon, ferforje ve proje çözümleri",
     replacements: [
       [
         `Bodrum'da ferforje, kapı, çelik konstrüksiyon ve BoardeX uygulamalarını ölçüye özel, estetik ve güvenilir şekilde üretiyoruz.`,
@@ -74,7 +74,7 @@ const pageConfigs = {
     extraSchema: "home",
   },
   "hakkimizda/index.html": {
-    title: "Bodrum Ferforje Ustası | Şimşekler Ferforje Bodrum",
+    title: "Kurumsal Profil | Şimşekler Mühendislik",
     description:
       "Bodrum'da ferforje, demir kapı ve çelik işlerinde uzun yıllardır hizmet veren Şimşekler Ferforje'yi yakından tanıyın.",
     canonical: "/hakkimizda/",
@@ -93,7 +93,7 @@ const pageConfigs = {
     extraSchema: "about",
   },
   "hizmetler/index.html": {
-    title: "Ferforje Hizmetleri | Şimşekler Ferforje Bodrum",
+    title: "Metal Tasarım ve Yapısal Çözümler | Şimşekler Mühendislik",
     description:
       "Ferforje kapı, demir kapı, ferforje korkuluk, çelik konstrüksiyon ve BoardeX hizmetlerini Bodrum'da keşfedin.",
     canonical: "/hizmetler/",
@@ -116,7 +116,7 @@ const pageConfigs = {
     extraSchema: "servicesIndex",
   },
   "hizmetler/ferforje/index.html": {
-    title: "Ferforje Kapı | Şimşekler Ferforje Bodrum",
+    title: "Metal Tasarım ve Kapı Çözümleri | Şimşekler Mühendislik",
     description:
       "Bodrum'da ferforje kapı, villa giriş kapısı ve özel demir detay çözümleri için ölçüye özel üretim ve montaj.",
     canonical: "/hizmetler/ferforje/",
@@ -135,7 +135,7 @@ const pageConfigs = {
     extraSchema: "service",
   },
   "hizmetler/celik-konstruksiyon/index.html": {
-    title: "Çelik Konstrüksiyon | Şimşekler Ferforje Bodrum",
+    title: "Yapısal Çelik Çözümleri | Şimşekler Mühendislik",
     description:
       "Bodrum'da çelik konstrüksiyon, pergola, sundurma ve taşıyıcı sistem çözümleri için proje ölçüsüne uygun üretim.",
     canonical: "/hizmetler/celik-konstruksiyon/",
@@ -154,7 +154,7 @@ const pageConfigs = {
     extraSchema: "service",
   },
   "hizmetler/kapi-uretimleri/index.html": {
-    title: "Villa Kapısı | Şimşekler Ferforje Bodrum",
+    title: "Villa Giriş Sistemleri | Şimşekler Mühendislik",
     description:
       "Bodrum'da villa kapısı, demir kapı, sürgülü kapı ve bahçe kapısı üretimi için özel ölçü ve montaj çözümleri.",
     canonical: "/hizmetler/kapi-uretimleri/",
@@ -172,7 +172,7 @@ const pageConfigs = {
     extraSchema: "service",
   },
   "hizmetler/korkuluk-balkon/index.html": {
-    title: "Ferforje Korkuluk | Şimşekler Ferforje Bodrum",
+    title: "Korkuluk ve Mimari Metal | Şimşekler Mühendislik",
     description:
       "Bodrum'da ferforje korkuluk, balkon demiri ve merdiven korkuluğu çözümleri için dayanıklı ve estetik üretim.",
     canonical: "/hizmetler/korkuluk-balkon/",
@@ -190,7 +190,7 @@ const pageConfigs = {
     extraSchema: "service",
   },
   "hizmetler/ozel-tasarim/index.html": {
-    title: "Özel Demir Tasarım | Şimşekler Ferforje Bodrum",
+    title: "Özel Üretim Metal Tasarım | Şimşekler Mühendislik",
     description:
       "Bodrum'da özel tasarım ferforje, dekoratif metal detay ve mimariye uygun özel üretim çözümleri.",
     canonical: "/hizmetler/ozel-tasarim/",
@@ -208,7 +208,7 @@ const pageConfigs = {
     extraSchema: "service",
   },
   "hizmetler/boardex-uygulamalari/index.html": {
-    title: "BoardeX Uygulaması | Şimşekler Ferforje Bodrum",
+    title: "Cephe ve BoardeX Sistemleri | Şimşekler Mühendislik",
     description:
       "Bodrum'da BoardeX cephe ve yardımcı alan uygulamalarında doğru sistem detayı ve temiz işçilik sunuyoruz.",
     canonical: "/hizmetler/boardex-uygulamalari/",
@@ -226,7 +226,7 @@ const pageConfigs = {
     extraSchema: "service",
   },
   "projeler/index.html": {
-    title: "Ferforje Projeleri | Şimşekler Ferforje Bodrum",
+    title: "Proje Referansları | Şimşekler Mühendislik",
     description:
       "Bodrum, Yalıkavak ve çevresinde tamamladığımız ferforje kapı, korkuluk, villa kapısı ve çelik proje örneklerini inceleyin.",
     canonical: "/projeler/",
@@ -245,7 +245,7 @@ const pageConfigs = {
     extraSchema: "projectsIndex",
   },
   "projeler/modern-staircase-design/index.html": {
-    title: "Villa Kapısı Projesi | Şimşekler Ferforje Bodrum",
+    title: "Villa Giriş Projesi | Şimşekler Mühendislik",
     description:
       "Bodrum'da tamamladığımız villa kapısı ve ferforje giriş kapısı projesinin detaylarını inceleyin.",
     canonical: "/projeler/modern-staircase-design/",
@@ -259,7 +259,7 @@ const pageConfigs = {
     serviceName: "Villa kapısı projesi",
   },
   "projeler/architectural-metalwork/index.html": {
-    title: "Ferforje Korkuluk Projesi | Şimşekler Ferforje Bodrum",
+    title: "Korkuluk Projesi | Şimşekler Mühendislik",
     description:
       "Yalıkavak'ta tamamladığımız ferforje korkuluk ve balkon demiri uygulamasının detaylarını inceleyin.",
     canonical: "/projeler/architectural-metalwork/",
@@ -273,7 +273,7 @@ const pageConfigs = {
     serviceName: "Ferforje korkuluk projesi",
   },
   "projeler/sheet-metal-creations/index.html": {
-    title: "Çelik Pergola Projesi | Şimşekler Ferforje Bodrum",
+    title: "Pergola Projesi | Şimşekler Mühendislik",
     description:
       "Gündoğan'da tamamladığımız çelik pergola uygulamasının proje detaylarını inceleyin.",
     canonical: "/projeler/sheet-metal-creations/",
@@ -287,7 +287,7 @@ const pageConfigs = {
     serviceName: "Çelik pergola projesi",
   },
   "projeler/custom-machine-parts/index.html": {
-    title: "BoardeX Dış Cephe | Şimşekler Ferforje Bodrum",
+    title: "BoardeX Cephe Projesi | Şimşekler Mühendislik",
     description:
       "Konacık'ta tamamladığımız BoardeX dış cephe uygulamasının sistem ve uygulama detaylarını inceleyin.",
     canonical: "/projeler/custom-machine-parts/",
@@ -301,7 +301,7 @@ const pageConfigs = {
     serviceName: "BoardeX dış cephe projesi",
   },
   "sss/index.html": {
-    title: "Ferforje SSS | Şimşekler Ferforje Bodrum",
+    title: "Süreç ve Sık Sorulanlar | Şimşekler Mühendislik",
     description:
       "Bodrum ferforje, demir kapı, montaj, keşif ve teklif süreci hakkında sık sorulan soruların yanıtlarını inceleyin.",
     canonical: "/sss/",
@@ -316,7 +316,7 @@ const pageConfigs = {
     extraSchema: "faq",
   },
   "iletisim/index.html": {
-    title: "Bodrum Ferforje İletişim | Şimşekler Ferforje",
+    title: "İletişim ve Keşif | Şimşekler Mühendislik",
     description:
       "Bodrum ve Yalıkavak'ta ferforje kapı, demir kapı ve korkuluk için teklif alın. Şimşekler Ferforje iletişim bilgileri burada.",
     canonical: "/iletisim/",

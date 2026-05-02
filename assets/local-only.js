@@ -1704,6 +1704,7 @@
 
   function boot() {
     injectStyles();
+    enlargeNavbarLogo();
     removeWebflowBadge();
     watchForInjectedBadges();
     replaceBrandAssets();
@@ -1725,6 +1726,27 @@
     installClickGuard();
     customizeHeaderButtons();
     injectFloatingContactButtons();
+  }
+
+  function enlargeNavbarLogo() {
+    const style = document.createElement("style");
+    style.textContent = `
+      .navbar .brand img,
+      .navbar .brand-tablet img {
+        height: 38px !important;
+        width: auto !important;
+        max-width: none !important;
+        object-fit: contain;
+      }
+
+      @media (max-width: 767px) {
+        .navbar .brand img,
+        .navbar .brand-tablet img {
+          height: 34px !important;
+        }
+      }
+    `;
+    document.head.appendChild(style);
   }
 
   function customizeHeaderButtons() {
