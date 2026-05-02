@@ -26,7 +26,7 @@ const indexablePages = new Set([
 
 const pageConfigs = {
   "index.html": {
-    title: "Çelik Konstrüksiyon ve Metal Tasarım | Şimşekler Mühendislik",
+    title: "Çelik Konstrüksiyon ve Metal Tasarım | ŞimşeklerFerforje",
     description:
       "Bodrum ve Yalıkavak'ta çelik konstrüksiyon, ferforje, villa kapısı ve korkuluk işlerinde keşiften montaja kurumsal çözümler sunuyoruz.",
     canonical: "/",
@@ -54,7 +54,7 @@ const pageConfigs = {
     extraSchema: "home",
   },
   "home-1/index.html": {
-    title: "Çelik Konstrüksiyon ve Metal Tasarım | Şimşekler Mühendislik",
+    title: "Çelik Konstrüksiyon ve Metal Tasarım | ŞimşeklerFerforje",
     description:
       "Bodrum ve Yalıkavak'ta çelik konstrüksiyon, ferforje, villa kapısı ve korkuluk işlerinde keşiften montaja kurumsal çözümler sunuyoruz.",
     canonical: "/",
