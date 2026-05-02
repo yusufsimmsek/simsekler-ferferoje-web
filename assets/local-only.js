@@ -13,12 +13,12 @@
     ["boardex uygulamalari", "/assets/services/boardex-generated.png"],
   ]);
   const serviceDetailImageReplacements = new Map([
-    ["/services/sheet-metal-work", "/assets/services/ferforje.png"],
-    ["/services/architectural-elements", "/assets/services/celik-konstruksiyon.png"],
-    ["/services/machinery-components", "/assets/services/kapi-uretimleri.png"],
-    ["/services/industrial-metalwork", "/assets/services/korkuluk-balkon-demirleri.png"],
-    ["/services/metal-forming", "/assets/services/ozel-tasarim-bridge.png"],
-    ["/services/welding-and-repairs", "/assets/services/boardex-generated.png"],
+    ["/hizmetler/ferforje", "/assets/services/ferforje.png"],
+    ["/hizmetler/celik-konstruksiyon", "/assets/services/celik-konstruksiyon.png"],
+    ["/hizmetler/kapi-uretimleri", "/assets/services/kapi-uretimleri.png"],
+    ["/hizmetler/korkuluk-balkon", "/assets/services/korkuluk-balkon-demirleri.png"],
+    ["/hizmetler/ozel-tasarim", "/assets/services/ozel-tasarim-bridge.png"],
+    ["/hizmetler/boardex-uygulamalari", "/assets/services/boardex-generated.png"],
   ]);
   const projectCardImageReplacements = new Map([
     ["villa giris kapisi", "/assets/services/kapi-uretimleri.png"],
@@ -27,27 +27,27 @@
     ["boardex dis cephe", "/assets/services/boardex-generated.png"],
   ]);
   const projectDetailImageReplacements = new Map([
-    ["/projects/modern-staircase-design", "/assets/services/kapi-uretimleri.png"],
-    ["/projects/architectural-metalwork", "/assets/services/korkuluk-balkon-demirleri.png"],
-    ["/projects/sheet-metal-creations", "/assets/services/celik-konstruksiyon.png"],
-    ["/projects/custom-machine-parts", "/assets/services/boardex-generated.png"],
+    ["/projeler/modern-staircase-design", "/assets/services/kapi-uretimleri.png"],
+    ["/projeler/architectural-metalwork", "/assets/services/korkuluk-balkon-demirleri.png"],
+    ["/projeler/sheet-metal-creations", "/assets/services/celik-konstruksiyon.png"],
+    ["/projeler/custom-machine-parts", "/assets/services/boardex-generated.png"],
   ]);
   const extraHomeServices = [
     {
-      href: "/services/industrial-metalwork",
+      href: "/hizmetler/korkuluk-balkon",
       title: "Korkuluk & Balkon Demirleri",
       description:
         "Balkon, merdiven ve duvar \u00fcst\u00fc uygulamalarda dayan\u0131kl\u0131 korkuluk \u00e7\u00f6z\u00fcmleri \u00fcretiyoruz.",
       imageSrc: "/assets/services/korkuluk-balkon-demirleri.png",
     },
     {
-      href: "/services/metal-forming",
+      href: "/hizmetler/ozel-tasarim",
       title: "\u00d6zel Tasar\u0131m",
       description: "Mekana \u00f6zel ferforje ve metal detaylar\u0131 tasar\u0131mdan \u00fcretime ta\u015f\u0131yoruz.",
       imageSrc: "/assets/services/ozel-tasarim-bridge.png",
     },
     {
-      href: "/services/welding-and-repairs",
+      href: "/hizmetler/boardex-uygulamalari",
       title: "BoardeX Uygulamalar\u0131",
       description:
         "BoardeX uygulamalar\u0131nda do\u011fru sistem detaylar\u0131yla cephe ve yard\u0131mc\u0131 alan \u00e7\u00f6z\u00fcmleri sunuyoruz.",
@@ -55,7 +55,7 @@
     },
   ];
   const fallbackRoutes = new Map([
-    ["/home-4", "/about-us/"],
+    ["/home-4", "/hakkimizda/"],
   ]);
 
   const instagramUrl = "https://www.instagram.com/simseklerferforje/";
@@ -1232,11 +1232,11 @@
 
   function simplifyNavigation() {
     const navItems = [
-      { href: "/about-us/", label: "Hakkımızda" },
+      { href: "/hakkimizda/", label: "Hakkımızda" },
       { href: "/services/", label: "Hizmetler" },
-      { href: "/projects/", label: "Projeler" },
+      { href: "/projeler/", label: "Projeler" },
       { href: "/faq/", label: "SSS" },
-      { href: "/contact-us/", label: "İletişim" },
+      { href: "/iletisim/", label: "İletişim" },
     ];
 
     document.querySelectorAll(".nav-menu .menu-wrap").forEach((menuWrap) => {
@@ -1313,7 +1313,7 @@
           </div>
         </div>
         <div class="section-button-wrapper local-home-process-actions">
-          <a href="/contact-us/" class="primary-button w-inline-block">
+          <a href="/iletisim/" class="primary-button w-inline-block">
             <div>Keşif Planla</div>
             <div class="arrows-button">
               <img src="https://cdn.prod.website-files.com/688b105b2269d2924df670a4/688b32a64d16109629c8c8d0_Button%20Arrow.svg" loading="lazy" alt="Top Arrow" class="arrow-button black-arrow"/>
@@ -1321,7 +1321,7 @@
             </div>
           </a>
           <div class="link-hover-wrapper">
-            <a href="/projects/" class="link-with-icon">Projeleri İncele<span class="arrow-link"> </span></a>
+            <a href="/projeler/" class="link-with-icon">Projeleri İncele<span class="arrow-link"> </span></a>
             <div class="line-link"></div>
           </div>
         </div>
@@ -1439,11 +1439,11 @@
 
   function simplifyNavigation() {
     const navItems = [
-      { href: "/about-us/", label: "Hakkımızda" },
+      { href: "/hakkimizda/", label: "Hakkımızda" },
       { href: "/services/", label: "Hizmetler" },
-      { href: "/projects/", label: "Projeler" },
+      { href: "/projeler/", label: "Projeler" },
       { href: "/faq/", label: "SSS" },
-      { href: "/contact-us/", label: "İletişim" },
+      { href: "/iletisim/", label: "İletişim" },
     ];
 
     document.querySelectorAll(".nav-menu .menu-wrap").forEach((menuWrap) => {
@@ -1570,7 +1570,7 @@
           </div>
         </div>
         <div class="section-button-wrapper local-home-process-actions">
-          <a href="/contact-us/" class="primary-button w-inline-block">
+          <a href="/iletisim/" class="primary-button w-inline-block">
             <div>Keşif Planla</div>
             <div class="arrows-button">
               <img src="https://cdn.prod.website-files.com/688b105b2269d2924df670a4/688b32a64d16109629c8c8d0_Button%20Arrow.svg" loading="lazy" alt="Top Arrow" class="arrow-button black-arrow"/>
@@ -1578,7 +1578,7 @@
             </div>
           </a>
           <div class="link-hover-wrapper">
-            <a href="/projects/" class="link-with-icon">Projeleri İncele<span class="arrow-link"> </span></a>
+            <a href="/projeler/" class="link-with-icon">Projeleri İncele<span class="arrow-link"> </span></a>
             <div class="line-link"></div>
           </div>
         </div>
@@ -1591,7 +1591,7 @@
   function localizeContactContent() {
     const currentPath = normalizePath(window.location.pathname);
 
-    if (currentPath === "/contact-us") {
+    if (currentPath === "/iletisim") {
       document.title = "İletişim | Şimşekler Ferforje";
       document
         .querySelectorAll("meta[property='og:title'], meta[property='twitter:title']")
