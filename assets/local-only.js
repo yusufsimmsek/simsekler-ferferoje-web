@@ -20,6 +20,58 @@
     ["/hizmetler/ozel-tasarim", "/assets/services/ozel-tasarim-bridge.png"],
     ["/hizmetler/boardex-uygulamalari", "/assets/services/boardex-generated.png"],
   ]);
+  const serviceDetailGalleryImages = new Map([
+    [
+      "/hizmetler/boardex-uygulamalari",
+      [
+        "/assets/services/galleries/boardex-uygulamalari/boardex-3.png",
+        "/assets/services/galleries/boardex-uygulamalari/boardex-4.png",
+        "/assets/services/galleries/boardex-uygulamalari/boardex-5.png",
+        "/assets/services/galleries/boardex-uygulamalari/boardex-6.png",
+        "/assets/services/galleries/boardex-uygulamalari/boardex-7.png",
+        "/assets/services/galleries/boardex-uygulamalari/boardex-8.png",
+        "/assets/services/galleries/boardex-uygulamalari/boardex-9.png",
+        "/assets/services/galleries/boardex-uygulamalari/boardex-10.png",
+      ],
+    ],
+    [
+      "/hizmetler/celik-konstruksiyon",
+      [
+        "/assets/services/galleries/celik-konstruksiyon/celik-konstruksiyon-1.png",
+        "/assets/services/galleries/celik-konstruksiyon/celik-konstruksiyon-2.png",
+        "/assets/services/galleries/celik-konstruksiyon/celik-konstruksiyon-3.png",
+        "/assets/services/galleries/celik-konstruksiyon/celik-konstruksiyon-4.png",
+      ],
+    ],
+    [
+      "/hizmetler/korkuluk-balkon",
+      [
+        "/assets/services/galleries/korkuluk-balkon/korkuluk-balkon-1.png",
+        "/assets/services/galleries/korkuluk-balkon/korkuluk-balkon-2.png",
+        "/assets/services/galleries/korkuluk-balkon/korkuluk-balkon-3.png",
+        "/assets/services/galleries/korkuluk-balkon/korkuluk-balkon-4.png",
+        "/assets/services/galleries/korkuluk-balkon/korkuluk-balkon-5.png",
+        "/assets/services/galleries/korkuluk-balkon/korkuluk-balkon-6.png",
+      ],
+    ],
+    [
+      "/hizmetler/kapi-uretimleri",
+      [
+        "/assets/services/galleries/kapi-uretimleri/kapi-uretimleri-1.jpg",
+        "/assets/services/galleries/kapi-uretimleri/kapi-uretimleri-2.png",
+        "/assets/services/galleries/kapi-uretimleri/kapi-uretimleri-3.png",
+        "/assets/services/galleries/kapi-uretimleri/kapi-uretimleri-4.png",
+        "/assets/services/galleries/kapi-uretimleri/kapi-uretimleri-5.png",
+        "/assets/services/galleries/kapi-uretimleri/kapi-uretimleri-6.png",
+        "/assets/services/galleries/kapi-uretimleri/kapi-uretimleri-7.png",
+        "/assets/services/galleries/kapi-uretimleri/kapi-uretimleri-8.png",
+        "/assets/services/galleries/kapi-uretimleri/kapi-uretimleri-9.png",
+        "/assets/services/galleries/kapi-uretimleri/kapi-uretimleri-10.png",
+        "/assets/services/galleries/kapi-uretimleri/kapi-uretimleri-11.png",
+        "/assets/services/galleries/kapi-uretimleri/kapi-uretimleri-12.png",
+      ],
+    ],
+  ]);
   const projectCardImageReplacements = new Map([
     ["villa giris kapisi", "/assets/services/kapi-uretimleri.png"],
     ["ferforje korkuluklar", "/assets/services/korkuluk-balkon-demirleri.png"],
@@ -794,6 +846,10 @@
         transition: transform 280ms ease;
       }
 
+      .services-home-wrapper.local-service-cards .small-image-service.local-korkuluk-service-image {
+        object-position: center 42% !important;
+      }
+
       .services-home-wrapper.local-service-cards .collection-item-service:hover .small-image-service {
         transform: scale(1.03);
       }
@@ -821,6 +877,115 @@
         max-width: 160px !important;
       }
 
+      .local-service-gallery {
+        width: 100%;
+        display: grid;
+        gap: 14px;
+        align-self: start;
+      }
+
+      .local-service-gallery-stage {
+        position: relative;
+        overflow: hidden;
+        border-radius: 28px;
+        aspect-ratio: 16 / 11;
+        background: linear-gradient(180deg, rgba(245, 239, 229, 0.92) 0%, rgba(232, 224, 211, 0.92) 100%);
+        box-shadow: 0 22px 56px rgba(38, 29, 16, 0.12);
+      }
+
+      .local-service-gallery-image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+      }
+
+      .local-service-gallery-topbar {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        z-index: 2;
+      }
+
+      .local-service-gallery-counter {
+        display: inline-flex;
+        align-items: center;
+        min-height: 38px;
+        padding: 0 14px;
+        border-radius: 999px;
+        background: rgba(11, 11, 11, 0.72);
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+      }
+
+      .local-service-gallery-nav {
+        position: absolute;
+        inset: auto 16px 16px 16px;
+        z-index: 2;
+        display: flex;
+        justify-content: space-between;
+        pointer-events: none;
+      }
+
+      .local-service-gallery-button {
+        pointer-events: auto;
+        width: 46px;
+        height: 46px;
+        border: 0;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--black);
+        box-shadow: 0 12px 30px rgba(17, 17, 17, 0.18);
+        font-size: 22px;
+        line-height: 1;
+        cursor: pointer;
+        transition: transform 180ms ease, background-color 180ms ease, color 180ms ease;
+      }
+
+      .local-service-gallery-button:hover {
+        transform: translateY(-2px);
+        background: var(--primary);
+        color: #ffffff;
+      }
+
+      .local-service-gallery-thumbs {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
+        gap: 10px;
+      }
+
+      .local-service-gallery-thumb {
+        padding: 0;
+        border: 1px solid rgba(138, 138, 138, 0.2);
+        border-radius: 18px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 12px 28px rgba(38, 29, 16, 0.08);
+        cursor: pointer;
+        transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+      }
+
+      .local-service-gallery-thumb:hover {
+        transform: translateY(-2px);
+        border-color: rgba(184, 154, 42, 0.45);
+        box-shadow: 0 16px 34px rgba(38, 29, 16, 0.12);
+      }
+
+      .local-service-gallery-thumb.is-active {
+        border-color: rgba(184, 154, 42, 0.9);
+        box-shadow: 0 0 0 2px rgba(184, 154, 42, 0.16);
+      }
+
+      .local-service-gallery-thumb img {
+        display: block;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+      }
+
       @media (max-width: 991px) {
         .local-services-cover {
           grid-template-columns: 1fr;
@@ -844,6 +1009,10 @@
 
         .local-home-process-actions {
           margin-top: 30px;
+        }
+
+        .local-service-gallery-thumbs {
+          grid-template-columns: repeat(auto-fit, minmax(74px, 1fr));
         }
       }
 
@@ -873,6 +1042,30 @@
 
         .services-home-wrapper.local-service-cards .service-name {
           font-size: 18px;
+        }
+
+        .local-service-gallery-stage {
+          border-radius: 22px;
+          aspect-ratio: 5 / 4;
+        }
+
+        .local-service-gallery-topbar {
+          top: 12px;
+          right: 12px;
+        }
+
+        .local-service-gallery-nav {
+          inset: auto 12px 12px 12px;
+        }
+
+        .local-service-gallery-button {
+          width: 42px;
+          height: 42px;
+          font-size: 20px;
+        }
+
+        .local-service-gallery-thumbs {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
         }
       }
 
@@ -906,6 +1099,24 @@
         .icon-logo.local-brand-mark {
           height: 100px !important;
           max-width: 100px !important;
+        }
+
+        .local-service-gallery {
+          gap: 10px;
+        }
+
+        .local-service-gallery-counter {
+          min-height: 34px;
+          padding: 0 12px;
+          font-size: 12px;
+        }
+
+        .local-service-gallery-thumbs {
+          gap: 8px;
+        }
+
+        .local-service-gallery-thumb {
+          border-radius: 14px;
         }
       }
     `;
@@ -1070,11 +1281,16 @@
       image.setAttribute("src", replacementSrc);
       image.removeAttribute("srcset");
       image.setAttribute("alt", serviceName.textContent.trim());
+      image.classList.toggle(
+        "local-korkuluk-service-image",
+        normalizedName === "korkuluk & balkon demirleri" || normalizedName === "korkuluk balkon demirleri",
+      );
     });
   }
 
   function replaceServiceDetailImages() {
-    const replacementSrc = serviceDetailImageReplacements.get(normalizePath(window.location.pathname));
+    const currentPath = normalizePath(window.location.pathname);
+    const replacementSrc = serviceDetailImageReplacements.get(currentPath);
     if (!replacementSrc) {
       return;
     }
@@ -1083,7 +1299,120 @@
       image.setAttribute("src", replacementSrc);
       image.removeAttribute("srcset");
       image.removeAttribute("sizes");
+      image.classList.toggle("local-korkuluk-service-image", currentPath === "/hizmetler/korkuluk-balkon");
     });
+  }
+
+  function enhanceServiceDetailCarousel() {
+    const currentPath = normalizePath(window.location.pathname);
+    const galleryImages = serviceDetailGalleryImages.get(currentPath);
+    if (!galleryImages || !galleryImages.length) {
+      return;
+    }
+
+    const targetImage = document.querySelector("img.details-image-collection");
+    if (!targetImage || targetImage.closest(".local-service-gallery")) {
+      return;
+    }
+
+    const serviceTitle =
+      document.querySelector(".service-details-banner .inner-h1")?.textContent?.trim() || "Hizmet";
+    const gallery = document.createElement("div");
+    gallery.className = "local-service-gallery";
+
+    const thumbsMarkup = galleryImages
+      .map(
+        (src, index) => `
+          <button class="local-service-gallery-thumb${index === 0 ? " is-active" : ""}" type="button" data-index="${index}" aria-label="${serviceTitle} gorsel ${index + 1}">
+            <img src="${src}" alt="${serviceTitle} gorsel ${index + 1}" loading="lazy"/>
+          </button>`,
+      )
+      .join("");
+
+    gallery.innerHTML = `
+      <div class="local-service-gallery-stage">
+        <div class="local-service-gallery-topbar">
+          <div class="local-service-gallery-counter">1 / ${galleryImages.length}</div>
+        </div>
+        <img class="local-service-gallery-image" src="${galleryImages[0]}" alt="${serviceTitle} gorsel 1" loading="eager"/>
+        <div class="local-service-gallery-nav">
+          <button class="local-service-gallery-button" type="button" data-direction="-1" aria-label="Onceki gorsel">&#8592;</button>
+          <button class="local-service-gallery-button" type="button" data-direction="1" aria-label="Sonraki gorsel">&#8594;</button>
+        </div>
+      </div>
+      <div class="local-service-gallery-thumbs">${thumbsMarkup}</div>
+    `;
+
+    targetImage.replaceWith(gallery);
+
+    const mainImage = gallery.querySelector(".local-service-gallery-image");
+    const counter = gallery.querySelector(".local-service-gallery-counter");
+    const thumbButtons = Array.from(gallery.querySelectorAll(".local-service-gallery-thumb"));
+    const autoplayDelay = 4200;
+    let activeIndex = 0;
+    let autoplayHandle = null;
+
+    const render = (nextIndex) => {
+      activeIndex = (nextIndex + galleryImages.length) % galleryImages.length;
+      mainImage.setAttribute("src", galleryImages[activeIndex]);
+      mainImage.setAttribute("alt", `${serviceTitle} gorsel ${activeIndex + 1}`);
+      counter.textContent = `${activeIndex + 1} / ${galleryImages.length}`;
+      thumbButtons.forEach((button, index) => {
+        const isActive = index === activeIndex;
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-pressed", isActive ? "true" : "false");
+      });
+    };
+
+    const stopAutoplay = () => {
+      if (autoplayHandle) {
+        window.clearInterval(autoplayHandle);
+        autoplayHandle = null;
+      }
+    };
+
+    const startAutoplay = () => {
+      if (galleryImages.length < 2 || autoplayHandle) {
+        return;
+      }
+      autoplayHandle = window.setInterval(() => {
+        render(activeIndex + 1);
+      }, autoplayDelay);
+    };
+
+    const restartAutoplay = () => {
+      stopAutoplay();
+      startAutoplay();
+    };
+
+    gallery.querySelectorAll(".local-service-gallery-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        render(activeIndex + Number(button.dataset.direction || "0"));
+        restartAutoplay();
+      });
+    });
+
+    thumbButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        render(Number(button.dataset.index || "0"));
+        restartAutoplay();
+      });
+    });
+
+    gallery.addEventListener("mouseenter", stopAutoplay);
+    gallery.addEventListener("mouseleave", startAutoplay);
+    gallery.addEventListener("focusin", stopAutoplay);
+    gallery.addEventListener("focusout", startAutoplay);
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        stopAutoplay();
+      } else {
+        startAutoplay();
+      }
+    });
+
+    startAutoplay();
   }
 
   function replaceProjectCardImages() {
@@ -1806,6 +2135,7 @@
     restoreHeroVideo();
     replaceServiceCardImages();
     replaceServiceDetailImages();
+    enhanceServiceDetailCarousel();
     replaceProjectCardImages();
     replaceProjectDetailImages();
     removeTemplateGraphics();
