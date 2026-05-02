@@ -1233,9 +1233,9 @@
   function simplifyNavigation() {
     const navItems = [
       { href: "/hakkimizda/", label: "Hakkımızda" },
-      { href: "/services/", label: "Hizmetler" },
+      { href: "/hizmetler/", label: "Hizmetler" },
       { href: "/projeler/", label: "Projeler" },
-      { href: "/faq/", label: "SSS" },
+      { href: "/sss/", label: "SSS" },
       { href: "/iletisim/", label: "İletişim" },
     ];
 
@@ -1440,9 +1440,9 @@
   function simplifyNavigation() {
     const navItems = [
       { href: "/hakkimizda/", label: "Hakkımızda" },
-      { href: "/services/", label: "Hizmetler" },
+      { href: "/hizmetler/", label: "Hizmetler" },
       { href: "/projeler/", label: "Projeler" },
-      { href: "/faq/", label: "SSS" },
+      { href: "/sss/", label: "SSS" },
       { href: "/iletisim/", label: "İletişim" },
     ];
 
