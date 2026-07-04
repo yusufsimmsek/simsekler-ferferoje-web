@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "floor-plan-v1",
+  "id": "plan_mock_001",
+  "projectId": "project_mock_001",
+  "title": "3+1 Apartment Concept",
+  "units": "m",
+  "precision": "conceptual",
+  "bounds": {
+    "x": 0,
+    "y": 0,
+    "width": 13,
+    "height": 9
+  },
+  "rooms": [],
+  "doors": [],
+  "windows": [],
+  "adjacencies": [],
+  "layout": {
+    "engine": "placeholder-layout-v1",
+    "gridSize": 0.25,
+    "strategy": "static-placeholder",
+    "generatedAt": "2026-06-17T00:00:00.000Z"
+  },
+  "assumptions": [
+    "Fixture is intentionally minimal."
+  ],
+  "validation": {
+    "status": "valid_with_warnings",
+    "issues": []
+  },
+  "metadata": {
+    "createdBy": "mock",
+    "source": "mock",
+    "promptSummary": "Mock fixture",
+    "disclaimer": "Conceptual draft only. Not for construction, permits, structural, legal, or code-compliance use."
+  }
+}

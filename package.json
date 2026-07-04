@@ -1,0 +1,39 @@
+{
+  "name": "ai-floor-plan-generator",
+  "version": "0.1.0",
+  "private": true,
+  "description": "ArchiFlow urban transformation proposal workspace for architecture offices.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint app components lib",
+    "test": "vitest run",
+    "test:ai": "vitest run test/unit/ai-plan-route-guard.test.ts test/unit/ai-observability.test.ts test/unit/ai-evaluations.test.ts test/unit/ai-regressions.test.ts test/unit/demo-readiness.test.ts test/unit/planning-engine.test.ts test/unit/planning-constraint-resolver.test.ts test/unit/layout-quality.test.ts test/unit/layout-optimizer.test.ts test/unit/edit-quality-delta.test.ts test/unit/chat-edit-pipeline.test.ts test/unit/create-project-flow.test.ts test/unit/version-history.test.ts test/unit/local-provider.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "lucide-react": "1.20.0",
+    "next": "16.2.9",
+    "playwright": "^1.61.1",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "zod": "4.4.3"
+  },
+  "overrides": {
+    "postcss": "8.5.15"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "3.3.5",
+    "@types/node": "25.9.3",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "autoprefixer": "10.5.0",
+    "eslint": "9.39.4",
+    "eslint-config-next": "16.2.9",
+    "postcss": "8.5.15",
+    "tailwindcss": "3.4.19",
+    "typescript": "5.9.3",
+    "vitest": "4.1.9"
+  }
+}

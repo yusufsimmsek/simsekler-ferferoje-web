@@ -1,2 +1,35 @@
-*.log
+# Dependencies
 node_modules/
+
+# Next.js and build output
+.next/
+out/
+dist/
+*.tsbuildinfo
+
+# Environment and local runtime logs
+.env
+.env.*
+!.env.example
+*.log
+*.db
+
+# Python/runtime caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+
+# Local browser and generated QA artifacts
+.playwright-mcp/
+tmp/
+tmp_*/
+_agenda_preview/
+_figma_refs/
+_full_review/
+project_analysis/
+roof_visuals/
+kentsel_automation/data/
+archiflow-*-snapshot.md
+archiflow-premium-*.png
+taiko-snapshot-*.md

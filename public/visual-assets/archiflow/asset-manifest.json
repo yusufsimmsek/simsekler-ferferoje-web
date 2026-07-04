@@ -1,0 +1,522 @@
+{
+  "sourceDocument": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md",
+  "dashboardHero": "/visual-assets/archiflow/dashboard/archiflow-01-dashboard-hero-building.webp",
+  "dashboardHeroDark": "/visual-assets/archiflow/dashboard/archiflow-02-dashboard-hero-dark.webp",
+  "processCards": {
+    "parcelZoning": "/visual-assets/archiflow/process-cards/archiflow-03-process-parcel-zoning.webp",
+    "depthHmax": "/visual-assets/archiflow/process-cards/archiflow-04-process-depth-hmax.webp",
+    "existingPlansQuantity": "/visual-assets/archiflow/process-cards/archiflow-05-process-existing-plans-quantity.webp",
+    "coreApartmentMix": "/visual-assets/archiflow/process-cards/archiflow-06-process-core-apartment-mix.webp",
+    "shareAllocation": "/visual-assets/archiflow/process-cards/archiflow-07-process-share-allocation.webp",
+    "proposalReport": "/visual-assets/archiflow/process-cards/archiflow-08-process-proposal-report.webp"
+  },
+  "workflow": {
+    "guideBackground": "/visual-assets/archiflow/workflow/archiflow-09-workflow-guide-background.webp"
+  },
+  "projects": {
+    "portfolioGallery": "/visual-assets/archiflow/projects/archiflow-10-project-portfolio-gallery.webp",
+    "activeThumbnail": "/visual-assets/archiflow/projects/archiflow-11-project-active-thumbnail.webp",
+    "designStageThumbnail": "/visual-assets/archiflow/projects/archiflow-12-project-design-stage-thumbnail.webp",
+    "proposalStageThumbnail": "/visual-assets/archiflow/projects/archiflow-13-project-proposal-stage-thumbnail.webp",
+    "archiveThumbnail": "/visual-assets/archiflow/projects/archiflow-14-project-archive-thumbnail.webp"
+  },
+  "ai": {
+    "assistantPanel": "/visual-assets/archiflow/ai/archiflow-15-ai-assistant-panel.webp",
+    "provenance": "/visual-assets/archiflow/ai/archiflow-42-ai-provenance-source-tracking.webp",
+    "humanApproval": "/visual-assets/archiflow/ai/archiflow-43-ai-human-approval.webp",
+    "missingDataChecklist": "/visual-assets/archiflow/ai/archiflow-44-ai-missing-data-checklist.webp",
+    "processing": "/visual-assets/archiflow/ai/archiflow-45-ai-processing-architectural-data.webp"
+  },
+  "emptyStates": {
+    "noProjects": "/visual-assets/archiflow/empty-states/archiflow-16-empty-no-projects.webp",
+    "noAnalysis": "/visual-assets/archiflow/empty-states/archiflow-17-empty-no-analysis.webp",
+    "noFiles": "/visual-assets/archiflow/empty-states/archiflow-18-empty-no-files.webp",
+    "noTasks": "/visual-assets/archiflow/empty-states/archiflow-19-empty-no-tasks.webp",
+    "noReports": "/visual-assets/archiflow/empty-states/archiflow-20-empty-no-reports.webp"
+  },
+  "documents": {
+    "pdfReportPreview": "/visual-assets/archiflow/documents/archiflow-21-document-pdf-report-preview.webp",
+    "architecturalPlanPreview": "/visual-assets/archiflow/documents/archiflow-22-document-architectural-plan-preview.webp",
+    "cadDwgPreview": "/visual-assets/archiflow/documents/archiflow-23-document-cad-dwg-preview.webp"
+  },
+  "maps": {
+    "parcelVisualization": "/visual-assets/archiflow/maps/archiflow-24-map-parcel-visualization.webp"
+  },
+  "modules": {
+    "zoningAnalysis": "/visual-assets/archiflow/modules/archiflow-25-module-zoning-analysis.webp",
+    "hmaxMassing": "/visual-assets/archiflow/modules/archiflow-26-module-hmax-massing.webp",
+    "quantityHeatmap": "/visual-assets/archiflow/modules/archiflow-27-module-quantity-heatmap.webp",
+    "coreLibrary": "/visual-assets/archiflow/modules/archiflow-28-module-core-library.webp",
+    "apartmentMix": "/visual-assets/archiflow/modules/archiflow-29-module-apartment-mix.webp",
+    "ownershipAllocation": "/visual-assets/archiflow/modules/archiflow-30-module-ownership-allocation.webp",
+    "proposalPresentation": "/visual-assets/archiflow/modules/archiflow-31-module-proposal-presentation.webp"
+  },
+  "icons": {
+    "project": "/visual-assets/archiflow/icons/archiflow-32-icon-project.png",
+    "parcel": "/visual-assets/archiflow/icons/archiflow-33-icon-parcel.png",
+    "zoning": "/visual-assets/archiflow/icons/archiflow-34-icon-zoning.png",
+    "quantity": "/visual-assets/archiflow/icons/archiflow-35-icon-quantity.png",
+    "report": "/visual-assets/archiflow/icons/archiflow-36-icon-report.png"
+  },
+  "backgrounds": {
+    "lightBlueprint": "/visual-assets/archiflow/backgrounds/archiflow-37-background-light-blueprint.webp",
+    "darkTechnicalGrid": "/visual-assets/archiflow/backgrounds/archiflow-38-background-dark-technical-grid.webp",
+    "glassReflection": "/visual-assets/archiflow/backgrounds/archiflow-39-background-glass-reflection.webp"
+  },
+  "avatars": {
+    "architect": "/visual-assets/archiflow/avatars/archiflow-40-avatar-architect.png",
+    "office": "/visual-assets/archiflow/avatars/archiflow-41-avatar-office.png"
+  },
+  "assets": [
+    {
+      "number": "01",
+      "filename": "archiflow-01-dashboard-hero-building.webp",
+      "folder": "dashboard",
+      "path": "/visual-assets/archiflow/dashboard/archiflow-01-dashboard-hero-building.webp",
+      "usage": "Main dashboard hero visual",
+      "aspectRatio": "16:9",
+      "targetSize": "1920x1080",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#01---dashboard-hero-architectural-building"
+    },
+    {
+      "number": "02",
+      "filename": "archiflow-02-dashboard-hero-dark.webp",
+      "folder": "dashboard",
+      "path": "/visual-assets/archiflow/dashboard/archiflow-02-dashboard-hero-dark.webp",
+      "usage": "Dark dashboard hero variant",
+      "aspectRatio": "16:9",
+      "targetSize": "1920x1080",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#02---dashboard-hero-dark-variant"
+    },
+    {
+      "number": "03",
+      "filename": "archiflow-03-process-parcel-zoning.webp",
+      "folder": "process-cards",
+      "path": "/visual-assets/archiflow/process-cards/archiflow-03-process-parcel-zoning.webp",
+      "usage": "Dark card: Parsel & Imar",
+      "aspectRatio": "4:5",
+      "targetSize": "800x1000",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#03---process-card-parcel-and-zoning"
+    },
+    {
+      "number": "04",
+      "filename": "archiflow-04-process-depth-hmax.webp",
+      "folder": "process-cards",
+      "path": "/visual-assets/archiflow/process-cards/archiflow-04-process-depth-hmax.webp",
+      "usage": "Dark card: Derinlik & Hmax",
+      "aspectRatio": "4:5",
+      "targetSize": "800x1000",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#04---process-card-depth-and-hmax"
+    },
+    {
+      "number": "05",
+      "filename": "archiflow-05-process-existing-plans-quantity.webp",
+      "folder": "process-cards",
+      "path": "/visual-assets/archiflow/process-cards/archiflow-05-process-existing-plans-quantity.webp",
+      "usage": "Dark card: Eski Plan & Metraj",
+      "aspectRatio": "4:5",
+      "targetSize": "800x1000",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#05---process-card-existing-plans-and-quantity"
+    },
+    {
+      "number": "06",
+      "filename": "archiflow-06-process-core-apartment-mix.webp",
+      "folder": "process-cards",
+      "path": "/visual-assets/archiflow/process-cards/archiflow-06-process-core-apartment-mix.webp",
+      "usage": "Dark card: Cekirdek & Daire",
+      "aspectRatio": "4:5",
+      "targetSize": "800x1000",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#06---process-card-core-and-apartment-mix"
+    },
+    {
+      "number": "07",
+      "filename": "archiflow-07-process-share-allocation.webp",
+      "folder": "process-cards",
+      "path": "/visual-assets/archiflow/process-cards/archiflow-07-process-share-allocation.webp",
+      "usage": "Dark card: Paylasim & Hesap",
+      "aspectRatio": "4:5",
+      "targetSize": "800x1000",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#07---process-card-share-allocation"
+    },
+    {
+      "number": "08",
+      "filename": "archiflow-08-process-proposal-report.webp",
+      "folder": "process-cards",
+      "path": "/visual-assets/archiflow/process-cards/archiflow-08-process-proposal-report.webp",
+      "usage": "Dark card: Teklif & Rapor",
+      "aspectRatio": "4:5",
+      "targetSize": "800x1000",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#08---process-card-proposal-and-report"
+    },
+    {
+      "number": "09",
+      "filename": "archiflow-09-workflow-guide-background.webp",
+      "folder": "workflow",
+      "path": "/visual-assets/archiflow/workflow/archiflow-09-workflow-guide-background.webp",
+      "usage": "Horizontal process guide background",
+      "aspectRatio": "21:9",
+      "targetSize": "1920x800",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#09---horizontal-workflow-guide-background"
+    },
+    {
+      "number": "10",
+      "filename": "archiflow-10-project-portfolio-gallery.webp",
+      "folder": "projects",
+      "path": "/visual-assets/archiflow/projects/archiflow-10-project-portfolio-gallery.webp",
+      "usage": "Project portfolio hero",
+      "aspectRatio": "16:9",
+      "targetSize": "1600x900",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#10---project-portfolio-gallery-hero"
+    },
+    {
+      "number": "11",
+      "filename": "archiflow-11-project-active-thumbnail.webp",
+      "folder": "projects",
+      "path": "/visual-assets/archiflow/projects/archiflow-11-project-active-thumbnail.webp",
+      "usage": "Active project card thumbnail",
+      "aspectRatio": "16:10",
+      "targetSize": "1200x750",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#11---active-project-thumbnail"
+    },
+    {
+      "number": "12",
+      "filename": "archiflow-12-project-design-stage-thumbnail.webp",
+      "folder": "projects",
+      "path": "/visual-assets/archiflow/projects/archiflow-12-project-design-stage-thumbnail.webp",
+      "usage": "Design-stage project thumbnail",
+      "aspectRatio": "16:10",
+      "targetSize": "1200x750",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#12---design-stage-project-thumbnail"
+    },
+    {
+      "number": "13",
+      "filename": "archiflow-13-project-proposal-stage-thumbnail.webp",
+      "folder": "projects",
+      "path": "/visual-assets/archiflow/projects/archiflow-13-project-proposal-stage-thumbnail.webp",
+      "usage": "Proposal-stage project thumbnail",
+      "aspectRatio": "16:10",
+      "targetSize": "1200x750",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#13---proposal-stage-project-thumbnail"
+    },
+    {
+      "number": "14",
+      "filename": "archiflow-14-project-archive-thumbnail.webp",
+      "folder": "projects",
+      "path": "/visual-assets/archiflow/projects/archiflow-14-project-archive-thumbnail.webp",
+      "usage": "Archived project thumbnail",
+      "aspectRatio": "16:10",
+      "targetSize": "1200x750",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#14---archived-project-thumbnail"
+    },
+    {
+      "number": "15",
+      "filename": "archiflow-15-ai-assistant-panel.webp",
+      "folder": "ai",
+      "path": "/visual-assets/archiflow/ai/archiflow-15-ai-assistant-panel.webp",
+      "usage": "AI assistant panel visual",
+      "aspectRatio": "4:3",
+      "targetSize": "1000x750",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#15---ai-assistant-panel-visual"
+    },
+    {
+      "number": "16",
+      "filename": "archiflow-16-empty-no-projects.webp",
+      "folder": "empty-states",
+      "path": "/visual-assets/archiflow/empty-states/archiflow-16-empty-no-projects.webp",
+      "usage": "Empty state: no projects",
+      "aspectRatio": "4:3",
+      "targetSize": "1200x900",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#16---empty-state-no-projects"
+    },
+    {
+      "number": "17",
+      "filename": "archiflow-17-empty-no-analysis.webp",
+      "folder": "empty-states",
+      "path": "/visual-assets/archiflow/empty-states/archiflow-17-empty-no-analysis.webp",
+      "usage": "Empty state: no analysis",
+      "aspectRatio": "4:3",
+      "targetSize": "1200x900",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#17---empty-state-no-analysis"
+    },
+    {
+      "number": "18",
+      "filename": "archiflow-18-empty-no-files.webp",
+      "folder": "empty-states",
+      "path": "/visual-assets/archiflow/empty-states/archiflow-18-empty-no-files.webp",
+      "usage": "Empty state: no files",
+      "aspectRatio": "4:3",
+      "targetSize": "1200x900",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#18---empty-state-no-files"
+    },
+    {
+      "number": "19",
+      "filename": "archiflow-19-empty-no-tasks.webp",
+      "folder": "empty-states",
+      "path": "/visual-assets/archiflow/empty-states/archiflow-19-empty-no-tasks.webp",
+      "usage": "Empty state: no tasks",
+      "aspectRatio": "4:3",
+      "targetSize": "1200x900",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#19---empty-state-no-tasks"
+    },
+    {
+      "number": "20",
+      "filename": "archiflow-20-empty-no-reports.webp",
+      "folder": "empty-states",
+      "path": "/visual-assets/archiflow/empty-states/archiflow-20-empty-no-reports.webp",
+      "usage": "Empty state: no reports",
+      "aspectRatio": "4:3",
+      "targetSize": "1200x900",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#20---empty-state-no-reports"
+    },
+    {
+      "number": "21",
+      "filename": "archiflow-21-document-pdf-report-preview.webp",
+      "folder": "documents",
+      "path": "/visual-assets/archiflow/documents/archiflow-21-document-pdf-report-preview.webp",
+      "usage": "PDF report preview",
+      "aspectRatio": "3:4",
+      "targetSize": "900x1200",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#21---pdf-report-preview"
+    },
+    {
+      "number": "22",
+      "filename": "archiflow-22-document-architectural-plan-preview.webp",
+      "folder": "documents",
+      "path": "/visual-assets/archiflow/documents/archiflow-22-document-architectural-plan-preview.webp",
+      "usage": "Architectural plan preview",
+      "aspectRatio": "3:4",
+      "targetSize": "900x1200",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#22---architectural-plan-preview"
+    },
+    {
+      "number": "23",
+      "filename": "archiflow-23-document-cad-dwg-preview.webp",
+      "folder": "documents",
+      "path": "/visual-assets/archiflow/documents/archiflow-23-document-cad-dwg-preview.webp",
+      "usage": "CAD/DWG preview",
+      "aspectRatio": "3:4",
+      "targetSize": "900x1200",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#23---cad-dwg-preview"
+    },
+    {
+      "number": "24",
+      "filename": "archiflow-24-map-parcel-visualization.webp",
+      "folder": "maps",
+      "path": "/visual-assets/archiflow/maps/archiflow-24-map-parcel-visualization.webp",
+      "usage": "Parcel map visualization",
+      "aspectRatio": "16:9",
+      "targetSize": "1600x900",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#24---parcel-map-visualization"
+    },
+    {
+      "number": "25",
+      "filename": "archiflow-25-module-zoning-analysis.webp",
+      "folder": "modules",
+      "path": "/visual-assets/archiflow/modules/archiflow-25-module-zoning-analysis.webp",
+      "usage": "Zoning analysis visual",
+      "aspectRatio": "16:9",
+      "targetSize": "1600x900",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#25---zoning-analysis-visualization"
+    },
+    {
+      "number": "26",
+      "filename": "archiflow-26-module-hmax-massing.webp",
+      "folder": "modules",
+      "path": "/visual-assets/archiflow/modules/archiflow-26-module-hmax-massing.webp",
+      "usage": "Depth/Hmax massing visual",
+      "aspectRatio": "16:9",
+      "targetSize": "1600x900",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#26---hmax-building-massing-visualization"
+    },
+    {
+      "number": "27",
+      "filename": "archiflow-27-module-quantity-heatmap.webp",
+      "folder": "modules",
+      "path": "/visual-assets/archiflow/modules/archiflow-27-module-quantity-heatmap.webp",
+      "usage": "Metraj heatmap visual",
+      "aspectRatio": "16:9",
+      "targetSize": "1600x900",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#27---quantity-heatmap-visualization"
+    },
+    {
+      "number": "28",
+      "filename": "archiflow-28-module-core-library.webp",
+      "folder": "modules",
+      "path": "/visual-assets/archiflow/modules/archiflow-28-module-core-library.webp",
+      "usage": "Core library visual",
+      "aspectRatio": "16:9",
+      "targetSize": "1600x900",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#28---core-library-visualization"
+    },
+    {
+      "number": "29",
+      "filename": "archiflow-29-module-apartment-mix.webp",
+      "folder": "modules",
+      "path": "/visual-assets/archiflow/modules/archiflow-29-module-apartment-mix.webp",
+      "usage": "Apartment mix visual",
+      "aspectRatio": "16:9",
+      "targetSize": "1600x900",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#29---apartment-mix-visualization"
+    },
+    {
+      "number": "30",
+      "filename": "archiflow-30-module-ownership-allocation.webp",
+      "folder": "modules",
+      "path": "/visual-assets/archiflow/modules/archiflow-30-module-ownership-allocation.webp",
+      "usage": "Share allocation visual",
+      "aspectRatio": "16:9",
+      "targetSize": "1600x900",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#30---ownership-allocation-visualization"
+    },
+    {
+      "number": "31",
+      "filename": "archiflow-31-module-proposal-presentation.webp",
+      "folder": "modules",
+      "path": "/visual-assets/archiflow/modules/archiflow-31-module-proposal-presentation.webp",
+      "usage": "Proposal/report presentation visual",
+      "aspectRatio": "16:9",
+      "targetSize": "1600x900",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#31---proposal-presentation-visualization"
+    },
+    {
+      "number": "32",
+      "filename": "archiflow-32-icon-project.png",
+      "folder": "icons",
+      "path": "/visual-assets/archiflow/icons/archiflow-32-icon-project.png",
+      "usage": "Mini icon: project",
+      "aspectRatio": "1:1",
+      "targetSize": "512x512",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#32---mini-icon-project"
+    },
+    {
+      "number": "33",
+      "filename": "archiflow-33-icon-parcel.png",
+      "folder": "icons",
+      "path": "/visual-assets/archiflow/icons/archiflow-33-icon-parcel.png",
+      "usage": "Mini icon: parcel",
+      "aspectRatio": "1:1",
+      "targetSize": "512x512",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#33---mini-icon-parcel"
+    },
+    {
+      "number": "34",
+      "filename": "archiflow-34-icon-zoning.png",
+      "folder": "icons",
+      "path": "/visual-assets/archiflow/icons/archiflow-34-icon-zoning.png",
+      "usage": "Mini icon: zoning",
+      "aspectRatio": "1:1",
+      "targetSize": "512x512",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#34---mini-icon-zoning"
+    },
+    {
+      "number": "35",
+      "filename": "archiflow-35-icon-quantity.png",
+      "folder": "icons",
+      "path": "/visual-assets/archiflow/icons/archiflow-35-icon-quantity.png",
+      "usage": "Mini icon: quantity/metraj",
+      "aspectRatio": "1:1",
+      "targetSize": "512x512",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#35---mini-icon-quantity"
+    },
+    {
+      "number": "36",
+      "filename": "archiflow-36-icon-report.png",
+      "folder": "icons",
+      "path": "/visual-assets/archiflow/icons/archiflow-36-icon-report.png",
+      "usage": "Mini icon: report",
+      "aspectRatio": "1:1",
+      "targetSize": "512x512",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#36---mini-icon-report"
+    },
+    {
+      "number": "37",
+      "filename": "archiflow-37-background-light-blueprint.webp",
+      "folder": "backgrounds",
+      "path": "/visual-assets/archiflow/backgrounds/archiflow-37-background-light-blueprint.webp",
+      "usage": "Light blueprint dashboard background",
+      "aspectRatio": "16:9",
+      "targetSize": "1920x1080",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#37---light-blueprint-background-texture"
+    },
+    {
+      "number": "38",
+      "filename": "archiflow-38-background-dark-technical-grid.webp",
+      "folder": "backgrounds",
+      "path": "/visual-assets/archiflow/backgrounds/archiflow-38-background-dark-technical-grid.webp",
+      "usage": "Dark technical card background",
+      "aspectRatio": "16:9",
+      "targetSize": "1920x1080",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#38---dark-technical-grid-background-texture"
+    },
+    {
+      "number": "39",
+      "filename": "archiflow-39-background-glass-reflection.webp",
+      "folder": "backgrounds",
+      "path": "/visual-assets/archiflow/backgrounds/archiflow-39-background-glass-reflection.webp",
+      "usage": "Glass reflection overlay texture",
+      "aspectRatio": "16:9",
+      "targetSize": "1920x1080",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#39---glass-reflection-overlay-texture"
+    },
+    {
+      "number": "40",
+      "filename": "archiflow-40-avatar-architect.png",
+      "folder": "avatars",
+      "path": "/visual-assets/archiflow/avatars/archiflow-40-avatar-architect.png",
+      "usage": "Architect user avatar",
+      "aspectRatio": "1:1",
+      "targetSize": "768x768",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#40---architect-avatar"
+    },
+    {
+      "number": "41",
+      "filename": "archiflow-41-avatar-office.png",
+      "folder": "avatars",
+      "path": "/visual-assets/archiflow/avatars/archiflow-41-avatar-office.png",
+      "usage": "Architecture office avatar",
+      "aspectRatio": "1:1",
+      "targetSize": "768x768",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#41---architecture-office-avatar"
+    },
+    {
+      "number": "42",
+      "filename": "archiflow-42-ai-provenance-source-tracking.webp",
+      "folder": "ai",
+      "path": "/visual-assets/archiflow/ai/archiflow-42-ai-provenance-source-tracking.webp",
+      "usage": "AI provenance/source tracking visual",
+      "aspectRatio": "16:9",
+      "targetSize": "1600x900",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#42---ai-provenance-source-tracking"
+    },
+    {
+      "number": "43",
+      "filename": "archiflow-43-ai-human-approval.webp",
+      "folder": "ai",
+      "path": "/visual-assets/archiflow/ai/archiflow-43-ai-human-approval.webp",
+      "usage": "Human approval required visual",
+      "aspectRatio": "4:3",
+      "targetSize": "1200x900",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#43---human-approval-required"
+    },
+    {
+      "number": "44",
+      "filename": "archiflow-44-ai-missing-data-checklist.webp",
+      "folder": "ai",
+      "path": "/visual-assets/archiflow/ai/archiflow-44-ai-missing-data-checklist.webp",
+      "usage": "Missing data checklist visual",
+      "aspectRatio": "4:3",
+      "targetSize": "1200x900",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#44---missing-data-checklist"
+    },
+    {
+      "number": "45",
+      "filename": "archiflow-45-ai-processing-architectural-data.webp",
+      "folder": "ai",
+      "path": "/visual-assets/archiflow/ai/archiflow-45-ai-processing-architectural-data.webp",
+      "usage": "AI processing/loading visual",
+      "aspectRatio": "4:3",
+      "targetSize": "1200x900",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#45---ai-processing-architectural-data"
+    }
+  ]
+}
