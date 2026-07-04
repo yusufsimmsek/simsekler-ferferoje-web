@@ -114,6 +114,76 @@ const workflowSteps = kentselWorkflowSteps;
 const kentselAutomationApiBaseUrl = process.env.NEXT_PUBLIC_KENTSEL_AUTOMATION_API_BASE_URL ?? "";
 type BackendSyncState = "idle" | "syncing" | "synced" | "unavailable";
 
+const archiflowVisualAssets = {
+  dashboardHero: "/visual-assets/archiflow/dashboard/archiflow-01-dashboard-hero-building.webp",
+  dashboardHeroDark: "/visual-assets/archiflow/dashboard/archiflow-02-dashboard-hero-dark.webp",
+  processCards: {
+    parcelZoning: "/visual-assets/archiflow/process-cards/archiflow-03-process-parcel-zoning.webp",
+    depthHmax: "/visual-assets/archiflow/process-cards/archiflow-04-process-depth-hmax.webp",
+    existingPlansQuantity: "/visual-assets/archiflow/process-cards/archiflow-05-process-existing-plans-quantity.webp",
+    coreApartmentMix: "/visual-assets/archiflow/process-cards/archiflow-06-process-core-apartment-mix.webp",
+    shareAllocation: "/visual-assets/archiflow/process-cards/archiflow-07-process-share-allocation.webp",
+    proposalReport: "/visual-assets/archiflow/process-cards/archiflow-08-process-proposal-report.webp"
+  },
+  workflow: {
+    guideBackground: "/visual-assets/archiflow/workflow/archiflow-09-workflow-guide-background.webp"
+  },
+  projects: {
+    portfolioGallery: "/visual-assets/archiflow/projects/archiflow-10-project-portfolio-gallery.webp",
+    activeThumbnail: "/visual-assets/archiflow/projects/archiflow-11-project-active-thumbnail.webp",
+    designStageThumbnail: "/visual-assets/archiflow/projects/archiflow-12-project-design-stage-thumbnail.webp",
+    proposalStageThumbnail: "/visual-assets/archiflow/projects/archiflow-13-project-proposal-stage-thumbnail.webp",
+    archiveThumbnail: "/visual-assets/archiflow/projects/archiflow-14-project-archive-thumbnail.webp"
+  },
+  ai: {
+    assistantPanel: "/visual-assets/archiflow/ai/archiflow-15-ai-assistant-panel.webp",
+    provenance: "/visual-assets/archiflow/ai/archiflow-42-ai-provenance-source-tracking.webp",
+    humanApproval: "/visual-assets/archiflow/ai/archiflow-43-ai-human-approval.webp",
+    missingDataChecklist: "/visual-assets/archiflow/ai/archiflow-44-ai-missing-data-checklist.webp",
+    processing: "/visual-assets/archiflow/ai/archiflow-45-ai-processing-architectural-data.webp"
+  },
+  emptyStates: {
+    noProjects: "/visual-assets/archiflow/empty-states/archiflow-16-empty-no-projects.webp",
+    noAnalysis: "/visual-assets/archiflow/empty-states/archiflow-17-empty-no-analysis.webp",
+    noFiles: "/visual-assets/archiflow/empty-states/archiflow-18-empty-no-files.webp",
+    noTasks: "/visual-assets/archiflow/empty-states/archiflow-19-empty-no-tasks.webp",
+    noReports: "/visual-assets/archiflow/empty-states/archiflow-20-empty-no-reports.webp"
+  },
+  documents: {
+    pdfReportPreview: "/visual-assets/archiflow/documents/archiflow-21-document-pdf-report-preview.webp",
+    architecturalPlanPreview: "/visual-assets/archiflow/documents/archiflow-22-document-architectural-plan-preview.webp",
+    cadDwgPreview: "/visual-assets/archiflow/documents/archiflow-23-document-cad-dwg-preview.webp"
+  },
+  maps: {
+    parcelVisualization: "/visual-assets/archiflow/maps/archiflow-24-map-parcel-visualization.webp"
+  },
+  modules: {
+    zoningAnalysis: "/visual-assets/archiflow/modules/archiflow-25-module-zoning-analysis.webp",
+    hmaxMassing: "/visual-assets/archiflow/modules/archiflow-26-module-hmax-massing.webp",
+    quantityHeatmap: "/visual-assets/archiflow/modules/archiflow-27-module-quantity-heatmap.webp",
+    coreLibrary: "/visual-assets/archiflow/modules/archiflow-28-module-core-library.webp",
+    apartmentMix: "/visual-assets/archiflow/modules/archiflow-29-module-apartment-mix.webp",
+    ownershipAllocation: "/visual-assets/archiflow/modules/archiflow-30-module-ownership-allocation.webp",
+    proposalPresentation: "/visual-assets/archiflow/modules/archiflow-31-module-proposal-presentation.webp"
+  },
+  icons: {
+    project: "/visual-assets/archiflow/icons/archiflow-32-icon-project.png",
+    parcel: "/visual-assets/archiflow/icons/archiflow-33-icon-parcel.png",
+    zoning: "/visual-assets/archiflow/icons/archiflow-34-icon-zoning.png",
+    quantity: "/visual-assets/archiflow/icons/archiflow-35-icon-quantity.png",
+    report: "/visual-assets/archiflow/icons/archiflow-36-icon-report.png"
+  },
+  backgrounds: {
+    lightBlueprint: "/visual-assets/archiflow/backgrounds/archiflow-37-background-light-blueprint.webp",
+    darkTechnicalGrid: "/visual-assets/archiflow/backgrounds/archiflow-38-background-dark-technical-grid.webp",
+    glassReflection: "/visual-assets/archiflow/backgrounds/archiflow-39-background-glass-reflection.webp"
+  },
+  avatars: {
+    architect: "/visual-assets/archiflow/avatars/archiflow-40-avatar-architect.png",
+    office: "/visual-assets/archiflow/avatars/archiflow-41-avatar-office.png"
+  }
+} as const;
+
 const emptyDraft: ProjectDraft = {
   name: "",
   client: "",
@@ -893,6 +963,7 @@ function AuthScreen({ onAuth }: { onAuth: (session: Session, mode: "empty" | "de
         </section>
 
         <section className="relative min-h-[580px] overflow-hidden p-6 lg:p-9">
+          <AuthHeroBackdrop />
           <div className="snow-animated-grid" />
           <div className="relative z-10 grid h-full content-center gap-7">
             <div className="grid gap-5 sm:grid-cols-2">
@@ -926,6 +997,22 @@ function AuthScreen({ onAuth }: { onAuth: (session: Session, mode: "empty" | "de
           </div>
         </section>
       </div>
+    </div>
+  );
+}
+
+function AuthHeroBackdrop() {
+  return (
+    <div className="af-auth-hero-backdrop" aria-hidden="true">
+      <Image
+        alt=""
+        className="af-auth-hero-image"
+        fill
+        priority
+        sizes="(min-width: 1024px) 50vw, 100vw"
+        src={archiflowVisualAssets.dashboardHeroDark}
+      />
+      <div className="af-auth-hero-wash" />
     </div>
   );
 }
@@ -1013,8 +1100,14 @@ function SnowShell({
               </button>
             </div>
             <div className="snow-sidebar-user flex items-center gap-3 rounded-card bg-white/7 p-3">
-              <div className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-snow-ice text-snow-shell">
-                <Building2 size={17} />
+              <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full bg-snow-ice shadow-[0_8px_18px_rgba(22,34,65,.12)]">
+                <Image
+                  alt=""
+                  className="object-cover"
+                  fill
+                  sizes="36px"
+                  src={archiflowVisualAssets.avatars.office}
+                />
               </div>
               <div className="snow-sidebar-user-copy min-w-0">
                 <div className="truncate text-sm font-semibold">{session.firm || session.name}</div>
@@ -1068,8 +1161,14 @@ function SnowShell({
                 </button>
               </div>
               <div className="hidden min-w-[156px] items-center gap-3 rounded-card border border-snow-line bg-white/70 px-3 py-2 shadow-[0_10px_24px_rgba(22,34,65,.045)] sm:flex">
-                <div className="relative grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[linear-gradient(135deg,#e8b98e,#6e5142)] text-sm font-bold text-white shadow-[0_8px_18px_rgba(110,81,66,.18)]">
-                  M
+                <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-full bg-snow-ice shadow-[0_8px_18px_rgba(110,81,66,.18)]">
+                  <Image
+                    alt=""
+                    className="object-cover"
+                    fill
+                    sizes="36px"
+                    src={archiflowVisualAssets.avatars.architect}
+                  />
                   <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-white bg-[#16a34a]" />
                 </div>
                 <div className="min-w-0">
@@ -1246,14 +1345,14 @@ const dashboardProcessCards: Array<{
   title: string;
   subtitle: string;
   visual: "parcel" | "hmax" | "plan" | "core" | "share" | "report";
-  imageUrl?: string;
+  imageUrl: string;
 }> = [
-  { title: "PARSEL & İMAR", subtitle: "Parsel bilgilerini ve imar durumunu girin.", visual: "parcel", imageUrl: "/visual-assets/archiflow/process-parcel-grid.png" },
-  { title: "DERİNLİK & HMAX", subtitle: "Derinlik, hmax ve çekme mesafelerini analiz edin.", visual: "hmax", imageUrl: "/visual-assets/archiflow/process-hmax-mass.png" },
-  { title: "ESKİ PLAN & METRAJ", subtitle: "Mevcut yapı planlarını ve metrajları yükleyin.", visual: "plan", imageUrl: "/visual-assets/archiflow/process-plan-metraj.png" },
-  { title: "ÇEKİRDEK & DAİRE", subtitle: "Çekirdek seçimi ve daire karmasını oluşturun.", visual: "core", imageUrl: "/visual-assets/archiflow/process-core-apartment.png" },
-  { title: "PAYLAŞIM & HESAP", subtitle: "Arsa payı ve denkleştirme hesaplarını yapın.", visual: "share" },
-  { title: "TEKLİF & RAPOR", subtitle: "Teklif dosyası ve sunum çıktılarını alın.", visual: "report", imageUrl: "/visual-assets/archiflow/proposal-booklet.jpg" }
+  { title: "PARSEL & İMAR", subtitle: "Parsel bilgilerini ve imar durumunu girin.", visual: "parcel", imageUrl: archiflowVisualAssets.processCards.parcelZoning },
+  { title: "DERİNLİK & HMAX", subtitle: "Derinlik, hmax ve çekme mesafelerini analiz edin.", visual: "hmax", imageUrl: archiflowVisualAssets.processCards.depthHmax },
+  { title: "ESKİ PLAN & METRAJ", subtitle: "Mevcut yapı planlarını ve metrajları yükleyin.", visual: "plan", imageUrl: archiflowVisualAssets.processCards.existingPlansQuantity },
+  { title: "ÇEKİRDEK & DAİRE", subtitle: "Çekirdek seçimi ve daire karmasını oluşturun.", visual: "core", imageUrl: archiflowVisualAssets.processCards.coreApartmentMix },
+  { title: "PAYLAŞIM & HESAP", subtitle: "Arsa payı ve denkleştirme hesaplarını yapın.", visual: "share", imageUrl: archiflowVisualAssets.processCards.shareAllocation },
+  { title: "TEKLİF & RAPOR", subtitle: "Teklif dosyası ve sunum çıktılarını alın.", visual: "report", imageUrl: archiflowVisualAssets.processCards.proposalReport }
 ];
 
 function HeroMiniStat({
@@ -1314,7 +1413,7 @@ function DashboardBuildingIllustration({ variant = "wireframe" }: { variant?: "r
           fill
           priority
           sizes="(min-width: 1280px) 52vw, 100vw"
-          src="/visual-assets/archiflow/dashboard-building-render.png"
+          src={archiflowVisualAssets.dashboardHero}
         />
         <div className="af-building-render-wash" />
       </div>
@@ -1442,19 +1541,13 @@ function ProcessCard({ card, index }: { card: (typeof dashboardProcessCards)[num
       </div>
 
       <div className="af-dark-process-visual" aria-hidden="true">
-        {card.visual === "share" ? (
-          <div className="af-dark-process-donut">
-            <span>%60</span>
-          </div>
-        ) : (
-          <Image
-            alt=""
-            className="af-dark-process-image"
-            fill
-            sizes="(min-width: 1280px) 16vw, (min-width: 768px) 33vw, 100vw"
-            src={card.imageUrl ?? "/visual-assets/archiflow/proposal-booklet.jpg"}
-          />
-        )}
+        <Image
+          alt=""
+          className="af-dark-process-image"
+          fill
+          sizes="(min-width: 1280px) 16vw, (min-width: 768px) 33vw, 100vw"
+          src={card.imageUrl}
+        />
       </div>
 
       <button className="af-dark-process-arrow snow-focus-ring" type="button" aria-label={`${index + 1}. adımı aç: ${card.title}`}>
@@ -1514,7 +1607,7 @@ function DarkMetricRail({ averageProgress, projects }: { averageProgress: number
       ))}
       <div className="hidden h-[72px] w-[72px] relative overflow-hidden rounded-card xl:block justify-self-center">
         <Image
-          src="/visual-assets/archiflow/bottom-metric-cube.png"
+          src={archiflowVisualAssets.icons.quantity}
           alt="Metric asset"
           fill
           className="object-contain animate-pulse"
@@ -1555,7 +1648,7 @@ function EmptyDashboard({ onLoadSamples, onNewProject }: { onLoadSamples: () => 
             </div>
           </div>
           <div className="border-t border-snow-line p-5 lg:border-l lg:border-t-0">
-            <PlanPreview compact />
+            <EmptyDashboardVisual />
             <p className="mt-4 text-xs leading-5 text-white/40">
               Önizleme temsili bir mimari akış gösterir; gerçek metrikler proje oluşturulduktan sonra bu panelde görünür.
             </p>
@@ -1570,6 +1663,40 @@ function EmptyDashboard({ onLoadSamples, onNewProject }: { onLoadSamples: () => 
           </div>
         </div>
       </Card>
+    </div>
+  );
+}
+
+function EmptyDashboardVisual() {
+  return (
+    <div className="af-empty-dashboard-visual" aria-hidden="true">
+      <Image
+        alt=""
+        className="af-empty-dashboard-image"
+        fill
+        sizes="(min-width: 1024px) 320px, 100vw"
+        src={archiflowVisualAssets.emptyStates.noProjects}
+      />
+      <div className="af-empty-dashboard-visual-wash" />
+    </div>
+  );
+}
+
+function ContextualAssetVisual({
+  className = "",
+  imageClassName = "",
+  sizes = "(min-width: 768px) 360px, 100vw",
+  src
+}: {
+  className?: string;
+  imageClassName?: string;
+  sizes?: string;
+  src: string;
+}) {
+  return (
+    <div className={cx("af-contextual-asset", className)} aria-hidden="true">
+      <Image alt="" className={cx("af-contextual-asset-image", imageClassName)} fill sizes={sizes} src={src} />
+      <div className="af-contextual-asset-wash" />
     </div>
   );
 }
@@ -1686,6 +1813,7 @@ function PortfolioEmptyState({
   return (
     <div className="grid min-h-[420px] place-items-center p-8">
       <div className="max-w-[680px] text-center">
+        <ContextualAssetVisual className="mx-auto mb-6 max-w-[360px]" src={archiflowVisualAssets.emptyStates.noProjects} />
         <div className="snow-status-pulse mx-auto grid h-12 w-12 place-items-center rounded-card bg-snow-violet text-[#191919]">
           <FolderKanban size={22} />
         </div>
@@ -1726,6 +1854,7 @@ function SearchEmptyState({
   return (
     <div className="grid min-h-[380px] place-items-center p-8">
       <div className="max-w-[660px] text-center">
+        <ContextualAssetVisual className="mx-auto mb-6 max-w-[340px]" src={archiflowVisualAssets.emptyStates.noAnalysis} />
         <div className="mx-auto grid h-12 w-12 place-items-center rounded-card bg-white/8 text-white/62">
           <Search size={22} />
         </div>
@@ -1956,7 +2085,7 @@ function ProjectReferenceCard({
           >
             <MoreHorizontal size={17} />
           </button>
-          <ProjectRenderVisual muted={locked} variant={index} />
+          <ProjectRenderVisual project={project} variant={index} />
         </div>
 
         <div className="p-5">
@@ -1985,19 +2114,35 @@ function ProjectReferenceCard({
           </div>
 
           <div className="mt-5 flex items-center justify-between gap-4">
-            <div className="flex -space-x-2">
-              {["M", "A", "K"].map((label, avatarIndex) => (
-                <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-white bg-[linear-gradient(135deg,#f8d5ba,#5a4b42)] text-[10px] font-bold text-white" key={label + avatarIndex}>
-                  {label}
-                </span>
-              ))}
-              {backendInsight ? <span className="grid h-7 w-7 place-items-center rounded-full border-2 border-white bg-snow-violet text-[10px] font-bold text-white">AI</span> : null}
-            </div>
+            <ProjectAvatarStack showAi={Boolean(backendInsight)} />
             <span className="text-xs text-white/42">{project.updatedAt}</span>
           </div>
         </div>
       </div>
     </article>
+  );
+}
+
+function ProjectAvatarStack({ showAi }: { showAi: boolean }) {
+  const avatars = [
+    { label: "Mimar", src: archiflowVisualAssets.avatars.architect },
+    { label: "Ofis", src: archiflowVisualAssets.avatars.office },
+    { label: "Proje", src: archiflowVisualAssets.icons.project }
+  ];
+
+  return (
+    <div className="flex -space-x-2">
+      {avatars.map((avatar) => (
+        <span className="relative h-7 w-7 overflow-hidden rounded-full border-2 border-white bg-white" key={avatar.label} title={avatar.label}>
+          <Image alt="" className="object-cover" fill sizes="28px" src={avatar.src} />
+        </span>
+      ))}
+      {showAi ? (
+        <span className="relative h-7 w-7 overflow-hidden rounded-full border-2 border-white bg-white" title="AI">
+          <Image alt="" className="object-cover" fill sizes="28px" src={archiflowVisualAssets.ai.assistantPanel} />
+        </span>
+      ) : null}
+    </div>
   );
 }
 
@@ -2010,8 +2155,18 @@ function ProjectMiniMetric({ label, value }: { label: string; value: string }) {
   );
 }
 
-function ProjectRenderVisual({ muted, variant }: { muted: boolean; variant: number }) {
-  return <div className={cx("af-project-render-asset", `af-project-render-asset-${variant % 6}`, muted ? "grayscale opacity-70" : "")} aria-hidden="true" />;
+function ProjectRenderVisual({ project, variant }: { project: Project; variant: number }) {
+  const stage = project.locked
+    ? "archive"
+    : project.status === "Teklif"
+      ? "proposal"
+      : project.status === "Hazırlık"
+        ? "design"
+        : variant % 2
+          ? "active-alt"
+          : "active";
+
+  return <div className={cx("af-project-render-asset", `af-project-render-asset-${stage}`, project.locked ? "grayscale opacity-70" : "")} aria-hidden="true" />;
 }
 
 function ProjectWizard({
@@ -2511,6 +2666,7 @@ function ProjectWorkspace({
                   <SectionTitle title="Teklif paketi" eyebrow="PDF / PNG / paylaşım cetveli" />
                   {!offerReadiness.canGenerateFinalOffer ? (
                     <div className="mt-5 rounded-card border border-[#ffd56a]/30 bg-[#ffd56a]/10 p-4">
+                      <ContextualAssetVisual className="mb-4 max-w-[300px]" src={archiflowVisualAssets.emptyStates.noReports} />
                       <p className="text-sm font-semibold text-[#ffd56a]">Final teklif için zorunlu akış eksik</p>
                       <p className="mt-2 text-sm leading-6 text-white/58">
                         8.3 iş akışına göre teklif paketi; alan hesabı, paylaşım cetveli, mevzuat/kalite kontrol raporu ve mimar seçimi tamamlanmadan final çıktı olarak üretilemez.
@@ -2737,7 +2893,8 @@ type ReferenceModuleExperience =
   | "apartment-stack"
   | "ownership-allocation"
   | "proposal-booklet"
-  | "file-vault";
+  | "file-vault"
+  | "ai-processing";
 
 type ExperienceMotionMode = ReferenceModuleExperience | "projects";
 
@@ -2746,6 +2903,11 @@ const operationalMotionProfiles: Record<ExperienceMotionMode, { accent: string; 
     accent: "Karma dengesi",
     primary: "Daire yığını",
     secondary: "tipler okunuyor"
+  },
+  "ai-processing": {
+    accent: "AI ön okuma",
+    primary: "Veri işleme",
+    secondary: "kaynaklar ayrışıyor"
   },
   "core-3d": {
     accent: "Çekirdek seçimi",
@@ -2950,15 +3112,7 @@ function ReferenceModuleScreen({
             </div>
             <div className="mt-4 space-y-3">
               {config.documents.map(([Icon, name, meta]) => (
-                <div className="flex items-center gap-3 rounded-card border border-snow-line bg-white px-3 py-3" key={name}>
-                  <span className="grid h-9 w-9 place-items-center rounded-lg bg-snow-violet/10 text-snow-violet">
-                    <Icon size={16} />
-                  </span>
-                  <div className="min-w-0">
-                    <p className="truncate text-sm font-semibold text-[#11184a]">{name}</p>
-                    <p className="mt-1 text-xs text-[#6c7590]">{meta}</p>
-                  </div>
-                </div>
+                <ReferenceDocumentCard icon={Icon} key={name} meta={meta} name={name} />
               ))}
             </div>
           </Card>
@@ -3068,6 +3222,7 @@ function createReferenceModuleConfig(view: ModuleView, project: Project, definit
   const documents: Array<[LucideIcon, string, string]> = [
     [FileText, `${project.ada}_${project.parsel}_imar.pdf`, "PDF · kaynak"],
     [HardDrive, `${project.ada}_${project.parsel}_plan.dwg`, "DWG · çizim"],
+    [FileText, `${project.ada}_${project.parsel}_mevcut_plan.png`, "Plan · önizleme"],
     [FileText, `${project.ada}_${project.parsel}_rapor.pdf`, "PDF · çıktı"]
   ];
   const quickActions: Array<[LucideIcon, string]> = [
@@ -3308,6 +3463,40 @@ function createReferenceModuleConfig(view: ModuleView, project: Project, definit
         ["3+1", "26", "%27.1", "124.6 m²", "152.3 m²", "₺97.425.000"]
       ]
     },
+    "ai-floor-plan": {
+      ...fallback,
+      title: "AI Kat Planı",
+      eyebrow: "AI Asistan",
+      tabs: ["Özet", "Ön Okuma", "Eksik Veri", "Plan Adayları", "İnsan Onayı", "Geçmiş"],
+      actionLabel: "AI Ön Okuma",
+      surface: "plans",
+      experience: "ai-processing",
+      experienceTitle: "AI veriyi işler, mimar kararı verir",
+      experienceCopy: "AI kat planı yüzeyi kaynak dosya, parsel verisi ve mimar notlarını ön okuma için bir araya getirir. Nihai plan, teklif veya mevzuat kararı üretmez; kontrol listesini ve aday üretim hazırlığını hızlandırır.",
+      experienceSignal: "Plan, parsel ve metraj parçaları işleniyor",
+      story: [
+        ["Kaynak", "Dosya ve notlar"],
+        ["Ön okuma", "Eksikler ayrışır"],
+        ["Onay", "Mimar kontrolü"]
+      ],
+      primaryTitle: "AI Ön Okuma Yüzeyi",
+      secondaryTitle: "Kaynak Kontrolü",
+      stats: [
+        { label: "Kaynak", value: String(project.files.length), delta: "Bağlı dosya", tone: "blue" },
+        { label: "Eksik veri", value: project.intakeSummary ? String(project.intakeSummary.missingDataChecklist.filter((item) => item.status === "missing").length) : "3", delta: "Kontrol", tone: "ice" },
+        { label: "Ön okuma", value: "Hazır", delta: "Kural tabanlı", tone: "green" },
+        { label: "İnsan onayı", value: "Zorunlu", delta: "Final karar", tone: "violet" },
+        { label: "Plan adayı", value: "0", delta: "Üretim yok", tone: "dark" },
+        { label: "Güven", value: "Kaynaklı", delta: "Provenance", tone: "blue" }
+      ],
+      tableTitle: "AI Ön Okuma Girdileri",
+      tableColumns: ["Girdi", "Durum", "Kaynak", "Kontrol"],
+      tableRows: [
+        ["Parsel bilgisi", project.ada && project.parsel ? "Hazır" : "Eksik", "Proje kartı", "Mimar"],
+        ["Mevcut plan", project.files.some((file) => file.type === "CAD") ? "Yüklü" : "Bekliyor", "Dosya kasası", "Mimar"],
+        ["Metraj", project.files.some((file) => file.type === "Metraj") ? "Yüklü" : "Bekliyor", "Dosya kasası", "Mimar"]
+      ]
+    },
     comparisons: {
       ...fallback,
       title: "Paylaşım & Hesap",
@@ -3431,7 +3620,7 @@ function createReferenceModuleConfig(view: ModuleView, project: Project, definit
 }
 
 function ReferenceModuleSurfaceView({ config, project }: { config: ReferenceModuleConfig; project: Project }) {
-  if (config.surface === "map") return <ReferenceMapVisual project={project} />;
+  if (config.surface === "map") return <ReferenceMapVisual experience={config.experience} project={project} />;
   if (config.surface === "depth") return <ReferenceDepthVisual />;
   if (config.surface === "library") return <ReferenceCoreLibrary />;
   if (config.surface === "mix") return <ReferenceMixVisual />;
@@ -3462,13 +3651,7 @@ function ReferenceModuleSecondaryView({ config }: { config: ReferenceModuleConfi
     return (
       <div className="mt-5 space-y-3">
         {config.documents.map(([Icon, name, meta]) => (
-          <div className="flex items-center gap-3 rounded-card border border-snow-line bg-white px-3 py-3" key={name}>
-            <Icon className="text-snow-violet" size={16} />
-            <div>
-              <p className="text-sm font-semibold text-[#11184a]">{name}</p>
-              <p className="mt-1 text-xs text-[#6c7590]">{meta}</p>
-            </div>
-          </div>
+          <ReferenceDocumentCard icon={Icon} key={name} meta={meta} name={name} />
         ))}
       </div>
     );
@@ -3486,9 +3669,46 @@ function ReferenceModuleSecondaryView({ config }: { config: ReferenceModuleConfi
   );
 }
 
-function ReferenceMapVisual({ project }: { project: Project }) {
+function ReferenceDocumentCard({
+  icon: Icon,
+  meta,
+  name
+}: {
+  icon: LucideIcon;
+  meta: string;
+  name: string;
+}) {
+  const asset = getDocumentPreviewAsset(name, meta);
+
+  return (
+    <div className="af-document-preview-card rounded-card border border-snow-line bg-white">
+      <div className="af-document-preview-thumb">
+        <Image alt="" className="object-cover" fill sizes="96px" src={asset} />
+      </div>
+      <div className="min-w-0">
+        <p className="truncate text-sm font-semibold text-[#11184a]">{name}</p>
+        <p className="mt-1 text-xs text-[#6c7590]">{meta}</p>
+      </div>
+      <Icon className="ml-auto shrink-0 text-snow-violet" size={16} />
+    </div>
+  );
+}
+
+function getDocumentPreviewAsset(name: string, meta: string) {
+  const source = `${name} ${meta}`.toLocaleLowerCase("tr-TR");
+  if (source.includes("dwg") || source.includes("cad")) return archiflowVisualAssets.documents.cadDwgPreview;
+  if (source.includes("plan")) return archiflowVisualAssets.documents.architecturalPlanPreview;
+  return archiflowVisualAssets.documents.pdfReportPreview;
+}
+
+function ReferenceMapVisual({ experience, project }: { experience: ReferenceModuleExperience; project: Project }) {
+  const imageUrl = experience === "zoning-blueprint"
+    ? archiflowVisualAssets.modules.zoningAnalysis
+    : archiflowVisualAssets.maps.parcelVisualization;
+
   return (
     <div className="relative mt-5 h-[280px] overflow-hidden rounded-card border border-snow-line bg-[linear-gradient(135deg,#f7f9fd,#eef3fb)]">
+      <Image alt="" className="af-reference-surface-image" fill sizes="(min-width: 1280px) 44vw, 100vw" src={imageUrl} />
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(91,105,135,.08)_1px,transparent_1px),linear-gradient(rgba(91,105,135,.08)_1px,transparent_1px)] bg-[size:36px_36px]" />
       <div className="absolute left-[18%] top-[34%] h-24 w-44 rotate-[-12deg] rounded-xl border-2 border-snow-violet bg-snow-violet/18 shadow-[0_20px_50px_rgba(101,88,255,.22)]" />
       <div className="absolute left-[48%] top-[24%] h-24 w-36 rotate-[10deg] rounded-xl border border-snow-violet/35 bg-snow-violet/12" />
@@ -3508,7 +3728,7 @@ function ReferenceMapVisual({ project }: { project: Project }) {
 function ReferenceDepthVisual() {
   return (
     <div className="relative mt-5 h-[280px] overflow-hidden rounded-card border border-snow-line bg-[linear-gradient(135deg,#f8fbff,#eef5ff)]">
-      <DashboardBuildingIllustration />
+      <Image alt="" className="af-reference-surface-image" fill sizes="(min-width: 1280px) 44vw, 100vw" src={archiflowVisualAssets.modules.hmaxMassing} />
       <div className="absolute left-5 top-5 grid gap-2">
         {["3D", "2D", "⌗"].map((item) => (
           <span className="grid h-8 w-8 place-items-center rounded-lg border border-snow-line bg-white text-xs font-bold text-snow-violet" key={item}>{item}</span>
@@ -3523,6 +3743,9 @@ function ReferenceDepthVisual() {
 function ReferenceCoreLibrary() {
   return (
     <div className="mt-5 grid gap-4 md:grid-cols-2">
+      <div className="relative min-h-[220px] overflow-hidden rounded-card border border-snow-line md:col-span-2">
+        <Image alt="" className="af-reference-surface-image" fill sizes="(min-width: 1280px) 44vw, 100vw" src={archiflowVisualAssets.modules.coreLibrary} />
+      </div>
       {[
         ["C-01", "Standart Asansör", "45.00 m²"],
         ["C-02", "Çift Asansör", "52.00 m²"],
@@ -3552,6 +3775,7 @@ function ReferenceCoreMiniCard({ area, code, title }: { area?: string; code: str
 function ReferenceMixVisual() {
   return (
     <div className="mt-6 grid items-center gap-6 md:grid-cols-[220px_minmax(0,1fr)]">
+      <ContextualAssetVisual className="md:col-span-2" src={archiflowVisualAssets.modules.apartmentMix} />
       <Donut value={96} />
       <div className="space-y-3">
         {[
@@ -3574,6 +3798,7 @@ function ReferenceMixVisual() {
 function ReferenceMetrajVisual() {
   return (
     <div className="mt-6 grid items-center gap-6 md:grid-cols-[220px_minmax(0,1fr)]">
+      <ContextualAssetVisual className="md:col-span-2" src={archiflowVisualAssets.modules.quantityHeatmap} />
       <Donut value={78} />
       <div className="space-y-4">
         {[
@@ -3600,6 +3825,7 @@ function ReferenceMetrajVisual() {
 function ReferenceFinanceVisual() {
   return (
     <div className="mt-6 grid items-center gap-6 md:grid-cols-[220px_minmax(0,1fr)]">
+      <ContextualAssetVisual className="md:col-span-2" src={archiflowVisualAssets.modules.ownershipAllocation} />
       <Donut value={50} />
       <div className="space-y-3">
         <ReviewLine label="Arsa Sahibi Payı" value="₺ 13.165.000" />
@@ -3614,6 +3840,7 @@ function ReferenceFinanceVisual() {
 function ReferenceReportsVisual() {
   return (
     <div className="mt-6 grid items-center gap-6 md:grid-cols-[220px_minmax(0,1fr)]">
+      <ContextualAssetVisual className="md:col-span-2" src={archiflowVisualAssets.modules.proposalPresentation} />
       <Donut value={18} />
       <div className="space-y-3">
         <LegendLine color="bg-snow-violet" label="Beklemede" value="6" />
@@ -3628,6 +3855,7 @@ function ReferenceReportsVisual() {
 function ReferenceFilesVisual({ project }: { project: Project }) {
   return (
     <div className="mt-5 grid gap-3">
+      <ContextualAssetVisual src={project.files.length ? archiflowVisualAssets.documents.cadDwgPreview : archiflowVisualAssets.emptyStates.noFiles} />
       {(project.files.length ? project.files : [{ id: "empty", name: "Kaynak dosya bekleniyor", type: "Belge", status: "Bekliyor" }]).map((file) => (
         <div className="flex items-center justify-between gap-4 rounded-card border border-snow-line bg-white px-4 py-3" key={file.id}>
           <div className="flex min-w-0 items-center gap-3">
@@ -3649,6 +3877,7 @@ function ReferenceFilesVisual({ project }: { project: Project }) {
 function ReferencePlansVisual() {
   return (
     <div className="mt-5 grid gap-4 md:grid-cols-2">
+      <ContextualAssetVisual className="md:col-span-2" src={archiflowVisualAssets.documents.architecturalPlanPreview} />
       {["Zemin Kat", "Normal Kat", "Çatı Katı", "Bodrum"].map((label, index) => (
         <div className="rounded-card border border-snow-line bg-white p-4" key={label}>
           <div className="h-28 rounded-lg border border-snow-line bg-[linear-gradient(90deg,rgba(88,100,130,.11)_1px,transparent_1px),linear-gradient(rgba(88,100,130,.11)_1px,transparent_1px)] bg-[size:20px_20px]" />
@@ -3684,6 +3913,7 @@ function ModuleEmptyState({ onNewProject }: { onNewProject: () => void }) {
   return (
     <div className="grid min-h-[360px] place-items-center p-8">
       <div className="max-w-[620px] text-center">
+        <ContextualAssetVisual className="mx-auto mb-6 max-w-[340px]" src={archiflowVisualAssets.emptyStates.noAnalysis} />
         <div className="mx-auto grid h-12 w-12 place-items-center rounded-card bg-snow-cyan text-[#191919]">
           <Layers3 size={22} />
         </div>
@@ -3711,6 +3941,7 @@ function ProjectFilesEmptyState() {
   return (
     <div className="rounded-card border border-dashed border-white/14 bg-white/5 p-5">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
+        <ContextualAssetVisual className="w-full shrink-0 sm:w-[180px]" sizes="180px" src={archiflowVisualAssets.emptyStates.noFiles} />
         <div className="grid h-11 w-11 shrink-0 place-items-center rounded-card bg-snow-cyan/90 text-[#191919]">
           <UploadCloud size={20} />
         </div>
@@ -3737,6 +3968,7 @@ function ProjectActivityEmptyState() {
   return (
     <div className="rounded-card bg-white/5 p-4">
       <div className="flex gap-3">
+        <ContextualAssetVisual className="hidden w-[120px] shrink-0 sm:block" sizes="120px" src={archiflowVisualAssets.emptyStates.noTasks} />
         <div className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/8 text-white/58">
           <FileText size={17} />
         </div>
@@ -3770,6 +4002,7 @@ function IntakeAssistantPanel({
   return (
     <div>
       <SectionTitle title="Intake ön kontrolü" eyebrow="Kural tabanlı / mimar onaylı" />
+      <ContextualAssetVisual className="mt-5" src={archiflowVisualAssets.ai.missingDataChecklist} />
       <div className="mt-5 rounded-card border border-white/10 bg-white/5 p-4">
         <div className="flex items-start justify-between gap-4">
           <div>
@@ -3873,6 +4106,7 @@ function IntakeReviewPanel({ summary }: { summary: ProjectIntakeSummary }) {
 
         <div className="rounded-card bg-white/5 p-5">
           <SectionTitle title="Kaynak izi" eyebrow="Provenance" />
+          <ContextualAssetVisual className="mt-4" src={archiflowVisualAssets.ai.provenance} />
           <div className="mt-4 space-y-3">
             {summary.provenance.map((source) => <IntakeSourceRow item={source} key={source.label} />)}
           </div>
@@ -3894,6 +4128,7 @@ function IntakeReviewPanel({ summary }: { summary: ProjectIntakeSummary }) {
 
         <div className="rounded-card border border-[#ffd56a]/20 bg-[#ffd56a]/10 p-5">
           <SectionTitle title="İnsan onayı" eyebrow="Zorunlu" />
+          <ContextualAssetVisual className="mt-4" src={archiflowVisualAssets.ai.humanApproval} />
           <p className="mt-4 text-sm leading-6 text-white/62">{summary.humanApproval.reason}</p>
           <div className="mt-4 rounded-card bg-white/8 px-3 py-3 text-xs leading-5 text-white/52">
             Daire karması: <span className="text-white/82">{summary.daireKarmasiPreference}</span>
@@ -4085,7 +4320,7 @@ function RightRail({ activeProject, projects }: { activeProject: Project | null;
           </div>
           <div className="relative h-24 w-24 overflow-hidden rounded-lg flex items-center justify-center">
             <Image
-              src="/visual-assets/archiflow/sidebar-ai-glow.png"
+              src={archiflowVisualAssets.ai.assistantPanel}
               alt="AI Asistan"
               fill
               className="object-contain"
@@ -4152,16 +4387,17 @@ function RightRail({ activeProject, projects }: { activeProject: Project | null;
         <h2 className="text-sm font-semibold text-white">Hızlı İşlemler</h2>
         <div className="mt-4 grid grid-cols-4 gap-3">
           {[
-            [CheckCircle2, "Parsel Ekle"],
-            [UploadCloud, "Dosya Yükle"],
-            [BarChart3, "Analiz Başlat"],
-            [FileText, "Rapor Oluştur"]
-          ].map(([Icon, label]) => {
+            [CheckCircle2, "Parsel Ekle", archiflowVisualAssets.icons.parcel],
+            [UploadCloud, "Dosya Yükle", archiflowVisualAssets.icons.project],
+            [BarChart3, "Analiz Başlat", archiflowVisualAssets.icons.zoning],
+            [FileText, "Rapor Oluştur", archiflowVisualAssets.icons.report]
+          ].map(([Icon, label, imageUrl]) => {
             const ActionIcon = Icon as LucideIcon;
             return (
               <button className="snow-focus-ring grid gap-2 rounded-card border border-snow-line bg-white/8 px-2 py-3 text-center text-[11px] text-white/58" key={label as string} type="button">
-                <span className="mx-auto grid h-8 w-8 place-items-center rounded-lg bg-snow-violet/10 text-snow-violet">
-                  <ActionIcon size={16} />
+                <span className="relative mx-auto grid h-8 w-8 place-items-center overflow-hidden rounded-lg bg-snow-violet/10 text-snow-violet">
+                  <Image alt="" className="object-cover" fill sizes="32px" src={imageUrl as string} />
+                  <ActionIcon className="sr-only" size={16} />
                 </span>
                 {label as string}
               </button>
@@ -4176,6 +4412,16 @@ function RightRail({ activeProject, projects }: { activeProject: Project | null;
 function LoadingScreen() {
   return (
     <div className="snow-app grid min-h-screen place-items-center text-white">
+      <div className="af-loading-asset" aria-hidden="true">
+        <Image
+          alt=""
+          className="af-loading-asset-image"
+          fill
+          priority
+          sizes="100vw"
+          src={archiflowVisualAssets.ai.processing}
+        />
+      </div>
       <div className="text-center">
         <div className="snow-loader-mark" aria-hidden="true" />
         <div className="mt-6">
