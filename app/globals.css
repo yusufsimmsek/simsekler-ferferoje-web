@@ -882,7 +882,7 @@ select {
 .snow-sidebar-shell {
   position: relative;
   isolation: isolate;
-  width: clamp(232px, 14.6vw, 264px);
+  width: clamp(12.25rem, 13.2vw, 15rem);
   height: 100dvh;
   max-height: 100dvh;
   padding: 22px 14px 18px;
@@ -1293,84 +1293,209 @@ select {
   padding-bottom: 22px !important;
 }
 
-.af-dashboard-shell {
+.af-right-rail {
+  width: clamp(18rem, 16vw, 20rem);
+}
+
+@media (min-width: 1800px) {
+  .af-right-rail {
+    display: block;
+  }
+}
+
+.af-project-workspace-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.af-project-workspace-grid > * {
+  min-width: 0;
+}
+
+@media (min-width: 1800px) {
+  .af-project-workspace-grid {
+    grid-template-columns: minmax(0, 1fr) 300px;
+  }
+}
+
+.af-workflow-detail-container {
+  container-type: inline-size;
+}
+
+.af-workflow-detail-grid {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.af-workflow-detail-grid > * {
+  min-width: 0;
+}
+
+@container (min-width: 760px) {
+  .af-workflow-detail-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 260px);
+  }
+}
+
+.af-workflow-checklists {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
   gap: 16px;
 }
 
-.af-dashboard-shell .af-reference-hero {
-  min-height: 304px;
-  padding: 20px 24px;
+.af-workflow-checklist {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
-.af-dashboard-shell .af-reference-hero > .grid {
-  gap: 24px;
+.af-dashboard-shell {
+  display: grid;
+  gap: clamp(12px, 1vw, 16px);
+}
+
+.af-dashboard-shell .af-reference-hero {
+  min-height: auto;
+  padding: clamp(14px, 1.25vw, 22px);
+}
+
+.af-dashboard-shell .af-dashboard-hero-grid {
+  gap: clamp(16px, 1.5vw, 24px);
+}
+
+@media (min-width: 1180px) {
+  .af-dashboard-shell .af-dashboard-hero-grid {
+    grid-template-columns: minmax(20rem, 0.4fr) minmax(0, 1fr) !important;
+  }
+}
+
+.af-dashboard-shell .af-reference-hero h1 {
+  max-width: 11.5em;
+  font-size: clamp(1.75rem, 2.05vw, 2.125rem);
+  line-height: 1.18;
+}
+
+.af-dashboard-shell .af-hero-stat-grid {
+  gap: clamp(8px, 0.8vw, 12px);
+  margin-top: clamp(16px, 1.45vw, 22px) !important;
 }
 
 .af-dashboard-shell .af-dashboard-hero-visual {
-  min-height: 264px;
+  min-height: clamp(230px, 19vw, 330px);
 }
 
 .af-dashboard-shell .af-building-scene-render {
-  inset: -12px -18px -14px -10px;
+  inset: -8px -12px -10px -8px;
 }
 
 .af-dashboard-shell .af-building-render-image {
   object-position: 62% 52%;
-  transform: scale(1.01);
+  transform: none;
 }
 
 .af-dashboard-shell .af-hero-mini-stat {
-  min-height: 86px;
-  padding: 14px;
+  min-height: clamp(66px, 5.4vw, 82px);
+  padding: clamp(10px, 0.9vw, 13px);
+}
+
+.af-dashboard-shell .af-hero-mini-stat > .flex {
+  position: relative;
+}
+
+.af-dashboard-shell .af-hero-mini-label {
+  padding-right: 2.15rem;
+  font-size: clamp(0.53rem, 0.58vw, 0.625rem);
+  line-height: 1.15;
+}
+
+.af-dashboard-shell .af-hero-mini-value-row {
+  gap: 0.28rem;
+  margin-top: 0.38rem !important;
 }
 
 .af-dashboard-shell .af-hero-mini-stat p.text-2xl {
-  font-size: 1.375rem !important;
+  font-size: clamp(1.125rem, 1.35vw, 1.375rem) !important;
+}
+
+.af-dashboard-shell .af-hero-mini-trend {
+  white-space: nowrap;
+  font-size: clamp(0.48rem, 0.5vw, 0.56rem);
+  padding: 0.1rem 0.28rem;
+}
+
+.af-dashboard-shell .af-hero-mini-detail {
+  margin-top: 0.38rem !important;
+  font-size: clamp(0.66rem, 0.66vw, 0.75rem);
+  line-height: 1.15;
+}
+
+.af-dashboard-shell .af-hero-mini-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: clamp(1.65rem, 1.8vw, 2rem) !important;
+  height: clamp(1.65rem, 1.8vw, 2rem) !important;
+}
+
+.af-dashboard-shell .af-hero-mini-icon svg {
+  width: 0.9rem;
+  height: 0.9rem;
 }
 
 .af-dashboard-shell .af-process-guide {
-  min-height: 138px;
-  padding: 18px 24px 18px;
+  min-height: auto;
+  padding: clamp(14px, 1.25vw, 20px) clamp(16px, 1.6vw, 24px);
 }
 
 .af-dashboard-shell .af-process-guide h2 {
-  font-size: 11px;
+  font-size: clamp(10px, 0.72vw, 11px);
 }
 
 .af-dashboard-shell .af-process-track {
-  margin: 18px 34px 0 0;
+  margin: clamp(13px, 1.2vw, 18px) clamp(20px, 2vw, 34px) 0 0;
 }
 
 .af-dashboard-shell .af-process-line {
-  left: 22px;
-  right: calc((100% / 6) - 22px);
-  top: 22px;
+  left: 20px;
+  right: calc((100% / 6) - 20px);
+  top: 20px;
 }
 
 .af-dashboard-shell .af-process-step {
-  grid-template-rows: 44px auto auto;
+  grid-template-rows: 40px auto auto;
 }
 
 .af-dashboard-shell .af-process-node {
-  width: 44px;
-  height: 44px;
-  font-size: 14px;
-}
-
-.af-dashboard-shell .af-process-step strong {
-  margin-top: 12px;
+  width: 40px;
+  height: 40px;
   font-size: 13px;
 }
 
+.af-dashboard-shell .af-process-step strong {
+  margin-top: 10px;
+  font-size: clamp(11px, 0.86vw, 13px);
+}
+
 .af-dashboard-shell .af-process-step small {
-  margin-top: 6px;
-  font-size: 11px;
+  margin-top: 5px;
+  font-size: clamp(10px, 0.72vw, 11px);
+}
+
+.af-dashboard-process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10.5rem), 1fr));
+  gap: clamp(10px, 0.9vw, 14px);
+}
+
+@media (min-width: 1180px) {
+  .af-dashboard-process-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
 }
 
 .af-dashboard-shell .af-dark-process-card {
-  min-height: 218px;
-  padding: 16px;
+  min-height: clamp(150px, 12vw, 190px);
+  padding: clamp(12px, 1vw, 16px);
 }
 
 .af-dashboard-shell .af-dark-process-copyblock h3 {
@@ -1386,6 +1511,18 @@ select {
 .af-dashboard-shell .af-dark-process-visual {
   inset: 0;
   border-radius: inherit;
+}
+
+.af-dashboard-analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17.5rem), 1fr));
+  gap: clamp(12px, 1vw, 18px);
+}
+
+@media (min-width: 1800px) {
+  .af-dashboard-analytics-grid {
+    grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1fr) minmax(300px, 0.95fr);
+  }
 }
 
 @media (max-height: 960px) and (min-width: 1024px) {

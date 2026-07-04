@@ -433,6 +433,37 @@ const sampleProjects: Project[] = [
     ],
     notes: "E-imar ve malik listesi eksik. Mevcut metraj yüklenmeden teklif üretimine geçilmemeli.",
     activity: [{ id: "a-5", title: "Parsel dosyaları sınıflandırıldı", time: "3 gün önce", tone: "info" }]
+  },
+  {
+    id: "PRJ-1182-07",
+    name: "Moda 1182/7 Kilitli Teklif",
+    client: "Arven Kentsel",
+    architect: "Mert T.",
+    district: "Kadıköy",
+    neighborhood: "Moda",
+    ada: "1182",
+    parsel: "7",
+    area: "726 m²",
+    zoning: "Konut + ticaret / 6 kat",
+    ratio: "%51",
+    units: "24",
+    createdAt: "11 Haz 2026",
+    updatedAt: "Geçen hafta",
+    status: "Kilitli",
+    source: "Arşiv",
+    progress: 100,
+    stepIndex: 16,
+    offerReady: true,
+    locked: true,
+    files: [
+      { id: "f-7", name: "1182-7_kilitli_teklif.pdf", type: "Teklif", status: "Yüklendi" },
+      { id: "f-8", name: "1182-7_kaynak_izleri.zip", type: "Belge", status: "Okundu" }
+    ],
+    notes: "Final teklif paketi mimar onayıyla kilitlendi. Arşiv kartı yalnızca izlenebilir durumda tutulur.",
+    activity: [
+      { id: "a-6", title: "Final teklif paketi kilitlendi", time: "Geçen hafta", tone: "success" },
+      { id: "a-7", title: "Kaynak dosya izi arşive taşındı", time: "Geçen hafta", tone: "info" }
+    ]
   }
 ];
 
@@ -895,16 +926,16 @@ function AuthScreen({ onAuth }: { onAuth: (session: Session, mode: "empty" | "de
         <section className="flex min-w-0 flex-col border-b border-snow-line p-6 lg:border-b-0 lg:border-r lg:p-9">
           <div className="flex items-center justify-between gap-4">
             <Logo />
-            <span className="rounded-full bg-white/8 px-3 py-1 text-xs text-white/55">Mimari teklif platformu</span>
+            <span className="rounded-full bg-white/8 px-3 py-1 text-xs text-white/55">Kurumsal mimari teklif platformu</span>
           </div>
 
           <div className="mt-14 max-w-[460px]">
-            <p className="text-sm font-semibold text-white/44">Mimar hesabı</p>
+            <p className="text-sm font-semibold text-white/44">Kentsel dönüşüm platformu</p>
             <h1 className="mt-3 text-[40px] font-semibold leading-[1.05] text-white sm:text-[52px]">
-              Parselden teklife uzanan çalışma alanına girin.
+              Kentsel dönüşüm dosyalarınızı tek güvenilir çalışma alanında yönetin.
             </h1>
             <p className="mt-5 max-w-[420px] text-sm leading-6 text-white/48">
-              Hesap açıldığında mimar önce boş proje ekranını görür, ardından yeni proje oluşturur veya mevcut dosyalarını portföye alır.
+              ArchiFlow; ada/parsel verisi, imar kontrolü, metraj, paylaşım ve teklif onaylarını aynı izlenebilir süreçte toplar.
             </p>
           </div>
 
@@ -944,7 +975,7 @@ function AuthScreen({ onAuth }: { onAuth: (session: Session, mode: "empty" | "de
             </SnowField>
 
             <SnowButton icon={CheckCircle2} testId="auth-submit" type="submit">
-              {mode === "signup" ? "Hesabı oluştur ve boş panele geç" : "Giriş yap ve portföyü aç"}
+              {mode === "signup" ? "Hesap oluştur ve çalışma alanına geç" : "Giriş yap ve portföyü aç"}
             </SnowButton>
 
             <button
@@ -967,15 +998,15 @@ function AuthScreen({ onAuth }: { onAuth: (session: Session, mode: "empty" | "de
           <div className="snow-animated-grid" />
           <div className="relative z-10 grid h-full content-center gap-7">
             <div className="grid gap-5 sm:grid-cols-2">
-              <StatCard label="Akış adımı" value="17" delta="8.3 raporu" tone="blue" />
+              <StatCard label="Süreç adımı" value="17" delta="8.3 raporu" tone="blue" />
               <StatCard label="Teklif paketi" value="PDF" delta="indirilebilir" tone="ice" />
               <StatCard label="Mimar onayı" value="Son" delta="kilitle" tone="green" />
               <StatCard label="Kaynak dosya" value="CAD" delta="imar + metraj" tone="violet" />
             </div>
             <Card className="p-0">
               <div className="flex h-14 items-center justify-between border-b border-snow-line px-5">
-                <span className="text-sm font-semibold">Yeni proje akış önizlemesi</span>
-                <span className="rounded-full bg-snow-green px-3 py-1 text-xs text-[#191919]">Çalışıyor</span>
+                <span className="text-sm font-semibold">Proje akışı önizlemesi</span>
+                <span className="rounded-full bg-snow-green px-3 py-1 text-xs text-[#191919]">Hazır</span>
               </div>
               <div className="grid gap-5 p-5 lg:grid-cols-[minmax(0,1fr)_220px]">
                 <PlanPreview />
@@ -1041,14 +1072,27 @@ function SnowShell({
   setSearchQuery: (value: string) => void;
 }) {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const shellRef = useRef<HTMLDivElement | null>(null);
+  const contentScrollRef = useRef<HTMLDivElement | null>(null);
   const sidebarSections = [
     { title: "Çalışma Alanı", items: mainNav },
     { title: "Araçlar", items: moduleNav }
   ];
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (shellRef.current) {
+      shellRef.current.scrollTop = 0;
+      shellRef.current.scrollLeft = 0;
+    }
+    if (!contentScrollRef.current) return;
+    contentScrollRef.current.scrollTop = 0;
+    contentScrollRef.current.scrollLeft = 0;
+  }, [activeProject?.id, activeView]);
+
   return (
     <div className="snow-app min-h-screen text-white">
-      <div className="snow-app-shell mx-auto flex min-h-screen w-full overflow-hidden shadow-snow">
+      <div ref={shellRef} className="snow-app-shell mx-auto flex min-h-screen w-full overflow-hidden shadow-snow">
         <aside className={cx("snow-sidebar-shell hidden shrink-0 border-r border-snow-line lg:flex lg:flex-col", sidebarCollapsed ? "is-collapsed" : "is-expanded")}>
           <div className="snow-sidebar-top">
             <Logo compact={sidebarCollapsed} />
@@ -1200,7 +1244,7 @@ function SnowShell({
             })}
           </nav>
 
-          <div className="snow-scroll snow-panel-surface min-h-0 flex-1 overflow-auto px-5 py-7 lg:px-8">{children}</div>
+          <div ref={contentScrollRef} className="snow-scroll snow-panel-surface min-h-0 flex-1 overflow-auto px-5 py-7 lg:px-8">{children}</div>
         </main>
 
         <RightRail activeProject={activeProject} projects={projects} />
@@ -1271,14 +1315,14 @@ function ReferenceDashboard({
     <div className="af-dashboard-shell">
       <section>
         <div className="af-reference-hero">
-          <div className="grid gap-8 xl:grid-cols-[330px_minmax(0,1fr)]">
+          <div className="af-dashboard-hero-grid grid gap-8 xl:grid-cols-[330px_minmax(0,1fr)]">
             <div className="relative z-10">
-              <p className="text-sm text-white/58">Bugün harika işler tasarlamak için mükemmel bir gün · <span className="font-semibold text-snow-violet">{currentDateString}</span></p>
-              <h1 className="mt-3 text-[34px] font-semibold leading-tight text-white">Günaydın, Mimar</h1>
+              <p className="text-sm text-white/58">Güncel proje, kaynak ve onay görünümü · <span className="font-semibold text-snow-violet">{currentDateString}</span></p>
+              <h1 className="mt-3 text-[34px] font-semibold leading-tight text-white">Kentsel dönüşüm portföyünüzü yönetin</h1>
               <div className="mt-4">
                 <BackendSyncPill state={backendSyncState} />
               </div>
-              <div className="mt-8 grid grid-cols-2 gap-3">
+              <div className="af-hero-stat-grid mt-8 grid grid-cols-2 gap-3">
                 <HeroMiniStat icon={FileText} label="Toplam Proje" value={String(projects.length)} detail="Tümü" tone="violet" trend={{ value: "%12 artış", up: true }} />
                 <HeroMiniStat icon={Users} label="Aktif Proje" value={String(projects.filter((project) => project.status !== "Kilitli").length)} detail="Devam eden" tone="green" trend={{ value: "%8 artış", up: true }} />
                 <HeroMiniStat icon={Archive} label="Teklif Aşamasında" value={String(offerCount)} detail="Bu hafta" tone="orange" trend={{ value: "%25 yeni", up: true }} />
@@ -1287,9 +1331,9 @@ function ReferenceDashboard({
             </div>
             <div className="af-dashboard-hero-visual relative min-h-[300px]">
               <DashboardBuildingIllustration variant="render" />
-              <FloatingHeroBadge className="left-[6%] top-[8%]" title="İMAR ANALİZİ" value={`%${Math.max(35, averageProgress)} tamamlandı`} icon={ClipboardCheck} />
-              <FloatingHeroBadge className="right-[6%] top-[36%]" title="DERİNLİK HESABI" value="kontrol bekliyor" icon={Ruler} />
-              <FloatingHeroBadge className="right-[2%] bottom-[16%]" title="PAYLAŞIM MODELİ" value={offerCount ? "hazır" : "oluşturulmadı"} icon={Users} />
+              <FloatingHeroBadge className="left-[6%] top-[8%]" title="İmar kontrolü" value={`%${Math.max(35, averageProgress)} tamamlandı`} icon={ClipboardCheck} />
+              <FloatingHeroBadge className="right-[6%] top-[36%]" title="Hmax kontrolü" value="mimar onayı bekliyor" icon={Ruler} />
+              <FloatingHeroBadge className="right-[2%] bottom-[16%]" title="Paylaşım planı" value={offerCount ? "ön hesap hazır" : "hazırlanmadı"} icon={Users} />
             </div>
           </div>
         </div>
@@ -1297,13 +1341,13 @@ function ReferenceDashboard({
 
       <WorkflowGuide />
 
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-6">
+      <div className="af-dashboard-process-grid">
         {dashboardProcessCards.map((card, index) => (
           <ProcessCard card={card} index={index} key={card.title} />
         ))}
       </div>
 
-      <div className="grid gap-5 lg:grid-cols-2 2xl:grid-cols-[260px_minmax(0,1fr)_360px]">
+      <div className="af-dashboard-analytics-grid">
         <Card>
           <SectionTitle title="Proje Portföyü" eyebrow="Projelerinizin durum dağılımı" />
           <div className="mt-6 grid place-items-center">
@@ -1381,21 +1425,21 @@ function HeroMiniStat({
     <div className="af-hero-mini-stat min-h-[92px] rounded-card border border-snow-line bg-white/85 p-4 shadow-[0_16px_40px_rgba(22,34,65,.06)] transition-all duration-300 hover:shadow-[0_20px_48px_rgba(22,34,65,.1)] hover:border-snow-violet/20 group">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0 flex-1">
-          <p className="text-[10px] font-bold uppercase tracking-[0.08em] text-white/52">{label}</p>
-          <div className="mt-2 flex items-baseline gap-2 flex-wrap">
-            <p className="text-2xl font-semibold text-white leading-none">{value}</p>
+          <p className="af-hero-mini-label text-[10px] font-bold uppercase tracking-[0.08em] text-white/52">{label}</p>
+          <div className="af-hero-mini-value-row mt-2 flex items-baseline gap-2 flex-wrap">
+            <p className="af-hero-mini-value text-2xl font-semibold text-white leading-none">{value}</p>
             {trend ? (
               <span className={cx(
-                "inline-flex items-center text-[9px] font-bold px-1.5 py-0.5 rounded leading-none",
+                "af-hero-mini-trend inline-flex items-center text-[9px] font-bold px-1.5 py-0.5 rounded leading-none",
                 trend.up ? "text-snow-green bg-snow-green/10" : "text-[#c46a12] bg-[#ff7a1a]/10"
               )}>
                 {trend.up ? "↑" : "↓"} {trend.value}
               </span>
             ) : null}
           </div>
-          <p className="mt-2 text-xs text-white/54 leading-none">{detail}</p>
+          <p className="af-hero-mini-detail mt-2 text-xs text-white/54 leading-none">{detail}</p>
         </div>
-        <div className={cx("grid h-9 w-9 place-items-center rounded-lg transition-transform duration-300 group-hover:scale-110", toneClass)}>
+        <div className={cx("af-hero-mini-icon grid h-9 w-9 place-items-center rounded-lg transition-transform duration-300 group-hover:scale-110", toneClass)}>
           <Icon size={17} />
         </div>
       </div>
@@ -1610,6 +1654,7 @@ function DarkMetricRail({ averageProgress, projects }: { averageProgress: number
           src={archiflowVisualAssets.icons.quantity}
           alt="Metric asset"
           fill
+          sizes="72px"
           className="object-contain animate-pulse"
         />
       </div>
@@ -2461,6 +2506,20 @@ function ProjectWorkspace({
   setTab: (tab: "workflow" | "files" | "offer") => void;
   updateProjectNotes: (project: Project, notes: string) => void;
 }) {
+  const stepButtonRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const workflowListRef = useRef<HTMLDivElement | null>(null);
+  const selectedProjectId = project?.id;
+
+  useEffect(() => {
+    if (!selectedProjectId) return;
+    const selectedButton = stepButtonRefs.current[selectedStepIndex];
+    const workflowList = workflowListRef.current;
+    if (!selectedButton || !workflowList) return;
+
+    const centeredScrollTop = selectedButton.offsetTop - Math.max(0, (workflowList.clientHeight - selectedButton.offsetHeight) / 2);
+    workflowList.scrollTop = Math.max(0, centeredScrollTop);
+  }, [selectedProjectId, selectedStepIndex]);
+
   if (!project) {
     if (missingProjectId) {
       return (
@@ -2511,7 +2570,7 @@ function ProjectWorkspace({
         </div>
       </div>
 
-      <div className="grid gap-7 2xl:grid-cols-[minmax(0,1fr)_300px]">
+      <div className="af-project-workspace-grid grid gap-7">
         <div className="space-y-7">
           <Card className="p-0">
             <div className="flex flex-col items-start gap-4 border-b border-snow-line px-4 py-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:px-6">
@@ -2541,7 +2600,7 @@ function ProjectWorkspace({
 
             {tab === "workflow" ? (
               <div className="grid gap-0 xl:grid-cols-[280px_minmax(0,1fr)]">
-                <div className="max-h-[420px] overflow-auto border-b border-snow-line p-4 md:max-h-[560px] xl:max-h-[720px] xl:border-b-0 xl:border-r">
+                <div ref={workflowListRef} className="max-h-[420px] overflow-auto border-b border-snow-line p-4 md:max-h-[560px] xl:max-h-[720px] xl:border-b-0 xl:border-r">
                   <div className="space-y-2">
                     {workflowSteps.map((step, index) => {
                       const state = index < project.stepIndex ? "done" : index === project.stepIndex ? "active" : "wait";
@@ -2557,6 +2616,9 @@ function ProjectWorkspace({
                           aria-current={selectedStepIndex === index ? "step" : undefined}
                           key={step.title}
                           onClick={() => setSelectedStepIndex(index)}
+                          ref={(element) => {
+                            stepButtonRefs.current[index] = element;
+                          }}
                           type="button"
                         >
                           <span
@@ -2579,8 +2641,8 @@ function ProjectWorkspace({
                   </div>
                 </div>
 
-                <div className="p-5 sm:p-6">
-                  <div className="grid gap-6 2xl:grid-cols-[minmax(0,1fr)_260px]">
+                <div className="af-workflow-detail-container p-5 sm:p-6">
+                  <div className="af-workflow-detail-grid">
                     <div className="min-w-0">
                       <p className="text-sm font-semibold text-white/44">
                         {selectedStep.group} · {selectedStep.owner} · {selectedStep.time}
@@ -2588,7 +2650,7 @@ function ProjectWorkspace({
                       <h2 className="mt-2 text-2xl font-semibold">{selectedStep.title}</h2>
                       <p className="mt-3 text-sm leading-6 text-white/48">{selectedStep.objective}</p>
 
-                      <div className="mt-6 grid gap-4 xl:grid-cols-3">
+                      <div className="af-workflow-checklists mt-6">
                         <Checklist title="Girdi" items={selectedStep.inputs} />
                         <Checklist title="Çıktı" items={selectedStep.outputs} />
                         <Checklist title="Kontrol" items={selectedStep.checks} />
@@ -4304,7 +4366,7 @@ function RightRail({ activeProject, projects }: { activeProject: Project | null;
   const activity = activeProject?.activity ?? projects.flatMap((project) => project.activity).slice(0, 5);
   const project = activeProject ?? projects[0] ?? null;
   return (
-    <aside className="hidden w-[330px] shrink-0 border-l border-snow-line bg-white/55 px-6 py-7 2xl:block">
+    <aside className="af-right-rail hidden shrink-0 border-l border-snow-line bg-white/55 px-6 py-7">
       <Card className="af-reference-ai-card p-5 relative overflow-hidden bg-white">
         <div className="flex items-start justify-between gap-3">
           <SectionTitle title="AI Asistan" eyebrow="Beta" />
@@ -4323,6 +4385,7 @@ function RightRail({ activeProject, projects }: { activeProject: Project | null;
               src={archiflowVisualAssets.ai.assistantPanel}
               alt="AI Asistan"
               fill
+              sizes="96px"
               className="object-contain"
             />
           </div>
@@ -4445,13 +4508,13 @@ function WizardPanel({ children, subtitle, title }: { children: ReactNode; subti
 
 function Checklist({ items, title }: { items: string[]; title: string }) {
   return (
-    <div className="rounded-card bg-white/5 p-4">
+    <div className="af-workflow-checklist rounded-card bg-white/5 p-4">
       <p className="text-sm font-semibold">{title}</p>
       <div className="mt-3 space-y-2">
         {items.map((item) => (
           <div className="flex gap-2 text-sm text-white/58" key={item}>
             <CircleDot className="mt-1 shrink-0 text-white/26" fill="currentColor" size={8} />
-            <span>{item}</span>
+            <span className="min-w-0 leading-5">{item}</span>
           </div>
         ))}
       </div>
@@ -4730,11 +4793,11 @@ function PlanPreview({ compact = false }: { compact?: boolean }) {
         <rect x="148" y="174" width="96" height="72" fill="#d8f5fb" opacity=".94" rx="4" />
         <rect x="252" y="174" width="104" height="72" fill="#f0f4f8" opacity=".98" rx="4" />
         <path d="M172 130h36M244 166v32M140 190h32" stroke="#294266" strokeLinecap="round" strokeWidth="4" />
-        <text x="78" y="92" fill="#101936" fontSize="13" fontWeight="700">Parsel</text>
-        <text x="230" y="110" fill="#101936" fontSize="13" fontWeight="700">Tip kat</text>
-        <text x="75" y="197" fill="#101936" fontSize="13" fontWeight="700">Çekirdek</text>
-        <text x="168" y="216" fill="#101936" fontSize="13" fontWeight="700">2+1</text>
-        <text x="284" y="216" fill="#101936" fontSize="13" fontWeight="700">3+1</text>
+        <text x="113" y="89" fill="#273449" fillOpacity=".82" fontSize="11" fontWeight="600" textAnchor="middle" dominantBaseline="middle">Parsel</text>
+        <text x="268" y="107" fill="#273449" fillOpacity=".82" fontSize="11" fontWeight="600" textAnchor="middle" dominantBaseline="middle">Tip plan</text>
+        <text x="97" y="192" fill="#273449" fillOpacity=".82" fontSize="11" fontWeight="600" textAnchor="middle" dominantBaseline="middle">Çekirdek</text>
+        <text x="196" y="210" fill="#273449" fillOpacity=".82" fontSize="11" fontWeight="600" textAnchor="middle" dominantBaseline="middle">2+1</text>
+        <text x="304" y="210" fill="#273449" fillOpacity=".82" fontSize="11" fontWeight="600" textAnchor="middle" dominantBaseline="middle">3+1</text>
       </svg>
     </div>
   );

@@ -178,3 +178,7 @@ This backlog is maintained by the Orchestrator after agent reviews.
 21. P1: Complete the first Design Critic foundation polish pass.
    - Files: `components/workspace/SnowArchitectPlatform.tsx`, `app/globals.css`.
    - Verification: `npm run typecheck`, `npm run lint`, `npm test` (29 files / 216 tests), and `npm run build` passed; browser QA confirmed `/projects`, `/dashboard`, `/projects/new`, `/plans`, `/site-analysis`, `/regulation-analysis`, `/zoning-rules`, `/calculations`, `/models`, `/apartment-mix`, `/comparisons`, `/reports`, `/files`, and `/projects/PRJ-4300-02` have no horizontal page overflow, no stat-value clipping, calmer metric cards, a non-stretched project wizard, mobile module cards constrained to the viewport, and a project workflow layout that keeps selected-step detail visible on desktop and mobile.
+
+22. P1: Fix 100% zoom dashboard/workspace responsive density.
+   - Files: `components/workspace/SnowArchitectPlatform.tsx`, `app/globals.css`.
+   - Verification: Playwright confirmed `/dashboard` at 1366x768, 1440x900, and 1920x1080 on 100% browser zoom has no horizontal overflow, no console warnings, compact hero/process/card proportions, and stable shell/content scroll; `/projects` workspace grids now use container-aware layout so workflow checklist and notes do not overlap at 100% zoom. `npm run lint`, `npm run typecheck`, `npm test` (29 files / 216 tests), and `npm run build` passed.
