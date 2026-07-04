@@ -1765,6 +1765,102 @@ select {
     0 1px 0 rgba(255, 255, 255, 0.22) inset;
 }
 
+.af-auth-hero-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #0d1427;
+}
+
+.af-auth-hero-image {
+  object-fit: cover;
+  object-position: 58% 52%;
+  filter: saturate(1.08) contrast(1.05);
+}
+
+.af-auth-hero-wash {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(247, 250, 255, 0.9) 0 8%, rgba(247, 250, 255, 0.28) 38%, rgba(9, 14, 28, 0.36) 100%),
+    radial-gradient(circle at 74% 26%, rgba(101, 88, 255, 0.18), transparent 34%);
+  pointer-events: none;
+}
+
+.af-contextual-asset {
+  position: relative;
+  min-height: 170px;
+  overflow: hidden;
+  border: 1px solid rgba(32, 47, 86, 0.1);
+  border-radius: 8px;
+  background: #eef4ff;
+  box-shadow:
+    0 14px 36px rgba(22, 34, 65, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.88);
+}
+
+.af-contextual-asset-image {
+  object-fit: cover;
+  object-position: 50% 52%;
+  filter: saturate(1.04) contrast(1.03);
+}
+
+.af-contextual-asset-wash {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.26)),
+    url("/visual-assets/archiflow/backgrounds/archiflow-39-background-glass-reflection.webp") center / cover no-repeat;
+  mix-blend-mode: screen;
+  opacity: 0.42;
+  pointer-events: none;
+}
+
+.af-document-preview-card {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr) 18px;
+  align-items: center;
+  gap: 12px;
+  min-height: 74px;
+  padding: 8px 10px 8px 8px;
+}
+
+.af-document-preview-thumb {
+  position: relative;
+  height: 58px;
+  overflow: hidden;
+  border: 1px solid rgba(32, 47, 86, 0.08);
+  border-radius: 7px;
+  background: #eef4ff;
+}
+
+.af-reference-surface-image {
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(1.04) contrast(1.03);
+  opacity: 0.72;
+}
+
+.af-loading-asset {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.af-loading-asset-image {
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(1.05) contrast(1.06);
+}
+
+.af-loading-asset + .text-center {
+  position: relative;
+  z-index: 1;
+}
+
 @keyframes snow-sidebar-icon-breathe {
   0%,
   100% {
