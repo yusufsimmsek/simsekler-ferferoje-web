@@ -1,7 +1,70 @@
 {
   "sourceDocument": "/docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md",
-  "dashboardHero": "/visual-assets/archiflow/dashboard/archiflow-01-dashboard-hero-building.webp",
-  "dashboardHeroDark": "/visual-assets/archiflow/dashboard/archiflow-02-dashboard-hero-dark.webp",
+  "masterPromptDocument": "/docs/ARCHIFLOW_VISUAL_MASTER_PROMPTS.md",
+  "dashboardHero": "/visual-assets/archiflow/dashboard/archiflow-01-dashboard-hero-building-v2.webp",
+  "dashboardHeroDark": "/visual-assets/archiflow/dashboard/archiflow-02-dashboard-hero-dark-v2.webp",
+  "generatedVariants": {
+    "dashboardHeroV2": {
+      "number": "01",
+      "filename": "archiflow-01-dashboard-hero-building-v2.webp",
+      "folder": "dashboard",
+      "path": "/visual-assets/archiflow/dashboard/archiflow-01-dashboard-hero-building-v2.webp",
+      "usage": "Main dashboard hero visual v2 generated from user-provided brief",
+      "aspectRatio": "16:9",
+      "actualSize": "1672x941",
+      "promptSource": "User message, based on /docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#01---dashboard-hero-architectural-building"
+    },
+    "dashboardHeroDarkV2": {
+      "number": "02",
+      "filename": "archiflow-02-dashboard-hero-dark-v2.webp",
+      "folder": "dashboard",
+      "path": "/visual-assets/archiflow/dashboard/archiflow-02-dashboard-hero-dark-v2.webp",
+      "usage": "Dark dashboard hero variant v2 generated from user-provided brief",
+      "aspectRatio": "16:9",
+      "actualSize": "1672x941",
+      "promptSource": "User message, based on /docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md#02---dashboard-hero-dark-variant"
+    },
+    "pdfReportPreviewV2": {
+      "number": "21",
+      "filename": "archiflow-21-document-pdf-report-preview-v2.webp",
+      "folder": "documents",
+      "path": "/visual-assets/archiflow/documents/archiflow-21-document-pdf-report-preview-v2.webp",
+      "usage": "PDF report preview v2 for report cards and generated offer package previews",
+      "aspectRatio": "3:4",
+      "actualSize": "1086x1448",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_MASTER_PROMPTS.md#v2-asset-prompt-matrix asset 21"
+    },
+    "architecturalPlanPreviewV2": {
+      "number": "22",
+      "filename": "archiflow-22-document-architectural-plan-preview-v2.webp",
+      "folder": "documents",
+      "path": "/visual-assets/archiflow/documents/archiflow-22-document-architectural-plan-preview-v2.webp",
+      "usage": "Architectural plan preview v2 for plan records and document cards",
+      "aspectRatio": "3:4",
+      "actualSize": "1086x1448",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_MASTER_PROMPTS.md#v2-asset-prompt-matrix asset 22"
+    },
+    "cadDwgPreviewV2": {
+      "number": "23",
+      "filename": "archiflow-23-document-cad-dwg-preview-v2.webp",
+      "folder": "documents",
+      "path": "/visual-assets/archiflow/documents/archiflow-23-document-cad-dwg-preview-v2.webp",
+      "usage": "CAD/DWG preview v2 for file vault and technical document records",
+      "aspectRatio": "3:4",
+      "actualSize": "1086x1448",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_MASTER_PROMPTS.md#v2-asset-prompt-matrix asset 23"
+    },
+    "proposalPresentationV2": {
+      "number": "31",
+      "filename": "archiflow-31-module-proposal-presentation-v2.webp",
+      "folder": "modules",
+      "path": "/visual-assets/archiflow/modules/archiflow-31-module-proposal-presentation-v2.webp",
+      "usage": "Proposal and report presentation hero v2 for reports module",
+      "aspectRatio": "16:9",
+      "actualSize": "1672x941",
+      "promptSource": "/docs/ARCHIFLOW_VISUAL_MASTER_PROMPTS.md#v2-asset-prompt-matrix asset 31"
+    }
+  },
   "processCards": {
     "parcelZoning": "/visual-assets/archiflow/process-cards/archiflow-03-process-parcel-zoning.webp",
     "depthHmax": "/visual-assets/archiflow/process-cards/archiflow-04-process-depth-hmax.webp",
@@ -35,9 +98,9 @@
     "noReports": "/visual-assets/archiflow/empty-states/archiflow-20-empty-no-reports.webp"
   },
   "documents": {
-    "pdfReportPreview": "/visual-assets/archiflow/documents/archiflow-21-document-pdf-report-preview.webp",
-    "architecturalPlanPreview": "/visual-assets/archiflow/documents/archiflow-22-document-architectural-plan-preview.webp",
-    "cadDwgPreview": "/visual-assets/archiflow/documents/archiflow-23-document-cad-dwg-preview.webp"
+    "pdfReportPreview": "/visual-assets/archiflow/documents/archiflow-21-document-pdf-report-preview-v2.webp",
+    "architecturalPlanPreview": "/visual-assets/archiflow/documents/archiflow-22-document-architectural-plan-preview-v2.webp",
+    "cadDwgPreview": "/visual-assets/archiflow/documents/archiflow-23-document-cad-dwg-preview-v2.webp"
   },
   "maps": {
     "parcelVisualization": "/visual-assets/archiflow/maps/archiflow-24-map-parcel-visualization.webp"
@@ -49,7 +112,7 @@
     "coreLibrary": "/visual-assets/archiflow/modules/archiflow-28-module-core-library.webp",
     "apartmentMix": "/visual-assets/archiflow/modules/archiflow-29-module-apartment-mix.webp",
     "ownershipAllocation": "/visual-assets/archiflow/modules/archiflow-30-module-ownership-allocation.webp",
-    "proposalPresentation": "/visual-assets/archiflow/modules/archiflow-31-module-proposal-presentation.webp"
+    "proposalPresentation": "/visual-assets/archiflow/modules/archiflow-31-module-proposal-presentation-v2.webp"
   },
   "icons": {
     "project": "/visual-assets/archiflow/icons/archiflow-32-icon-project.png",

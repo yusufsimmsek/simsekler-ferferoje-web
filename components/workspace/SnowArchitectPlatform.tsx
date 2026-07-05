@@ -7,8 +7,6 @@ import {
   Archive,
   BarChart3,
   Bell,
-  Building2,
-  Calculator,
   Check,
   CheckCircle2,
   ChevronLeft,
@@ -20,21 +18,33 @@ import {
   FolderKanban,
   Grid3X3,
   HardDrive,
-  Home,
   Layers3,
   LogOut,
-  MapPinned,
   MoreHorizontal,
   Plus,
   Ruler,
   Search,
-  ShieldCheck,
   Sparkles,
   Sun,
   UploadCloud,
-  Users,
-  Wand2
+  Users
 } from "lucide-react";
+import {
+  archiflowVisualAssets,
+  emptyDraft,
+  intakeWorkflowPhases,
+  mainNav,
+  moduleDefinitions,
+  moduleNav,
+  sampleProjects,
+  sourceTone,
+  statusTone,
+  wizardSteps,
+  type ArchitectPlatformView,
+  type ModuleDefinition,
+  type ModuleView
+} from "./archiflow";
+export type { ArchitectPlatformView } from "./archiflow";
 import {
   getKentselOfferReadiness,
   kentselWorkflowSteps
@@ -79,455 +89,10 @@ import {
   type KentselAutomationProjectInsight
 } from "@/lib/platform/kentsel-automation-api-repository";
 
-type ModuleView =
-  | "plans"
-  | "models"
-  | "comparisons"
-  | "site-analysis"
-  | "regulation-analysis"
-  | "zoning-rules"
-  | "ai-floor-plan"
-  | "building-mass"
-  | "apartment-mix"
-  | "calculations"
-  | "files"
-  | "reports"
-  | "team"
-  | "archive";
-
-export type ArchitectPlatformView =
-  | "auth"
-  | "dashboard"
-  | "projects"
-  | "new-project"
-  | "project"
-  | ModuleView;
-
-type ModuleDefinition = {
-  title: string;
-  eyebrow: string;
-  icon: LucideIcon;
-  metrics: Array<{ label: string; value: string; tone: "blue" | "ice" | "green" | "violet" | "dark" }>;
-};
-
 const workflowSteps = kentselWorkflowSteps;
 const kentselAutomationApiBaseUrl = process.env.NEXT_PUBLIC_KENTSEL_AUTOMATION_API_BASE_URL ?? "";
 type BackendSyncState = "idle" | "syncing" | "synced" | "unavailable";
 
-const archiflowVisualAssets = {
-  dashboardHero: "/visual-assets/archiflow/dashboard/archiflow-01-dashboard-hero-building.webp",
-  dashboardHeroDark: "/visual-assets/archiflow/dashboard/archiflow-02-dashboard-hero-dark.webp",
-  processCards: {
-    parcelZoning: "/visual-assets/archiflow/process-cards/archiflow-03-process-parcel-zoning.webp",
-    depthHmax: "/visual-assets/archiflow/process-cards/archiflow-04-process-depth-hmax.webp",
-    existingPlansQuantity: "/visual-assets/archiflow/process-cards/archiflow-05-process-existing-plans-quantity.webp",
-    coreApartmentMix: "/visual-assets/archiflow/process-cards/archiflow-06-process-core-apartment-mix.webp",
-    shareAllocation: "/visual-assets/archiflow/process-cards/archiflow-07-process-share-allocation.webp",
-    proposalReport: "/visual-assets/archiflow/process-cards/archiflow-08-process-proposal-report.webp"
-  },
-  workflow: {
-    guideBackground: "/visual-assets/archiflow/workflow/archiflow-09-workflow-guide-background.webp"
-  },
-  projects: {
-    portfolioGallery: "/visual-assets/archiflow/projects/archiflow-10-project-portfolio-gallery.webp",
-    activeThumbnail: "/visual-assets/archiflow/projects/archiflow-11-project-active-thumbnail.webp",
-    designStageThumbnail: "/visual-assets/archiflow/projects/archiflow-12-project-design-stage-thumbnail.webp",
-    proposalStageThumbnail: "/visual-assets/archiflow/projects/archiflow-13-project-proposal-stage-thumbnail.webp",
-    archiveThumbnail: "/visual-assets/archiflow/projects/archiflow-14-project-archive-thumbnail.webp"
-  },
-  ai: {
-    assistantPanel: "/visual-assets/archiflow/ai/archiflow-15-ai-assistant-panel.webp",
-    provenance: "/visual-assets/archiflow/ai/archiflow-42-ai-provenance-source-tracking.webp",
-    humanApproval: "/visual-assets/archiflow/ai/archiflow-43-ai-human-approval.webp",
-    missingDataChecklist: "/visual-assets/archiflow/ai/archiflow-44-ai-missing-data-checklist.webp",
-    processing: "/visual-assets/archiflow/ai/archiflow-45-ai-processing-architectural-data.webp"
-  },
-  emptyStates: {
-    noProjects: "/visual-assets/archiflow/empty-states/archiflow-16-empty-no-projects.webp",
-    noAnalysis: "/visual-assets/archiflow/empty-states/archiflow-17-empty-no-analysis.webp",
-    noFiles: "/visual-assets/archiflow/empty-states/archiflow-18-empty-no-files.webp",
-    noTasks: "/visual-assets/archiflow/empty-states/archiflow-19-empty-no-tasks.webp",
-    noReports: "/visual-assets/archiflow/empty-states/archiflow-20-empty-no-reports.webp"
-  },
-  documents: {
-    pdfReportPreview: "/visual-assets/archiflow/documents/archiflow-21-document-pdf-report-preview.webp",
-    architecturalPlanPreview: "/visual-assets/archiflow/documents/archiflow-22-document-architectural-plan-preview.webp",
-    cadDwgPreview: "/visual-assets/archiflow/documents/archiflow-23-document-cad-dwg-preview.webp"
-  },
-  maps: {
-    parcelVisualization: "/visual-assets/archiflow/maps/archiflow-24-map-parcel-visualization.webp"
-  },
-  modules: {
-    zoningAnalysis: "/visual-assets/archiflow/modules/archiflow-25-module-zoning-analysis.webp",
-    hmaxMassing: "/visual-assets/archiflow/modules/archiflow-26-module-hmax-massing.webp",
-    quantityHeatmap: "/visual-assets/archiflow/modules/archiflow-27-module-quantity-heatmap.webp",
-    coreLibrary: "/visual-assets/archiflow/modules/archiflow-28-module-core-library.webp",
-    apartmentMix: "/visual-assets/archiflow/modules/archiflow-29-module-apartment-mix.webp",
-    ownershipAllocation: "/visual-assets/archiflow/modules/archiflow-30-module-ownership-allocation.webp",
-    proposalPresentation: "/visual-assets/archiflow/modules/archiflow-31-module-proposal-presentation.webp"
-  },
-  icons: {
-    project: "/visual-assets/archiflow/icons/archiflow-32-icon-project.png",
-    parcel: "/visual-assets/archiflow/icons/archiflow-33-icon-parcel.png",
-    zoning: "/visual-assets/archiflow/icons/archiflow-34-icon-zoning.png",
-    quantity: "/visual-assets/archiflow/icons/archiflow-35-icon-quantity.png",
-    report: "/visual-assets/archiflow/icons/archiflow-36-icon-report.png"
-  },
-  backgrounds: {
-    lightBlueprint: "/visual-assets/archiflow/backgrounds/archiflow-37-background-light-blueprint.webp",
-    darkTechnicalGrid: "/visual-assets/archiflow/backgrounds/archiflow-38-background-dark-technical-grid.webp",
-    glassReflection: "/visual-assets/archiflow/backgrounds/archiflow-39-background-glass-reflection.webp"
-  },
-  avatars: {
-    architect: "/visual-assets/archiflow/avatars/archiflow-40-avatar-architect.png",
-    office: "/visual-assets/archiflow/avatars/archiflow-41-avatar-office.png"
-  }
-} as const;
-
-const emptyDraft: ProjectDraft = {
-  name: "",
-  client: "",
-  architect: "",
-  district: "",
-  neighborhood: "",
-  ada: "",
-  parsel: "",
-  area: "",
-  zoning: "",
-  ratio: "%50",
-  units: "18",
-  notes: "",
-  files: []
-};
-
-const moduleDefinitions: Record<ModuleView, ModuleDefinition> = {
-  plans: {
-    title: "Kat Planları",
-    eyebrow: "Tasarım",
-    icon: MapPinned,
-    metrics: [
-      { label: "Alternatif", value: "6", tone: "blue" },
-      { label: "Seçili tip", value: "B-2", tone: "ice" },
-      { label: "Verim", value: "%82", tone: "green" }
-    ]
-  },
-  models: {
-    title: "Model ve Kütle",
-    eyebrow: "BIM / kütle",
-    icon: Building2,
-    metrics: [
-      { label: "Kütle", value: "4", tone: "blue" },
-      { label: "Hmax", value: "15.50", tone: "ice" },
-      { label: "Oturum", value: "%38", tone: "violet" }
-    ]
-  },
-  comparisons: {
-    title: "Alternatif Karşılaştırma",
-    eyebrow: "Karar",
-    icon: BarChart3,
-    metrics: [
-      { label: "Senaryo", value: "5", tone: "blue" },
-      { label: "En iyi skor", value: "91", tone: "green" },
-      { label: "Risk", value: "2", tone: "dark" }
-    ]
-  },
-  "site-analysis": {
-    title: "Parsel Analizi",
-    eyebrow: "Konum",
-    icon: Ruler,
-    metrics: [
-      { label: "Parsel", value: "1", tone: "blue" },
-      { label: "Cephe", value: "2", tone: "ice" },
-      { label: "Çekme", value: "4", tone: "violet" }
-    ]
-  },
-  "regulation-analysis": {
-    title: "Mevzuat Kontrolü",
-    eyebrow: "Kontrol",
-    icon: ShieldCheck,
-    metrics: [
-      { label: "Kural", value: "42", tone: "blue" },
-      { label: "Uygun", value: "38", tone: "green" },
-      { label: "İncele", value: "4", tone: "violet" }
-    ]
-  },
-  "zoning-rules": {
-    title: "İmar Kuralları",
-    eyebrow: "E-imar",
-    icon: ClipboardCheck,
-    metrics: [
-      { label: "Emsal", value: "1.80", tone: "ice" },
-      { label: "Hmax", value: "15.50", tone: "blue" },
-      { label: "Nizam", value: "Ayrık", tone: "green" }
-    ]
-  },
-  "ai-floor-plan": {
-    title: "AI Kat Planı",
-    eyebrow: "Üretim",
-    icon: Wand2,
-    metrics: [
-      { label: "Aday", value: "12", tone: "blue" },
-      { label: "Seçili", value: "1", tone: "green" },
-      { label: "Revizyon", value: "3", tone: "violet" }
-    ]
-  },
-  "building-mass": {
-    title: "Bina Kütlesi",
-    eyebrow: "Zarf",
-    icon: Grid3X3,
-    metrics: [
-      { label: "Oturum", value: "312 m²", tone: "blue" },
-      { label: "Kat", value: "5", tone: "ice" },
-      { label: "İnşaat", value: "1.420", tone: "green" }
-    ]
-  },
-  "apartment-mix": {
-    title: "Daire Karması",
-    eyebrow: "Karma",
-    icon: Layers3,
-    metrics: [
-      { label: "Daire", value: "18", tone: "blue" },
-      { label: "2+1", value: "10", tone: "ice" },
-      { label: "3+1", value: "8", tone: "green" }
-    ]
-  },
-  calculations: {
-    title: "Hesaplar",
-    eyebrow: "Metraj",
-    icon: Calculator,
-    metrics: [
-      { label: "Brüt", value: "1.420", tone: "blue" },
-      { label: "Net", value: "1.128", tone: "ice" },
-      { label: "Verim", value: "%79", tone: "green" }
-    ]
-  },
-  files: {
-    title: "Dosyalar",
-    eyebrow: "Kaynak",
-    icon: HardDrive,
-    metrics: [
-      { label: "Yüklü", value: "8", tone: "blue" },
-      { label: "Okundu", value: "6", tone: "green" },
-      { label: "Eksik", value: "2", tone: "violet" }
-    ]
-  },
-  reports: {
-    title: "Raporlar ve Teklif",
-    eyebrow: "Çıktı",
-    icon: FileText,
-    metrics: [
-      { label: "Rapor", value: "4", tone: "blue" },
-      { label: "Teklif", value: "1", tone: "green" },
-      { label: "Revizyon", value: "2", tone: "violet" }
-    ]
-  },
-  team: {
-    title: "Ekip ve Onaylar",
-    eyebrow: "İş bölümü",
-    icon: Users,
-    metrics: [
-      { label: "Mimar", value: "3", tone: "blue" },
-      { label: "Görev", value: "9", tone: "ice" },
-      { label: "Onay", value: "2", tone: "green" }
-    ]
-  },
-  archive: {
-    title: "Arşiv",
-    eyebrow: "Versiyon",
-    icon: Archive,
-    metrics: [
-      { label: "Kilitli", value: "3", tone: "blue" },
-      { label: "Paket", value: "5", tone: "ice" },
-      { label: "Teslim", value: "2", tone: "green" }
-    ]
-  }
-};
-
-const sampleProjects: Project[] = [
-  {
-    id: "PRJ-4300-02",
-    name: "Kadıköy 4300/2 Dönüşüm",
-    client: "İlkbahar İnşaat",
-    architect: "Deniz A.",
-    district: "Kadıköy",
-    neighborhood: "Feneryolu",
-    ada: "4300",
-    parsel: "2",
-    area: "684 m²",
-    zoning: "Ayrık nizam / 5 kat",
-    ratio: "%50",
-    units: "18",
-    createdAt: "02 Tem 2026",
-    updatedAt: "Bugün",
-    status: "İnceleme",
-    source: "Demo",
-    progress: 64,
-    stepIndex: 11,
-    offerReady: false,
-    locked: false,
-    files: [
-      { id: "f-1", name: "4300-2_e-imar.pdf", type: "İmar", status: "Okundu" },
-      { id: "f-2", name: "4300_arch_son.dwg", type: "CAD", status: "Kontrol" },
-      { id: "f-3", name: "mevcut_metraj.xlsx", type: "Metraj", status: "Okundu" }
-    ],
-    notes: "Malik konum koruma hassasiyeti yüksek. Teklif paketinde 2+1 / 3+1 dağılımı açık anlatılmalı.",
-    activity: [
-      { id: "a-1", title: "Tip plan B-2 seçime hazırlandı", time: "Az önce", tone: "success" },
-      { id: "a-2", title: "Otopark yönetmeliği kontrol bekliyor", time: "43 dk önce", tone: "warning" }
-    ]
-  },
-  {
-    id: "PRJ-2532-01",
-    name: "Bostancı 2532/1 Teklif",
-    client: "Cayvox Yapı",
-    architect: "Ece K.",
-    district: "Kadıköy",
-    neighborhood: "Bostancı",
-    ada: "2532",
-    parsel: "1",
-    area: "512 m²",
-    zoning: "Blok nizam / 6 kat",
-    ratio: "%48",
-    units: "16",
-    createdAt: "29 Haz 2026",
-    updatedAt: "Dün",
-    status: "Teklif",
-    source: "Demo",
-    progress: 94,
-    stepIndex: 16,
-    offerReady: true,
-    locked: false,
-    files: [
-      { id: "f-4", name: "teklif2532.pdf", type: "Teklif", status: "Yüklendi" },
-      { id: "f-5", name: "paylasim_cetveli.xlsx", type: "Paylaşım", status: "Okundu" }
-    ],
-    notes: "Teklif paketi üretildi. Yönetici onayı sonrası versiyon kilitlenecek.",
-    activity: [
-      { id: "a-3", title: "Teklif PDF paketi üretildi", time: "Dün", tone: "success" },
-      { id: "a-4", title: "Paylaşım cetveli güncellendi", time: "2 gün önce", tone: "info" }
-    ]
-  },
-  {
-    id: "PRJ-5340-13",
-    name: "Fikirtepe 5340/13 Ön Analiz",
-    client: "Mira Ortaklığı",
-    architect: "Selin M.",
-    district: "Kadıköy",
-    neighborhood: "Fikirtepe",
-    ada: "5340",
-    parsel: "13",
-    area: "940 m²",
-    zoning: "Karma kullanım",
-    ratio: "%52",
-    units: "32",
-    createdAt: "18 Haz 2026",
-    updatedAt: "3 gün önce",
-    status: "Hazırlık",
-    source: "Demo",
-    progress: 28,
-    stepIndex: 5,
-    offerReady: false,
-    locked: false,
-    files: [
-      { id: "f-6", name: "5340-13_derinlik_emsal.dwg", type: "CAD", status: "Kontrol" }
-    ],
-    notes: "E-imar ve malik listesi eksik. Mevcut metraj yüklenmeden teklif üretimine geçilmemeli.",
-    activity: [{ id: "a-5", title: "Parsel dosyaları sınıflandırıldı", time: "3 gün önce", tone: "info" }]
-  },
-  {
-    id: "PRJ-1182-07",
-    name: "Moda 1182/7 Kilitli Teklif",
-    client: "Arven Kentsel",
-    architect: "Mert T.",
-    district: "Kadıköy",
-    neighborhood: "Moda",
-    ada: "1182",
-    parsel: "7",
-    area: "726 m²",
-    zoning: "Konut + ticaret / 6 kat",
-    ratio: "%51",
-    units: "24",
-    createdAt: "11 Haz 2026",
-    updatedAt: "Geçen hafta",
-    status: "Kilitli",
-    source: "Arşiv",
-    progress: 100,
-    stepIndex: 16,
-    offerReady: true,
-    locked: true,
-    files: [
-      { id: "f-7", name: "1182-7_kilitli_teklif.pdf", type: "Teklif", status: "Yüklendi" },
-      { id: "f-8", name: "1182-7_kaynak_izleri.zip", type: "Belge", status: "Okundu" }
-    ],
-    notes: "Final teklif paketi mimar onayıyla kilitlendi. Arşiv kartı yalnızca izlenebilir durumda tutulur.",
-    activity: [
-      { id: "a-6", title: "Final teklif paketi kilitlendi", time: "Geçen hafta", tone: "success" },
-      { id: "a-7", title: "Kaynak dosya izi arşive taşındı", time: "Geçen hafta", tone: "info" }
-    ]
-  }
-];
-
-const statusTone: Record<ProjectStatus, string> = {
-  Hazırlık: "text-snow-cyan before:bg-snow-cyan",
-  İnceleme: "text-snow-violet before:bg-snow-violet",
-  Teklif: "text-snow-green before:bg-snow-green",
-  Kilitli: "text-white/45 before:bg-white/35"
-};
-
-const sourceTone: Record<ProjectSource, string> = {
-  Demo: "border-[#ffd56a]/25 bg-[#ffd56a]/10 text-[#ffd56a]",
-  Taslak: "border-snow-cyan/25 bg-snow-cyan/10 text-snow-cyan",
-  Gerçek: "border-snow-green/25 bg-snow-green/10 text-snow-green",
-  Backend: "border-snow-violet/25 bg-snow-violet/10 text-snow-violet",
-  Arşiv: "border-white/15 bg-white/8 text-white/58"
-};
-
-const mainNav: Array<{ view: ArchitectPlatformView; label: string; icon: LucideIcon }> = [
-  { view: "dashboard", label: "Genel Bakış", icon: Home },
-  { view: "projects", label: "Projeler", icon: FolderKanban },
-  { view: "site-analysis", label: "Parseller", icon: MapPinned },
-  { view: "regulation-analysis", label: "İmar Analizi", icon: BarChart3 },
-  { view: "zoning-rules", label: "Derinlik & Hmax", icon: Ruler },
-  { view: "plans", label: "Eski Planlar", icon: FileText }
-];
-
-const moduleNav: Array<{ view: ModuleView; label: string; icon: LucideIcon }> = [
-  { view: "calculations", label: "Metraj", icon: Calculator },
-  { view: "models", label: "Çekirdek Kütüphanesi", icon: Grid3X3 },
-  { view: "apartment-mix", label: "Daire Karması", icon: Layers3 },
-  { view: "comparisons", label: "Paylaşım & Hesap", icon: Users },
-  { view: "reports", label: "Teklif & Raporlar", icon: FileText },
-  { view: "files", label: "Dosyalar", icon: HardDrive },
-  { view: "ai-floor-plan", label: "AI Asistan", icon: Sparkles }
-];
-
-const wizardSteps = ["Proje", "Parsel", "Dosyalar", "Karma", "Kontrol"];
-const intakeWorkflowPhases = [
-  {
-    title: "Parsel",
-    detail: "Proje kimliği, müşteri, ilçe/mahalle ve ada/parsel bilgisi toplanır."
-  },
-  {
-    title: "Zoning / imar",
-    detail: "İmar notu, parsel alanı ve ilk mevzuat girdileri doğrulanır."
-  },
-  {
-    title: "Depth / hmax",
-    detail: "Derinlik, hmax, çekme mesafeleri ve emsal kontrolüne kaynak hazırlanır."
-  },
-  {
-    title: "Eski plan / metraj",
-    detail: "E-imar, CAD, eski plan, pafta ve metraj dosyaları kanıt izine bağlanır."
-  },
-  {
-    title: "Çekirdek / daire karması",
-    detail: "Daire hedefi, paylaşım oranı ve mimari tercih insan notuyla netleşir."
-  },
-  {
-    title: "Paylaşım / teklif",
-    detail: "Paylaşım cetveli ve teklif paketi yalnızca workflow ve mimar onayıyla ilerler."
-  }
-];
 type BackendInsightMap = Record<string, KentselAutomationProjectInsight>;
 
 function getOfferReadiness(project: Project) {
@@ -813,6 +378,7 @@ export function SnowArchitectPlatform({
         setView(nextView);
       }}
       onNewProject={() => setView("new-project")}
+      onUtilityAction={setToast}
       projects={projects}
       searchQuery={searchQuery}
       session={session}
@@ -824,6 +390,7 @@ export function SnowArchitectPlatform({
             backendInsights={backendInsightsByProjectId}
             backendSyncState={backendSyncState}
             onLoadSamples={loadSamples}
+            onOpenModule={(nextView) => setView(nextView)}
             onNewProject={() => setView("new-project")}
             onOpenProject={openProject}
           projects={projects}
@@ -919,37 +486,48 @@ function AuthScreen({ onAuth }: { onAuth: (session: Session, mode: "empty" | "de
       mode === "signup" ? "empty" : "demo"
     );
   };
+  const authMetrics = [
+    { detail: "8.3 raporu", label: "Süreç adımı", tone: "blue", value: "17" },
+    { detail: "indirilebilir", label: "Teklif paketi", tone: "ice", value: "PDF" },
+    { detail: "kilitli", label: "Mimar onayı", tone: "green", value: "Son" },
+    { detail: "imar + metraj", label: "Kaynak dosya", tone: "violet", value: "CAD" }
+  ] as const;
 
   return (
-    <div className="snow-app min-h-screen p-0 text-white md:p-4">
-      <div className="snow-app-shell mx-auto grid min-h-screen w-full max-w-[1440px] overflow-hidden shadow-snow md:min-h-[calc(100vh-32px)] md:rounded-snow lg:grid-cols-[minmax(420px,0.95fr)_minmax(0,1.15fr)]">
-        <section className="flex min-w-0 flex-col border-b border-snow-line p-6 lg:border-b-0 lg:border-r lg:p-9">
-          <div className="flex items-center justify-between gap-4">
+    <div className="snow-app af-auth-screen min-h-screen p-0 text-white md:p-4">
+      <div className="snow-app-shell af-auth-shell mx-auto grid min-h-screen w-full max-w-[1440px] overflow-hidden shadow-snow md:min-h-[calc(100vh-32px)] md:rounded-snow lg:grid-cols-[minmax(460px,0.92fr)_minmax(0,1.08fr)]">
+        <section className="af-auth-copy-panel flex min-w-0 flex-col border-b border-snow-line p-6 lg:border-b-0 lg:border-r lg:p-9">
+          <div className="af-auth-topbar flex items-center justify-between gap-4">
             <Logo />
-            <span className="rounded-full bg-white/8 px-3 py-1 text-xs text-white/55">Kurumsal mimari teklif platformu</span>
+            <span className="af-auth-pill">Kurumsal mimari teklif platformu</span>
           </div>
 
-          <div className="mt-14 max-w-[460px]">
-            <p className="text-sm font-semibold text-white/44">Kentsel dönüşüm platformu</p>
-            <h1 className="mt-3 text-[40px] font-semibold leading-[1.05] text-white sm:text-[52px]">
-              Kentsel dönüşüm dosyalarınızı tek güvenilir çalışma alanında yönetin.
+          <div className="af-auth-intro mt-12 max-w-[540px]">
+            <p className="af-auth-eyebrow">Kentsel dönüşüm operasyon sistemi</p>
+            <h1 className="af-auth-title mt-4 font-semibold">
+              Teklif, kaynak ve onay sürecini tek mimari çalışma alanında yönetin.
             </h1>
-            <p className="mt-5 max-w-[420px] text-sm leading-6 text-white/48">
-              ArchiFlow; ada/parsel verisi, imar kontrolü, metraj, paylaşım ve teklif onaylarını aynı izlenebilir süreçte toplar.
+            <p className="af-auth-lede mt-5 max-w-[470px] text-sm leading-6">
+              ArchiFlow; ada/parsel verisi, imar kontrolü, metraj, paylaşım ve teklif onaylarını kaynak iziyle aynı izlenebilir süreçte toplar.
             </p>
+            <div className="af-auth-trust-strip mt-7" aria-label="ArchiFlow çalışma güvence noktaları">
+              <span>Kaynak izli</span>
+              <span>Mimar onaylı</span>
+              <span>Teklif hazır</span>
+            </div>
           </div>
 
-          <form className="mt-8 grid max-w-[460px] gap-4" onSubmit={submit}>
-            <div className="grid grid-cols-2 rounded-card bg-white/8 p-1">
+          <form className="af-auth-form-card mt-8 grid max-w-[500px] gap-4" onSubmit={submit}>
+            <div className="af-auth-mode-switch grid grid-cols-2">
               <button
-                className={cx("h-10 rounded-xl text-sm", mode === "signup" ? "bg-snow-violet text-[#191919]" : "text-white/58")}
+                className={cx("af-auth-mode-option snow-focus-ring", mode === "signup" ? "is-active" : "")}
                 onClick={() => setMode("signup")}
                 type="button"
               >
                 Hesap oluştur
               </button>
               <button
-                className={cx("h-10 rounded-xl text-sm", mode === "login" ? "bg-snow-violet text-[#191919]" : "text-white/58")}
+                className={cx("af-auth-mode-option snow-focus-ring", mode === "login" ? "is-active" : "")}
                 onClick={() => setMode("login")}
                 type="button"
               >
@@ -957,29 +535,31 @@ function AuthScreen({ onAuth }: { onAuth: (session: Session, mode: "empty" | "de
               </button>
             </div>
 
-            <SnowField label="Ad Soyad">
-              <input value={form.name} onChange={(event) => setForm({ ...form, name: event.target.value })} />
-            </SnowField>
-            <SnowField label="Ofis / Firma">
-              <input value={form.firm} onChange={(event) => setForm({ ...form, firm: event.target.value })} />
-            </SnowField>
-            <SnowField label="E-posta">
-              <input value={form.email} onChange={(event) => setForm({ ...form, email: event.target.value })} />
-            </SnowField>
-            <SnowField label="Şifre">
-              <input
-                type="password"
-                value={form.password}
-                onChange={(event) => setForm({ ...form, password: event.target.value })}
-              />
-            </SnowField>
+            <div className="af-auth-form-fields">
+              <SnowField label="Ad Soyad">
+                <input value={form.name} onChange={(event) => setForm({ ...form, name: event.target.value })} />
+              </SnowField>
+              <SnowField label="Ofis / Firma">
+                <input value={form.firm} onChange={(event) => setForm({ ...form, firm: event.target.value })} />
+              </SnowField>
+              <SnowField label="E-posta">
+                <input value={form.email} onChange={(event) => setForm({ ...form, email: event.target.value })} />
+              </SnowField>
+              <SnowField label="Şifre">
+                <input
+                  type="password"
+                  value={form.password}
+                  onChange={(event) => setForm({ ...form, password: event.target.value })}
+                />
+              </SnowField>
+            </div>
 
             <SnowButton icon={CheckCircle2} testId="auth-submit" type="submit">
               {mode === "signup" ? "Hesap oluştur ve çalışma alanına geç" : "Giriş yap ve portföyü aç"}
             </SnowButton>
 
             <button
-              className="snow-button snow-focus-ring h-11 rounded-card border border-snow-line text-sm text-white/72 transition hover:bg-white/8"
+              className="af-auth-demo-button snow-button snow-focus-ring h-11 rounded-card border text-sm transition"
               onClick={() =>
                 onAuth(
                   { name: "Demo Mimar", firm: "Snow Mimarlık", email: "demo@archiflow.local" },
@@ -993,32 +573,41 @@ function AuthScreen({ onAuth }: { onAuth: (session: Session, mode: "empty" | "de
           </form>
         </section>
 
-        <section className="relative min-h-[580px] overflow-hidden p-6 lg:p-9">
+        <section className="af-auth-stage relative min-h-[580px] overflow-hidden p-6 lg:p-9">
           <AuthHeroBackdrop />
           <div className="snow-animated-grid" />
-          <div className="relative z-10 grid h-full content-center gap-7">
-            <div className="grid gap-5 sm:grid-cols-2">
-              <StatCard label="Süreç adımı" value="17" delta="8.3 raporu" tone="blue" />
-              <StatCard label="Teklif paketi" value="PDF" delta="indirilebilir" tone="ice" />
-              <StatCard label="Mimar onayı" value="Son" delta="kilitle" tone="green" />
-              <StatCard label="Kaynak dosya" value="CAD" delta="imar + metraj" tone="violet" />
+          <div className="af-auth-stage-panel relative z-10 grid h-full content-center gap-6">
+            <div className="af-auth-stage-heading">
+              <span>Canlı teklif çalışma alanı</span>
+              <strong>Kaynak, hesap ve onay tek görünümde</strong>
             </div>
-            <Card className="p-0">
-              <div className="flex h-14 items-center justify-between border-b border-snow-line px-5">
-                <span className="text-sm font-semibold">Proje akışı önizlemesi</span>
-                <span className="rounded-full bg-snow-green px-3 py-1 text-xs text-[#191919]">Hazır</span>
+            <div className="af-auth-metric-grid">
+              {authMetrics.map((metric) => (
+                <AuthMetricCard
+                  detail={metric.detail}
+                  key={metric.label}
+                  label={metric.label}
+                  tone={metric.tone}
+                  value={metric.value}
+                />
+              ))}
+            </div>
+            <Card className="af-auth-flow-card p-0">
+              <div className="af-auth-flow-header">
+                <span>Proje akışı önizlemesi</span>
+                <span>Hazır</span>
               </div>
-              <div className="grid gap-5 p-5 lg:grid-cols-[minmax(0,1fr)_220px]">
-                <PlanPreview />
-                <div className="space-y-4">
+              <div className="af-auth-flow-layout">
+                <AuthBlueprintPreview />
+                <div className="af-auth-flow-list">
                   {workflowSteps.slice(0, 5).map((step, index) => (
-                    <div className="flex gap-3" key={step.title}>
-                      <span className="snow-status-pulse grid h-7 w-7 shrink-0 place-items-center rounded-full bg-white/10 text-xs">
+                    <div className="af-auth-step" key={step.title}>
+                      <span className="snow-status-pulse">
                         {index + 1}
                       </span>
                       <div className="min-w-0">
-                        <p className="truncate text-sm text-white/88">{step.title}</p>
-                        <p className="text-xs text-white/38">{step.group}</p>
+                        <p>{step.title}</p>
+                        <span>{step.group}</span>
                       </div>
                     </div>
                   ))}
@@ -1029,6 +618,27 @@ function AuthScreen({ onAuth }: { onAuth: (session: Session, mode: "empty" | "de
         </section>
       </div>
     </div>
+  );
+}
+
+function AuthMetricCard({
+  detail,
+  label,
+  tone,
+  value
+}: {
+  detail: string;
+  label: string;
+  tone: "blue" | "green" | "ice" | "violet";
+  value: string;
+}) {
+  return (
+    <section className={cx("af-auth-metric-card", `is-${tone}`)}>
+      <span className="af-auth-metric-accent" aria-hidden="true" />
+      <span className="af-auth-metric-label">{label}</span>
+      <strong>{value}</strong>
+      <span className="af-auth-metric-detail">{detail}</span>
+    </section>
   );
 }
 
@@ -1048,6 +658,38 @@ function AuthHeroBackdrop() {
   );
 }
 
+function AuthBlueprintPreview() {
+  return (
+    <div className="af-auth-blueprint" aria-hidden="true">
+      <svg className="af-auth-blueprint-svg" viewBox="0 0 520 340" focusable="false">
+        <defs>
+          <linearGradient id="authBlueprintGlass" x1="82" x2="438" y1="44" y2="284" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#ffffff" stopOpacity=".96" />
+            <stop offset="1" stopColor="#eef6ff" stopOpacity=".88" />
+          </linearGradient>
+          <linearGradient id="authBlueprintViolet" x1="246" x2="430" y1="72" y2="212" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#e9e6ff" />
+            <stop offset="1" stopColor="#d8f7ff" />
+          </linearGradient>
+        </defs>
+        <path d="M52 278 132 72h246l90 206H52Z" fill="url(#authBlueprintGlass)" stroke="#2b4167" strokeOpacity=".28" strokeWidth="2" />
+        <path d="M122 232V116h112v116H122Z" fill="#e8f2ff" stroke="#2d4c7a" strokeOpacity=".18" />
+        <path d="M246 116h148v88H246Z" fill="url(#authBlueprintViolet)" stroke="#6558ff" strokeOpacity=".18" />
+        <path d="M246 216h70v56h-70Z" fill="#d9f7ee" stroke="#1f8063" strokeOpacity=".18" />
+        <path d="M328 216h68v56h-68Z" fill="#eef3f8" stroke="#2b4167" strokeOpacity=".12" />
+        <path d="M122 244h112v28H122Z" fill="#d8f5fb" stroke="#2196b6" strokeOpacity=".16" />
+        <path d="M234 116v156M246 204h150M122 232h112" stroke="#1b2f52" strokeLinecap="round" strokeOpacity=".46" strokeWidth="4" />
+        <path d="M112 92h292M92 278h356M132 72l-40 206M378 72l70 206" stroke="#6fa8d8" strokeDasharray="8 10" strokeOpacity=".38" />
+        <path d="M164 92v180M202 92v180M284 116v156M360 116v156" stroke="#7ba4cc" strokeOpacity=".14" />
+        <circle cx="234" cy="232" r="7" fill="#6558ff" fillOpacity=".92" />
+        <circle cx="396" cy="204" r="6" fill="#4ad2ff" fillOpacity=".86" />
+        <circle cx="122" cy="232" r="6" fill="#65d6a2" fillOpacity=".86" />
+        <path d="M66 292h388" stroke="#22375b" strokeLinecap="round" strokeOpacity=".18" strokeWidth="8" />
+      </svg>
+    </div>
+  );
+}
+
 function SnowShell({
   activeProject,
   activeView,
@@ -1055,6 +697,7 @@ function SnowShell({
   onLogout,
   onNavigate,
   onNewProject,
+  onUtilityAction,
   projects,
   searchQuery,
   session,
@@ -1066,6 +709,7 @@ function SnowShell({
   onLogout: () => void;
   onNavigate: (view: ArchitectPlatformView) => void;
   onNewProject: () => void;
+  onUtilityAction: (message: string) => void;
   projects: Project[];
   searchQuery: string;
   session: Session;
@@ -1188,7 +832,8 @@ function SnowShell({
               </button>
               <div className="flex items-center gap-1 rounded-card border border-snow-line bg-white/70 p-1 shadow-[0_10px_24px_rgba(22,34,65,.045)]">
                 <button
-                  className="snow-focus-ring grid h-8 w-8 place-items-center rounded-md text-white/64 transition hover:bg-white hover:text-snow-violet"
+                  className="snow-focus-ring grid h-10 w-10 place-items-center rounded-md text-white/64 transition hover:bg-white hover:text-snow-violet"
+                  onClick={() => onUtilityAction("Bildirim merkezi hazır; kritik uyarılar sağ panelde ve proje akışında izleniyor.")}
                   type="button"
                   aria-label="Bildirimler"
                   title="Bildirimler"
@@ -1196,7 +841,8 @@ function SnowShell({
                   <Bell size={17} />
                 </button>
                 <button
-                  className="snow-focus-ring hidden h-8 w-8 place-items-center rounded-md text-white/64 transition hover:bg-white hover:text-snow-violet sm:grid"
+                  className="snow-focus-ring hidden h-10 w-10 place-items-center rounded-md text-white/64 transition hover:bg-white hover:text-snow-violet sm:grid"
+                  onClick={() => onUtilityAction("Tema görünümü kurumsal koyu dashboard standardına kilitlendi.")}
                   type="button"
                   aria-label="Tema"
                   title="Tema"
@@ -1224,12 +870,12 @@ function SnowShell({
           </header>
 
           <nav className="snow-hide-scrollbar flex shrink-0 gap-2 overflow-x-auto border-b border-snow-line px-5 py-2 lg:hidden">
-            {[...mainNav, ...moduleNav.slice(0, 4)].map((item) => {
+            {[...mainNav, ...moduleNav].map((item) => {
               const Icon = item.icon;
               return (
                 <button
                   className={cx(
-                    "snow-nav-button snow-focus-ring flex h-8 shrink-0 items-center gap-2 rounded-lg px-3 text-sm",
+                    "snow-nav-button snow-focus-ring flex h-11 shrink-0 items-center gap-2 rounded-lg px-3 text-sm",
                     activeView === item.view ? "bg-white/10 text-white" : "text-white/58"
                   )}
                   aria-current={activeView === item.view ? "page" : undefined}
@@ -1257,6 +903,7 @@ function DashboardScreen({
   backendInsights,
   backendSyncState,
   onLoadSamples,
+  onOpenModule,
   onNewProject,
   projects
 }: {
@@ -1264,6 +911,7 @@ function DashboardScreen({
   backendInsights: BackendInsightMap;
   backendSyncState: BackendSyncState;
   onLoadSamples: () => void;
+  onOpenModule: (view: ModuleView) => void;
   onNewProject: () => void;
   onOpenProject: (projectId: string, tab?: "workflow" | "files" | "offer") => void;
   projects: Project[];
@@ -1286,6 +934,7 @@ function DashboardScreen({
       averageProgress={averageProgress}
       backendSyncState={backendSyncState}
       offerCount={offerCount}
+      onOpenModule={onOpenModule}
       projects={projects}
     />
   );
@@ -1295,11 +944,13 @@ function ReferenceDashboard({
   averageProgress,
   backendSyncState,
   offerCount,
+  onOpenModule,
   projects
 }: {
   averageProgress: number;
   backendSyncState: BackendSyncState;
   offerCount: number;
+  onOpenModule: (view: ModuleView) => void;
   projects: Project[];
 }) {
   const currentDateString = useMemo(() => {
@@ -1323,17 +974,19 @@ function ReferenceDashboard({
                 <BackendSyncPill state={backendSyncState} />
               </div>
               <div className="af-hero-stat-grid mt-8 grid grid-cols-2 gap-3">
-                <HeroMiniStat icon={FileText} label="Toplam Proje" value={String(projects.length)} detail="Tümü" tone="violet" trend={{ value: "%12 artış", up: true }} />
-                <HeroMiniStat icon={Users} label="Aktif Proje" value={String(projects.filter((project) => project.status !== "Kilitli").length)} detail="Devam eden" tone="green" trend={{ value: "%8 artış", up: true }} />
-                <HeroMiniStat icon={Archive} label="Teklif Aşamasında" value={String(offerCount)} detail="Bu hafta" tone="orange" trend={{ value: "%25 yeni", up: true }} />
+                <HeroMiniStat icon={FileText} label="Toplam Proje" value={String(projects.length)} detail="Demo dahil" tone="violet" />
+                <HeroMiniStat icon={Users} label="Aktif Proje" value={String(projects.filter((project) => project.status !== "Kilitli").length)} detail="Devam eden" tone="green" />
+                <HeroMiniStat icon={Archive} label="Teklif Aşamasında" value={String(offerCount)} detail="Hazır paket" tone="orange" />
                 <HeroMiniStat icon={CheckCircle2} label="Tamamlanan" value={String(projects.filter((project) => project.locked).length)} detail="Toplam" tone="blue" />
               </div>
             </div>
             <div className="af-dashboard-hero-visual relative min-h-[300px]">
               <DashboardBuildingIllustration variant="render" />
-              <FloatingHeroBadge className="left-[6%] top-[8%]" title="İmar kontrolü" value={`%${Math.max(35, averageProgress)} tamamlandı`} icon={ClipboardCheck} />
-              <FloatingHeroBadge className="right-[6%] top-[36%]" title="Hmax kontrolü" value="mimar onayı bekliyor" icon={Ruler} />
-              <FloatingHeroBadge className="right-[2%] bottom-[16%]" title="Paylaşım planı" value={offerCount ? "ön hesap hazır" : "hazırlanmadı"} icon={Users} />
+              <div className="af-hero-signal-dock" aria-label="Dashboard kontrol özeti">
+                <HeroSignalCard icon={ClipboardCheck} title="İmar kontrolü" value={`%${Math.max(35, averageProgress)} tamamlandı`} />
+                <HeroSignalCard icon={Ruler} title="Hmax kontrolü" value="Mimar onayı bekliyor" />
+                <HeroSignalCard icon={Users} title="Paylaşım planı" value={offerCount ? "Ön hesap hazır" : "Hazırlanmadı"} />
+              </div>
             </div>
           </div>
         </div>
@@ -1343,7 +996,7 @@ function ReferenceDashboard({
 
       <div className="af-dashboard-process-grid">
         {dashboardProcessCards.map((card, index) => (
-          <ProcessCard card={card} index={index} key={card.title} />
+          <ProcessCard card={card} index={index} key={card.title} onOpen={() => onOpenModule(card.targetView)} />
         ))}
       </div>
 
@@ -1388,15 +1041,16 @@ function ReferenceDashboard({
 const dashboardProcessCards: Array<{
   title: string;
   subtitle: string;
+  targetView: ModuleView;
   visual: "parcel" | "hmax" | "plan" | "core" | "share" | "report";
   imageUrl: string;
 }> = [
-  { title: "PARSEL & İMAR", subtitle: "Parsel bilgilerini ve imar durumunu girin.", visual: "parcel", imageUrl: archiflowVisualAssets.processCards.parcelZoning },
-  { title: "DERİNLİK & HMAX", subtitle: "Derinlik, hmax ve çekme mesafelerini analiz edin.", visual: "hmax", imageUrl: archiflowVisualAssets.processCards.depthHmax },
-  { title: "ESKİ PLAN & METRAJ", subtitle: "Mevcut yapı planlarını ve metrajları yükleyin.", visual: "plan", imageUrl: archiflowVisualAssets.processCards.existingPlansQuantity },
-  { title: "ÇEKİRDEK & DAİRE", subtitle: "Çekirdek seçimi ve daire karmasını oluşturun.", visual: "core", imageUrl: archiflowVisualAssets.processCards.coreApartmentMix },
-  { title: "PAYLAŞIM & HESAP", subtitle: "Arsa payı ve denkleştirme hesaplarını yapın.", visual: "share", imageUrl: archiflowVisualAssets.processCards.shareAllocation },
-  { title: "TEKLİF & RAPOR", subtitle: "Teklif dosyası ve sunum çıktılarını alın.", visual: "report", imageUrl: archiflowVisualAssets.processCards.proposalReport }
+  { title: "PARSEL & İMAR", subtitle: "Parsel bilgilerini ve imar durumunu girin.", targetView: "site-analysis", visual: "parcel", imageUrl: archiflowVisualAssets.processCards.parcelZoning },
+  { title: "DERİNLİK & HMAX", subtitle: "Derinlik, hmax ve çekme mesafelerini analiz edin.", targetView: "zoning-rules", visual: "hmax", imageUrl: archiflowVisualAssets.processCards.depthHmax },
+  { title: "ESKİ PLAN & METRAJ", subtitle: "Mevcut yapı planlarını ve metrajları yükleyin.", targetView: "plans", visual: "plan", imageUrl: archiflowVisualAssets.processCards.existingPlansQuantity },
+  { title: "ÇEKİRDEK & DAİRE", subtitle: "Çekirdek seçimi ve daire karmasını oluşturun.", targetView: "models", visual: "core", imageUrl: archiflowVisualAssets.processCards.coreApartmentMix },
+  { title: "PAYLAŞIM & HESAP", subtitle: "Arsa payı ve denkleştirme hesaplarını yapın.", targetView: "comparisons", visual: "share", imageUrl: archiflowVisualAssets.processCards.shareAllocation },
+  { title: "TEKLİF & RAPOR", subtitle: "Teklif dosyası ve sunum çıktılarını alın.", targetView: "reports", visual: "report", imageUrl: archiflowVisualAssets.processCards.proposalReport }
 ];
 
 function HeroMiniStat({
@@ -1491,26 +1145,24 @@ function DashboardBuildingIllustration({ variant = "wireframe" }: { variant?: "r
   );
 }
 
-function FloatingHeroBadge({
-  className,
+function HeroSignalCard({
   icon: Icon,
   title,
   value
 }: {
-  className: string;
   icon: LucideIcon;
   title: string;
   value: string;
 }) {
   return (
-    <div className={cx("absolute z-20 rounded-card border border-snow-line bg-white/92 px-4 py-3 shadow-[0_16px_42px_rgba(22,34,65,.12)] backdrop-blur", className)}>
+    <div className="af-hero-signal-card">
       <div className="flex items-start gap-3">
-        <div className="grid h-8 w-8 place-items-center rounded-lg bg-snow-violet/10 text-snow-violet">
+        <div className="af-hero-signal-icon">
           <Icon size={15} />
         </div>
-        <div>
-          <p className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#11184a]">{title}</p>
-          <p className="mt-1 text-xs font-semibold text-[#64708f]">{value}</p>
+        <div className="min-w-0">
+          <p>{title}</p>
+          <strong>{value}</strong>
         </div>
       </div>
     </div>
@@ -1576,14 +1228,23 @@ function WorkflowGuide() {
   );
 }
 
-function ProcessCard({ card, index }: { card: (typeof dashboardProcessCards)[number]; index: number }) {
+function ProcessCard({
+  card,
+  index,
+  onOpen
+}: {
+  card: (typeof dashboardProcessCards)[number];
+  index: number;
+  onOpen: () => void;
+}) {
   return (
-    <article className="af-dark-process-card group" data-visual={card.visual}>
-      <div className="af-dark-process-copyblock">
-        <h3>{card.title}</h3>
-        <p>{card.subtitle}</p>
-      </div>
-
+    <button
+      aria-label={`${index + 1}. adımı aç: ${card.title}`}
+      className="af-dark-process-card group snow-focus-ring"
+      data-visual={card.visual}
+      onClick={onOpen}
+      type="button"
+    >
       <div className="af-dark-process-visual" aria-hidden="true">
         <Image
           alt=""
@@ -1594,10 +1255,16 @@ function ProcessCard({ card, index }: { card: (typeof dashboardProcessCards)[num
         />
       </div>
 
-      <button className="af-dark-process-arrow snow-focus-ring" type="button" aria-label={`${index + 1}. adımı aç: ${card.title}`}>
+      <div className="af-dark-process-copyblock">
+        <span>{String(index + 1).padStart(2, "0")}</span>
+        <h3>{card.title}</h3>
+        <p>{card.subtitle}</p>
+      </div>
+
+      <span className="af-dark-process-arrow" aria-hidden="true">
         <ChevronRight size={16} strokeWidth={2.2} />
-      </button>
-    </article>
+      </span>
+    </button>
   );
 }
 
@@ -1655,7 +1322,7 @@ function DarkMetricRail({ averageProgress, projects }: { averageProgress: number
           alt="Metric asset"
           fill
           sizes="72px"
-          className="object-contain animate-pulse"
+          className="object-contain"
         />
       </div>
     </div>
@@ -1675,6 +1342,14 @@ function EmptyDashboard({ onLoadSamples, onNewProject }: { onLoadSamples: () => 
             <h1 className="mt-3 text-3xl font-semibold leading-tight text-white sm:text-4xl">
               Henüz proje yok. İlk dönüşüm dosyasını buradan başlatın.
             </h1>
+            <div className="mt-6 flex flex-wrap gap-3 sm:hidden">
+              <SnowButton icon={Plus} onClick={onNewProject} testId="empty-create-project-mobile">
+                Proje sihirbazını aç
+              </SnowButton>
+              <SnowButton icon={Archive} onClick={onLoadSamples} testId="empty-load-samples-mobile" tone="secondary">
+                Demo portföyü incele
+              </SnowButton>
+            </div>
             <p className="mt-4 max-w-[520px] text-sm leading-6 text-white/48">
               Bu hesapta kayıtlı ada/parsel projesi olmadığı için dashboard bilinçli olarak boş. Yeni proje oluşturduğunuzda 8.3 iş akışındaki kaynak dosya, analiz, hesap, teklif ve onay adımları sırayla açılır.
             </p>
@@ -1683,7 +1358,7 @@ function EmptyDashboard({ onLoadSamples, onNewProject }: { onLoadSamples: () => 
               <EmptyStatePoint title="Neden boş?" body="Henüz proje kaydı yok." />
               <EmptyStatePoint title="AI nasıl yardım eder?" body="Proje verisi girilince ilk brifingi hızlandırabilir." />
             </div>
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="mt-7 hidden flex-wrap gap-3 sm:flex">
               <SnowButton icon={Plus} onClick={onNewProject} testId="empty-create-project">
                 Proje sihirbazını aç
               </SnowButton>
@@ -1719,6 +1394,7 @@ function EmptyDashboardVisual() {
         alt=""
         className="af-empty-dashboard-image"
         fill
+        loading="eager"
         sizes="(min-width: 1024px) 320px, 100vw"
         src={archiflowVisualAssets.emptyStates.noProjects}
       />
@@ -1730,17 +1406,19 @@ function EmptyDashboardVisual() {
 function ContextualAssetVisual({
   className = "",
   imageClassName = "",
+  loading = "lazy",
   sizes = "(min-width: 768px) 360px, 100vw",
   src
 }: {
   className?: string;
   imageClassName?: string;
+  loading?: "eager" | "lazy";
   sizes?: string;
   src: string;
 }) {
   return (
     <div className={cx("af-contextual-asset", className)} aria-hidden="true">
-      <Image alt="" className={cx("af-contextual-asset-image", imageClassName)} fill sizes={sizes} src={src} />
+      <Image alt="" className={cx("af-contextual-asset-image", imageClassName)} fill loading={loading} sizes={sizes} src={src} />
       <div className="af-contextual-asset-wash" />
     </div>
   );
@@ -2632,7 +2310,7 @@ function ProjectWorkspace({
                             {state === "done" ? <Check size={15} /> : index + 1}
                           </span>
                           <span className="min-w-0">
-                            <span className="block truncate text-sm font-medium">{step.title}</span>
+                            <span className="af-workflow-step-title block text-sm font-medium">{step.title}</span>
                             <span className="mt-1 block text-xs text-white/38">{step.group}</span>
                           </span>
                         </button>
@@ -3060,6 +2738,11 @@ function ReferenceModuleScreen({
   view: ModuleView;
 }) {
   const config = createReferenceModuleConfig(view, project, definition);
+  const [activeTabState, setActiveTabState] = useState<{ index: number; view: ModuleView }>({ index: 0, view });
+  const [tableMenuView, setTableMenuView] = useState<ModuleView | null>(null);
+  const activeTabIndex = activeTabState.view === view ? Math.min(activeTabState.index, config.tabs.length - 1) : 0;
+  const activeTab = config.tabs[activeTabIndex] ?? config.tabs[0];
+  const tableMenuOpen = tableMenuView === view;
 
   return (
     <div className="space-y-6">
@@ -3070,21 +2753,31 @@ function ReferenceModuleScreen({
         project={project}
       />
 
-      <div className="snow-hide-scrollbar flex gap-7 overflow-x-auto border-b border-snow-line">
+      <div className="snow-hide-scrollbar flex gap-7 overflow-x-auto border-b border-snow-line" role="tablist" aria-label={`${config.title} modül sekmeleri`}>
         {config.tabs.map((tab, index) => (
           <button
             className={cx(
-              "snow-focus-ring relative h-11 shrink-0 rounded-md px-1 text-sm font-semibold transition",
-              index === 0 ? "text-snow-violet" : "text-[#4f5874] hover:text-[#101746]"
+              "snow-focus-ring relative h-11 min-w-11 shrink-0 rounded-md px-3 text-sm font-semibold transition",
+              index === activeTabIndex ? "text-snow-violet" : "text-[#4f5874] hover:text-[#101746]"
             )}
-            aria-current={index === 0 ? "page" : undefined}
+            aria-selected={index === activeTabIndex}
+            id={`module-tab-${view}-${index}`}
             key={tab}
+            onClick={() => {
+              setActiveTabState({ index, view });
+              setTableMenuView(null);
+            }}
+            role="tab"
             type="button"
           >
             {tab}
-            {index === 0 ? <span className="absolute inset-x-0 bottom-[-1px] h-0.5 rounded-full bg-snow-violet" /> : null}
+            {index === activeTabIndex ? <span className="absolute inset-x-0 bottom-[-1px] h-0.5 rounded-full bg-snow-violet" /> : null}
           </button>
         ))}
+      </div>
+      <div className="af-module-tab-context" role="status">
+        <span>{activeTab}</span>
+        <p>Bu görünüm için ilgili metrikler, kaynak yüzeyleri ve denetim tablosu aynı proje bağlamında inceleniyor.</p>
       </div>
 
       <div className="af-stat-grid">
@@ -3109,11 +2802,26 @@ function ReferenceModuleScreen({
           <Card className="min-w-0 p-0">
             <div className="flex min-h-14 items-center justify-between gap-3 border-b border-snow-line px-5">
               <SectionTitle title={config.tableTitle} />
-              <button className="snow-focus-ring grid h-9 w-9 place-items-center rounded-lg border border-snow-line bg-white text-[#11184a]" type="button" aria-label="Tablo seçenekleri">
-                <MoreHorizontal size={18} />
-              </button>
+              <div className="relative">
+                <button
+                  className="snow-focus-ring grid h-9 w-9 place-items-center rounded-lg border border-snow-line bg-white text-[#11184a]"
+                  type="button"
+                  aria-expanded={tableMenuOpen}
+                  aria-label="Tablo seçenekleri"
+                  onClick={() => setTableMenuView((current) => (current === view ? null : view))}
+                >
+                  <MoreHorizontal size={18} />
+                </button>
+                {tableMenuOpen ? (
+                  <div className="af-table-menu" role="status">
+                    <span>Tablo görünümü</span>
+                    <p>Kolon, filtre ve dışa aktarım kontrolleri bu modülün denetim bağlamında izleniyor.</p>
+                  </div>
+                ) : null}
+              </div>
             </div>
-            <div className="overflow-x-auto">
+            <ResponsiveRecordCards columns={config.tableColumns} rows={config.tableRows} />
+            <div className="hidden overflow-x-auto md:block">
               <table className="w-full min-w-[760px] text-left text-sm">
                 <thead className="text-[#6c7590]">
                   <tr className="border-b border-snow-line">
@@ -3157,7 +2865,7 @@ function ReferenceModuleScreen({
             <SectionTitle title="Hızlı İşlemler" />
             <div className="mt-4 grid grid-cols-4 gap-3">
               {config.quickActions.map(([Icon, label]) => (
-                <button className="snow-focus-ring grid gap-2 rounded-card border border-snow-line bg-white px-2 py-3 text-center text-[11px] font-medium text-[#4f5874]" key={label} type="button">
+                <button className="snow-focus-ring grid min-h-[76px] gap-2 rounded-card border border-snow-line bg-white px-2 py-3 text-center text-[11px] font-medium text-[#4f5874]" key={label} type="button">
                   <span className="mx-auto grid h-8 w-8 place-items-center rounded-lg bg-snow-violet/10 text-snow-violet">
                     <Icon size={16} />
                   </span>
@@ -3173,13 +2881,41 @@ function ReferenceModuleScreen({
               <button className="text-xs font-semibold text-snow-violet" type="button">Tümü</button>
             </div>
             <div className="mt-4 space-y-3">
-              {config.documents.map(([Icon, name, meta]) => (
-                <ReferenceDocumentCard icon={Icon} key={name} meta={meta} name={name} />
+              {config.documents.map(([Icon, name, meta], index) => (
+                <ReferenceDocumentCard icon={Icon} key={name} loading={index === 0 ? "eager" : "lazy"} meta={meta} name={name} />
               ))}
             </div>
           </Card>
         </div>
       </div>
+    </div>
+  );
+}
+
+function ResponsiveRecordCards({ columns, rows }: { columns: string[]; rows: string[][] }) {
+  return (
+    <div className="af-responsive-record-grid md:hidden" role="list">
+      {rows.map((row) => {
+        const title = row[0] ?? "Kayıt";
+        const meta = row.slice(1, 4).filter(Boolean).join(" · ");
+        return (
+          <article className="af-responsive-record-card" key={row.join("-")} role="listitem">
+            <div className="af-responsive-record-card-header">
+              <span>{columns[0] ?? "Kayıt"}</span>
+              <strong>{title}</strong>
+            </div>
+            {meta ? <p>{meta}</p> : null}
+            <div className="af-responsive-record-fields">
+              {row.slice(1).map((cell, index) => (
+                <div key={`${title}-${columns[index + 1] ?? index}`}>
+                  <span>{columns[index + 1] ?? "Bilgi"}</span>
+                  <strong>{cell}</strong>
+                </div>
+              ))}
+            </div>
+          </article>
+        );
+      })}
     </div>
   );
 }
@@ -3240,14 +2976,14 @@ function ModuleExperienceHero({
         </div>
 
         <div className="mt-7 flex flex-wrap gap-3">
+          <SnowButton icon={Plus} onClick={onNewProject}>
+            {config.actionLabel}
+          </SnowButton>
           <SnowButton icon={Sparkles} onClick={onOpenProject} tone="secondary">
             Akışı Aç
           </SnowButton>
           <SnowButton icon={FileText} onClick={onOpenProject} tone="secondary">
             Rapor Oluştur
-          </SnowButton>
-          <SnowButton icon={Plus} onClick={onNewProject}>
-            {config.actionLabel}
           </SnowButton>
         </div>
       </div>
@@ -3257,7 +2993,7 @@ function ModuleExperienceHero({
           <div className={cx("af-premium-asset", `af-premium-asset-${config.experience}`)} aria-hidden="true" />
           <OperationalMotionLayer mode={config.experience} />
           <div className="af-ai-panel">
-            <span>AI Görselleştirme</span>
+            <span>AI kaynak okuması</span>
             <strong>{config.experienceSignal}</strong>
           </div>
           <div className="af-floating-node af-floating-node-a">
@@ -3675,6 +3411,70 @@ function createReferenceModuleConfig(view: ModuleView, project: Project, definit
         ["Zemin Kat Planı.pdf", "Zemin", "Yüklendi", "Bekliyor", "Mahaller kontrol edilecek"],
         ["Normal Kat.dwg", "1-6", "Kontrol", "Kural tabanlı", "Şaft ve çekirdek eşleşmeli"]
       ]
+    },
+    team: {
+      ...fallback,
+      title: "Ekip ve Onaylar",
+      eyebrow: "Ekip ve Onaylar",
+      tabs: ["Özet", "Sorumlular", "Onaylar", "Açık Kararlar", "Aktivite"],
+      actionLabel: "Onay Akışı Aç",
+      surface: "reports",
+      experience: "ai-processing",
+      experienceTitle: "Mimar onay kapılarını görünür tut",
+      experienceCopy: "Ekip ekranı görev listesinden önce sorumluluk, kaynak ve mimar onayı katmanını gösterir. AI destekli ön okuma hız kazandırır; karar kapısı ekipte kalır.",
+      experienceSignal: "Onay bekleyen kaynaklar ayrıştırılıyor",
+      story: [
+        ["Sorumlu", "Mimar ve ekip"],
+        ["Kontrol", "Kaynak izi"],
+        ["Onay", "İnsan kararı"]
+      ],
+      primaryTitle: "Onay Akışı",
+      secondaryTitle: "Ekip Ritmi",
+      stats: [
+        { label: "Sorumlu Mimar", value: "3", delta: "Aktif", tone: "blue" },
+        { label: "Açık Onay", value: "2", delta: "Mimar kontrolü", tone: "violet" },
+        { label: "Tamamlanan", value: "9", delta: "Bu hafta", tone: "green" },
+        { label: "Kaynak Bekleyen", value: "1", delta: "Dosya", tone: "dark" }
+      ],
+      tableTitle: "Ekip Onay Listesi",
+      tableColumns: ["Konu", "Sorumlu", "Durum", "Kaynak", "Sonraki Adım"],
+      tableRows: [
+        ["İmar notu kontrolü", project.architect, "Onay bekliyor", "E-imar PDF", "Mimar imzası"],
+        ["Metraj farkı", "Teknik ekip", "İncelemede", "Plan okuması", "Alan teyidi"],
+        ["Teklif paketi", "Proje yöneticisi", "Hazırlanıyor", "Rapor taslağı", "Paylaşım kontrolü"]
+      ]
+    },
+    archive: {
+      ...fallback,
+      title: "Arşiv",
+      eyebrow: "Arşiv",
+      tabs: ["Özet", "Kilitli Paketler", "Revizyonlar", "Teslimler", "Kaynaklar"],
+      actionLabel: "Arşiv Kaydı Aç",
+      surface: "files",
+      experience: "file-vault",
+      experienceTitle: "Kilitli teklif ve kaynak izini sakla",
+      experienceCopy: "Arşiv ekranı eski kayıt deposu değil, teklif paketinin hangi kaynaklarla kilitlendiğini gösteren sakin bir kanıt kasasıdır.",
+      experienceSignal: "Kilitli paket kaynakları doğrulanıyor",
+      story: [
+        ["Paket", "Teklif kilidi"],
+        ["Kaynak", "Dosya izi"],
+        ["Teslim", "Versiyon geçmişi"]
+      ],
+      primaryTitle: "Arşiv Kasası",
+      secondaryTitle: "Teslim İzleri",
+      stats: [
+        { label: "Kilitli Paket", value: "3", delta: "Arşivde", tone: "blue" },
+        { label: "Teslim", value: "5", delta: "Paylaşıldı", tone: "green" },
+        { label: "Revizyon", value: "7", delta: "İzlenebilir", tone: "ice" },
+        { label: "Kaynak Dosya", value: String(project.files.length || 4), delta: "Bağlı", tone: "violet" }
+      ],
+      tableTitle: "Arşiv Kayıtları",
+      tableColumns: ["Paket", "Versiyon", "Durum", "Kaynak", "Tarih"],
+      tableRows: [
+        [`${project.ada}/${project.parsel} Teklif`, "v1.0", "Kilitli", "Rapor + plan", project.updatedAt],
+        ["Ön fizibilite", "v0.8", "Arşiv", "İmar notu", "28.06.2026"],
+        ["Paylaşım cetveli", "v0.6", "Revizyon", "Metraj", "26.06.2026"]
+      ]
     }
   };
 
@@ -3733,10 +3533,12 @@ function ReferenceModuleSecondaryView({ config }: { config: ReferenceModuleConfi
 
 function ReferenceDocumentCard({
   icon: Icon,
+  loading = "lazy",
   meta,
   name
 }: {
   icon: LucideIcon;
+  loading?: "eager" | "lazy";
   meta: string;
   name: string;
 }) {
@@ -3745,7 +3547,7 @@ function ReferenceDocumentCard({
   return (
     <div className="af-document-preview-card rounded-card border border-snow-line bg-white">
       <div className="af-document-preview-thumb">
-        <Image alt="" className="object-cover" fill sizes="96px" src={asset} />
+        <Image alt="" className="object-cover" fill loading={loading} sizes="96px" src={asset} />
       </div>
       <div className="min-w-0">
         <p className="truncate text-sm font-semibold text-[#11184a]">{name}</p>
@@ -3902,7 +3704,7 @@ function ReferenceFinanceVisual() {
 function ReferenceReportsVisual() {
   return (
     <div className="mt-6 grid items-center gap-6 md:grid-cols-[220px_minmax(0,1fr)]">
-      <ContextualAssetVisual className="md:col-span-2" src={archiflowVisualAssets.modules.proposalPresentation} />
+      <ContextualAssetVisual className="md:col-span-2" loading="eager" src={archiflowVisualAssets.modules.proposalPresentation} />
       <Donut value={18} />
       <div className="space-y-3">
         <LegendLine color="bg-snow-violet" label="Beklemede" value="6" />
@@ -3917,7 +3719,7 @@ function ReferenceReportsVisual() {
 function ReferenceFilesVisual({ project }: { project: Project }) {
   return (
     <div className="mt-5 grid gap-3">
-      <ContextualAssetVisual src={project.files.length ? archiflowVisualAssets.documents.cadDwgPreview : archiflowVisualAssets.emptyStates.noFiles} />
+      <ContextualAssetVisual loading="eager" src={project.files.length ? archiflowVisualAssets.documents.cadDwgPreview : archiflowVisualAssets.emptyStates.noFiles} />
       {(project.files.length ? project.files : [{ id: "empty", name: "Kaynak dosya bekleniyor", type: "Belge", status: "Bekliyor" }]).map((file) => (
         <div className="flex items-center justify-between gap-4 rounded-card border border-snow-line bg-white px-4 py-3" key={file.id}>
           <div className="flex min-w-0 items-center gap-3">
@@ -3939,7 +3741,7 @@ function ReferenceFilesVisual({ project }: { project: Project }) {
 function ReferencePlansVisual() {
   return (
     <div className="mt-5 grid gap-4 md:grid-cols-2">
-      <ContextualAssetVisual className="md:col-span-2" src={archiflowVisualAssets.documents.architecturalPlanPreview} />
+      <ContextualAssetVisual className="md:col-span-2" loading="eager" src={archiflowVisualAssets.documents.architecturalPlanPreview} />
       {["Zemin Kat", "Normal Kat", "Çatı Katı", "Bodrum"].map((label, index) => (
         <div className="rounded-card border border-snow-line bg-white p-4" key={label}>
           <div className="h-28 rounded-lg border border-snow-line bg-[linear-gradient(90deg,rgba(88,100,130,.11)_1px,transparent_1px),linear-gradient(rgba(88,100,130,.11)_1px,transparent_1px)] bg-[size:20px_20px]" />
@@ -4064,7 +3866,7 @@ function IntakeAssistantPanel({
   return (
     <div>
       <SectionTitle title="Intake ön kontrolü" eyebrow="Kural tabanlı / mimar onaylı" />
-      <ContextualAssetVisual className="mt-5" src={archiflowVisualAssets.ai.missingDataChecklist} />
+      <ContextualAssetVisual className="mt-5" loading="eager" src={archiflowVisualAssets.ai.missingDataChecklist} />
       <div className="mt-5 rounded-card border border-white/10 bg-white/5 p-4">
         <div className="flex items-start justify-between gap-4">
           <div>
@@ -4333,11 +4135,11 @@ function BackendInsightCard({ insight }: { insight?: KentselAutomationProjectIns
     <Card className="bg-white/5">
       <SectionTitle title="Veri çekirdeği" eyebrow="Backend okuma" />
       <div className="mt-4 space-y-3">
-        <ReviewLine label="Run" value={insight.latestRunStatus ?? "Bekliyor"} />
+        <ReviewLine label="Son çalışma" value={insight.latestRunStatus ?? "Bekliyor"} />
         <ReviewLine label="İnceleme görevi" value={String(insight.reviewTaskCount)} />
         <ReviewLine label="Açık uyarı" value={String(insight.openWarningCount)} />
         <ReviewLine label="Paylaşım" value={insight.bestSharingOption ?? `${insight.sharingOptionCount} seçenek`} />
-        <ReviewLine label="Allocation" value={`${insight.allocationCount} satır`} />
+        <ReviewLine label="Paylaşım satırı" value={`${insight.allocationCount} satır`} />
         <ReviewLine label="Teklif paketi" value={insight.offerPackageStatus ?? "Yok"} />
         <ReviewLine label="Teklif skoru" value={formatInsightScore(insight.offerReadyScore)} />
       </div>
@@ -4363,6 +4165,7 @@ function BackendInsightCard({ insight }: { insight?: KentselAutomationProjectIns
 }
 
 function RightRail({ activeProject, projects }: { activeProject: Project | null; projects: Project[] }) {
+  const [assistantPrompt, setAssistantPrompt] = useState<string | null>(null);
   const activity = activeProject?.activity ?? projects.flatMap((project) => project.activity).slice(0, 5);
   const project = activeProject ?? projects[0] ?? null;
   return (
@@ -4402,14 +4205,19 @@ function RightRail({ activeProject, projects }: { activeProject: Project | null;
           {["Örn. Bu parselde max inşaat alanı?", "3+1 daire önerisi"].map((text) => (
             <button
               key={text}
-              className="text-[10px] px-2.5 py-1 rounded bg-[#f8faff] border border-snow-line/50 text-[#596381] hover:bg-snow-violet/5 hover:text-snow-violet transition-all duration-200"
+              className="min-h-8 rounded border border-snow-line/50 bg-[#f8faff] px-2.5 py-1 text-[10px] text-[#596381] transition-all duration-200 hover:bg-snow-violet/5 hover:text-snow-violet"
               type="button"
-              onClick={() => alert(`"${text}" sorusu AI asistanına iletildi.`)}
+              onClick={() => setAssistantPrompt(text)}
             >
               {text}
             </button>
           ))}
         </div>
+        {assistantPrompt ? (
+          <p className="mt-3 rounded-lg border border-snow-violet/15 bg-snow-violet/8 px-3 py-2 text-[11px] leading-5 text-snow-violet">
+            Soru hazırlandı: “{assistantPrompt}”
+          </p>
+        ) : null}
       </Card>
 
       <ReferenceRailList

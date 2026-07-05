@@ -182,3 +182,43 @@ This backlog is maintained by the Orchestrator after agent reviews.
 22. P1: Fix 100% zoom dashboard/workspace responsive density.
    - Files: `components/workspace/SnowArchitectPlatform.tsx`, `app/globals.css`.
    - Verification: Playwright confirmed `/dashboard` at 1366x768, 1440x900, and 1920x1080 on 100% browser zoom has no horizontal overflow, no console warnings, compact hero/process/card proportions, and stable shell/content scroll; `/projects` workspace grids now use container-aware layout so workflow checklist and notes do not overlap at 100% zoom. `npm run lint`, `npm run typecheck`, `npm test` (29 files / 216 tests), and `npm run build` passed.
+
+23. P1: Raise dashboard visual professionalism with operational hero, readable process assets, and mobile polish.
+   - Files: `components/workspace/SnowArchitectPlatform.tsx`, `app/globals.css`.
+   - Verification: 18 Playwright visual checks passed across desktop 1440x900, tablet 1024x768, mobile 390x844, and reduced-motion mode; checks covered mobile auth CTA reachability, horizontal overflow, six process cards, visible image loading, text overflow, hero signal containment, tablet/mobile signal dock flow, process-card navigation, and reduced-motion transitions. `npm run lint`, `npm run typecheck`, `npm run build`, and `npm test` (29 files / 216 tests) passed.
+
+24. P1: Generate dashboard hero v2 assets and record the complete visual asset need set.
+   - Files: `public/visual-assets/archiflow/dashboard/archiflow-01-dashboard-hero-building-v2.webp`, `public/visual-assets/archiflow/dashboard/archiflow-02-dashboard-hero-dark-v2.webp`, `public/visual-assets/archiflow/asset-manifest.json`, `docs/ARCHIFLOW_VISUAL_ASSET_NEEDS_AUDIT.md`, `components/workspace/SnowArchitectPlatform.tsx`.
+   - Verification: generated assets were inspected visually, converted to WebP, saved non-destructively beside existing v1 files, active dashboard mapping now points to v2 hero assets, `asset-manifest.json` parses successfully, and `npm run lint`, `npm run typecheck`, `npm run build`, and `npm test` (29 files / 216 tests) passed.
+
+25. P1: Add permanent visual detection, style-locked generation, and dashboard integration agents.
+   - Files: `.agents/visual-needs-detector.md`, `.agents/style-locked-visual-generator.md`, `.agents/dashboard-visual-integrator.md`, `.agents/registry.md`, `.agents/README.md`, `.agents/orchestrator.md`, `AGENTS.md`, `docs/ARCHIFLOW_VISUAL_MASTER_PROMPTS.md`, `docs/ARCHIFLOW_VISUAL_ASSET_NEEDS_AUDIT.md`, `public/visual-assets/archiflow/asset-manifest.json`.
+   - Verification: visual workflow now requires detect -> generate -> integrate, documents 0 physical missing required assets, identifies 43 locked-style v2 regeneration needs, and links the manifest to the master prompt document.
+
+26. P1: Complete five-pass visual QA polish for pages, buttons, CTAs, and module surfaces.
+   - Files: `components/workspace/SnowArchitectPlatform.tsx`, `app/globals.css`.
+   - Verification: five visual audit passes covered 17 routes across desktop/tablet/mobile after seeded demo state; final Playwright pass checked 51 route/viewport combinations with 0 issues. `npm run typecheck`, `npm run lint`, `npm run build`, and `npm test` (29 files / 216 tests) passed.
+
+27. P1: Add permanent dashboard audit, visual generation, implementation, and continuous-improvement agent loop.
+   - Files: `.agents/dashboard-ui-ux-audit-visual-asset-planner.md`, `.agents/visual-asset-generator.md`, `.agents/dashboard-implementation-agent.md`, `.agents/continuous-improvement-orchestrator.md`, `docs/ARCHIFLOW_DASHBOARD_AGENT_SYSTEM.md`, `AGENTS.md`, `.agents/README.md`, `.agents/registry.md`, `.agents/orchestrator.md`, `docs/ARCHIFLOW_VISUAL_MASTER_PROMPTS.md`, `docs/ARCHIFLOW_VISUAL_ASSET_GENERATION_BRIEF.md`.
+   - Verification: new agent charters include required operating-system sections; `git diff --check`, `npm run lint`, `npm run typecheck`, `npm run build`, and `npm test` (29 files / 216 tests) passed.
+
+28. P1: Upgrade the auth entry screen into a premium architectural command-desk composition.
+   - Files: `components/workspace/SnowArchitectPlatform.tsx`, `app/globals.css`.
+   - Verification: Playwright visual QA passed at 1440x900, 1024x768, and 390x844 with 0 horizontal overflow, 0 broken images, visible auth CTAs, and no button/text overflow. `npm run typecheck`, `npm run lint`, `npm test` (29 files / 216 tests), and `npm run build` passed.
+
+29. P1: Complete dashboard continuous-improvement iteration 02 for utility feedback, tabs, table options, and text clipping.
+   - Files: `components/workspace/SnowArchitectPlatform.tsx`, `app/globals.css`, `.agents/reports/2026-07-05-dashboard-continuous-improvement-iteration-02.md`.
+   - Verification: 39-scenario audit informed the change; post-change browser smoke confirmed dashboard, module, and project-detail desktop/mobile views have 0 page overflow, 0 broken images, 0 sidebar label overflow, 0 workflow title overflow, working module tab selection, visible table options menu, and header utility feedback. `npm run lint`, `npm run typecheck`, `npm run build`, and `npm test` (29 files / 216 tests) passed.
+
+30. P1: Complete dashboard continuous-improvement iteration 03 for mobile evidence-card records.
+   - Files: `components/workspace/SnowArchitectPlatform.tsx`, `app/globals.css`, `.agents/reports/2026-07-05-dashboard-continuous-improvement-iteration-03.md`.
+   - Verification: 46-scenario audit informed the change; mobile `/site-analysis`, `/reports`, `/files`, `/plans`, and `/calculations` now show responsive evidence cards with visible tables `0`, page overflow `0`, broken images `0`, and console events `0`; desktop/tablet/laptop table views remain visible with overflow `0`. `npm run lint`, `npm run typecheck`, `npm run build`, and `npm test` (29 files / 216 tests) passed.
+
+31. P1: Complete dashboard continuous-improvement iteration 04 for generated document/report v2 assets.
+   - Files: `components/workspace/SnowArchitectPlatform.tsx`, `app/globals.css`, `public/visual-assets/archiflow/asset-manifest.json`, `docs/ARCHIFLOW_VISUAL_ASSET_NEEDS_AUDIT.md`, `.agents/reports/2026-07-05-dashboard-continuous-improvement-iteration-04.md`, `public/visual-assets/archiflow/documents/archiflow-21-document-pdf-report-preview-v2.webp`, `public/visual-assets/archiflow/documents/archiflow-22-document-architectural-plan-preview-v2.webp`, `public/visual-assets/archiflow/documents/archiflow-23-document-cad-dwg-preview-v2.webp`, `public/visual-assets/archiflow/modules/archiflow-31-module-proposal-presentation-v2.webp`.
+   - Verification: generated assets passed visual QA and were applied non-destructively; focused browser QA confirmed reports/files/plans load v2 visuals on desktop and mobile with overflow `0` and broken images `0`; 36-scenario route audit reported overflow issues `0`, broken image issues `0`, console issue scenarios `0`, and mobile visible table scenarios `0`. `asset-manifest.json` parses successfully. `npm run lint`, `npm run typecheck`, `npm run build`, and `npm test` (29 files / 216 tests) passed.
+
+32. P1: Extract dashboard configuration and flow into a dedicated ArchiFlow workspace layer.
+   - Files: `components/workspace/SnowArchitectPlatform.tsx`, `components/workspace/archiflow/**`, `docs/ARCHIFLOW_VISUAL_ASSET_NEEDS_AUDIT.md`, `.agents/reports/2026-07-05-dashboard-structure-flow-refactor.md`.
+   - Verification: `SnowArchitectPlatform.tsx` now imports typed route/view contracts, visual asset registry, navigation flow, wizard flow, module definitions, demo portfolio data, and empty draft defaults from `components/workspace/archiflow/`; browser smoke covered 12 desktop/mobile scenarios with overflow `0`, broken images `0`, console issue scenarios `0`, and mobile visible table scenarios `0`; `npm run lint`, `npm run typecheck`, `npm run build`, and `npm test` (29 files / 216 tests) passed.
