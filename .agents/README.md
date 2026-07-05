@@ -32,6 +32,13 @@ Each agent must review from its own perspective, produce findings, identify risk
 - `senior-architect.md`
 - `principal-product-designer.md`
 - `visual-asset-director.md`
+- `dashboard-ui-ux-audit-visual-asset-planner.md`
+- `visual-asset-generator.md`
+- `dashboard-implementation-agent.md`
+- `continuous-improvement-orchestrator.md`
+- `visual-needs-detector.md`
+- `style-locked-visual-generator.md`
+- `dashboard-visual-integrator.md`
 - `design-critic.md`
 - `motion-designer.md`
 - `frontend-engineer.md`

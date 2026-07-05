@@ -11,6 +11,13 @@ Use this registry to select and load the correct role files.
 | Senior Architect | `.agents/senior-architect.md` | Architecture, data contracts, workflow models |
 | Principal Product Designer | `.agents/principal-product-designer.md` | Visual language, typography, spacing, color, component consistency, hierarchy, premium appearance |
 | Visual Asset Director | `.agents/visual-asset-director.md` | Premium architectural visuals, module hero assets, renders, previews, visual identity |
+| Dashboard UI/UX Audit And Visual Asset Planner | `.agents/dashboard-ui-ux-audit-visual-asset-planner.md` | 30-scenario dashboard UI/UX audits, broken control checks, visual-quality review, and asset/prompt planning |
+| Visual Asset Generator | `.agents/visual-asset-generator.md` | Generates approved dashboard visual/icon assets from audit or detector queues in the premium ArchiFlow style |
+| Dashboard Implementation Agent | `.agents/dashboard-implementation-agent.md` | Applies approved UI/UX fixes, responsive polish, visual integrations, icon consistency, and dashboard verification |
+| Continuous Improvement Orchestrator | `.agents/continuous-improvement-orchestrator.md` | Runs repeated dashboard audit/generate/implement/re-review iterations and scorecards |
+| Visual Needs Detector | `.agents/visual-needs-detector.md` | Finds missing, weak, outdated, unmapped, or style-inconsistent visual assets before generation |
+| Style-Locked Visual Generator | `.agents/style-locked-visual-generator.md` | Generates only approved ArchiFlow-style visuals from the master prompt contract |
+| Dashboard Visual Integrator | `.agents/dashboard-visual-integrator.md` | Applies approved visual assets to dashboard/workspace manifest, code, and CSS |
 | Design Critic | `.agents/design-critic.md` | Independent critique only; release-quality challenge |
 | Motion Designer | `.agents/motion-designer.md` | Animations, transitions, micro-interactions, feedback, motion timing |
 | Frontend Engineer | `.agents/frontend-engineer.md` | Screens, components, responsive UI, interaction |

@@ -53,6 +53,13 @@ The active agent council is:
 - Senior Architect
 - Principal Product Designer
 - Visual Asset Director
+- Dashboard UI/UX Audit And Visual Asset Planner
+- Visual Asset Generator
+- Dashboard Implementation Agent
+- Continuous Improvement Orchestrator
+- Visual Needs Detector
+- Style-Locked Visual Generator
+- Dashboard Visual Integrator
 - Design Critic
 - Motion Designer
 - Frontend Engineer

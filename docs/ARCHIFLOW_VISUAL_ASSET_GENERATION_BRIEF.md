@@ -18,6 +18,7 @@ Visual direction:
 - calm, elegant, technical
 - high-end architectural visualization
 - glass, concrete, steel, soft light
+- glassmorphism, soft shadows, and controlled 3D depth
 - subtle blueprint overlays
 - transparent analysis layers
 - refined shadows
@@ -29,10 +30,16 @@ Visual direction:
 
 Color palette:
 
+- dark graphite
+- charcoal
+- black
 - deep navy
 - architectural white
 - soft blue-gray
-- electric violet accent
+- subtle bronze
+- amber warmth
+- electric blue accent
+- restrained electric violet accent where existing product continuity requires it
 - glass cyan
 - restrained warm architectural light
 - no oversaturated neon

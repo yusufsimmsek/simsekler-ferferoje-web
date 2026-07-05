@@ -57,6 +57,11 @@ Coordinate the ArchiFlow agent council so every task is reviewed, prioritized, i
 - If shared architecture, data contracts, routing, persistence, or module boundaries are involved, route to Senior Architect.
 - If UI, responsiveness, accessibility, or interaction quality is involved, route to Frontend Engineer, UX Researcher, and Principal Product Designer.
 - If module hero artwork, architectural renders, visual previews, empty-state artwork, loading artwork, or visual identity is involved, route to Visual Asset Director.
+- If a complete dashboard UI/UX and visual-asset audit is requested, route to Dashboard UI/UX Audit And Visual Asset Planner before implementation or generation.
+- If a dashboard continuous-improvement program is requested, route to Continuous Improvement Orchestrator, then run the audit -> necessary asset generation -> implementation -> verification -> re-review loop.
+- If dashboard UI/UX audit findings and generated visual assets must be applied, route to Dashboard Implementation Agent with Frontend Engineer, QA Lead, Principal Product Designer, and Dashboard Visual Integrator as needed.
+- If the user provides or approves a dashboard asset prompt queue, route to Visual Asset Generator and require Visual Asset Director or Design Critic QA before integration.
+- If a visual generation pass is requested, route first to Visual Needs Detector, then Style-Locked Visual Generator, then Dashboard Visual Integrator after visual QA approval.
 - If high-visibility UI is involved, route to Design Critic.
 - If animations or transition behavior are involved, route to Motion Designer.
 - If APIs, persistence, build infrastructure, or server logic are involved, route to Backend Engineer.
