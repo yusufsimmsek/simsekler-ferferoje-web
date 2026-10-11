@@ -992,3 +992,6 @@ write("robots.txt", buildRobots());
 
 console.log(`SEO update complete. Updated ${modified.length} pages.`);
 modified.forEach((file) => console.log(`- ${file}`));
+
+// Preserve the focused local SEO improvements after rebuilding template content.
+require("./scripts/enhance-seo.js");

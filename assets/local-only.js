@@ -1149,7 +1149,15 @@
       return;
     }
 
-    if (allowedExternalHrefPatterns.some((pattern) => pattern.test(rawHref))) {
+    // Keep verified business contact actions usable on the published site.
+    if (/^(mailto:info@simseklerferforje\.com|tel:\+?905323595349)$/i.test(rawHref)) {
+      anchor.classList.remove("local-only-disabled-link");
+      anchor.removeAttribute("aria-disabled");
+      anchor.removeAttribute("target");
+      return;
+    }
+
+    if (/^https:\/\/www\.google\.com\/maps\/search\/\?api=1&query=/i.test(rawHref) || allowedExternalHrefPatterns.some((pattern) => pattern.test(rawHref))) {
       anchor.setAttribute("target", "_blank");
       anchor.setAttribute("rel", "noopener noreferrer");
       anchor.classList.remove("local-only-disabled-link");
@@ -2117,18 +2125,7 @@
   }
 
   function localizeContactContent() {
-    const currentPath = normalizePath(window.location.pathname);
-
-    if (currentPath === "/iletisim") {
-      document.title = "İletişim | Şimşekler Ferforje";
-      document
-        .querySelectorAll("meta[property='og:title'], meta[property='twitter:title']")
-        .forEach((meta) => meta.setAttribute("content", "İletişim | Şimşekler Ferforje"));
-    }
-
-    document.querySelectorAll(".section.contact-us-banner .inner-h1").forEach((heading) => {
-      heading.innerHTML = "Teklif ve keşif için bize ulaşın.<br/>";
-    });
+    // The static page owns its title, social metadata and primary heading.
 
     const contactForm = document.querySelector(".form-block-contact form");
     if (contactForm) {
@@ -2213,9 +2210,9 @@
 
       if (links[0]) {
         links[0].textContent = "Yalıkavak Mahallesi, Yalıkavak Sanayi Sitesi 171. sokak no:26, 48990 Bodrum/Muğla";
-        links[0].setAttribute("href", "#");
-        links[0].classList.add("local-only-disabled-link");
-        links[0].setAttribute("aria-disabled", "true");
+        links[0].setAttribute("href", "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("Yalıkavak Mahallesi, Yalıkavak Sanayi Sitesi 171. sokak no:26, 48990 Bodrum/Muğla"));
+        links[0].classList.remove("local-only-disabled-link");
+        links[0].removeAttribute("aria-disabled");
       }
 
       if (links[1]) {

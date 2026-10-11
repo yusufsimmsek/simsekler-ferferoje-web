@@ -1,0 +1,12 @@
+.service-help { padding: clamp(40px, 5vw, 72px) 20px; background: #f4efe5; }
+.service-help h2 { max-width: 900px; margin: 0 0 24px; font-size: clamp(26px, 3vw, 38px); line-height: 1.2; }
+.service-help details { border-bottom: 1px solid #d6cebd; padding: 0; }
+.service-help summary { padding: 20px 0; cursor: pointer; color: #1d1a16; font-size: 18px; font-weight: 600; line-height: 1.5; }
+.service-help summary { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; list-style: none; }
+.service-help summary::-webkit-details-marker { display: none; }
+.service-help summary::after { content: '+'; color: #786316; font-size: 24px; flex: 0 0 auto; }
+.service-help details[open] summary::after { content: '−'; }
+.service-help summary:focus-visible, .service-help a:focus-visible { outline: 2px solid #786316; outline-offset: 4px; }
+.service-help details p { max-width: 850px; margin: 0 0 22px; font-size: 16px; line-height: 1.75; color: #51493e; }
+.service-help .service-help-contact { margin: 24px 0 0; font-size: 16px; line-height: 1.75; }
+.service-help a { text-decoration: underline; text-underline-offset: 3px; }
