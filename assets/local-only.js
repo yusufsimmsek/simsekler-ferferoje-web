@@ -2255,6 +2255,74 @@
     installClickGuard();
     customizeHeaderButtons();
     injectFloatingContactButtons();
+    styleGlassNavbar();
+  }
+
+  function styleGlassNavbar() {
+    const style = document.createElement('style');
+    style.id = 'simsekler-glass-navbar';
+    style.textContent = `
+      .navbar {
+        background: linear-gradient(120deg, rgba(255, 253, 248, .80), rgba(249, 246, 237, .62));
+        -webkit-backdrop-filter: blur(24px) saturate(140%);
+        backdrop-filter: blur(24px) saturate(140%);
+        border: 1px solid rgba(255, 255, 255, .55);
+        border-radius: 16px;
+        box-shadow: 0 10px 32px rgba(18, 17, 14, .14), inset 0 1px 0 rgba(255, 255, 255, .72);
+      }
+      .navbar .nav-link {
+        color: #28251f;
+        font-weight: 600;
+        border-radius: 8px;
+        transition: color .2s, background-color .2s;
+      }
+      .navbar .nav-link:hover, .navbar .nav-link.w--current {
+        background-color: rgba(184, 154, 42, .10);
+        color: #725b16 !important;
+      }
+      .navbar .search-shop-con .text-block-2 {
+        color: #766020;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .navbar .search-shop-con .primary-button {
+        background: linear-gradient(135deg, #c9ab40, #b89a2a) !important;
+        border: 1px solid rgba(255,255,255,.26) !important;
+        box-shadow: 0 4px 12px rgba(106, 80, 13, .16), inset 0 1px 0 rgba(255,255,255,.24);
+      }
+      .navbar .search-shop-con .primary-button:hover {
+        background: #27231a !important;
+        color: #e4cc84 !important;
+      }
+      .navbar .w-nav-button {
+        border-radius: 9px;
+        background-color: rgba(255,255,255,.18);
+        transition: background-color .2s;
+      }
+      .navbar .w-nav-button:hover { background-color: rgba(255,255,255,.4); }
+      .navbar a:focus-visible, .navbar .w-nav-button:focus-visible {
+        outline: 2px solid #80671e;
+        outline-offset: 4px;
+      }
+      @media (max-width: 991px) {
+        .navbar .w-nav-overlay .nav-menu {
+          background: rgba(250,247,239,.94);
+          -webkit-backdrop-filter: blur(28px) saturate(130%);
+          backdrop-filter: blur(28px) saturate(130%);
+          border-right: 1px solid rgba(255,255,255,.7);
+          box-shadow: 14px 0 48px rgba(18,17,14,.16);
+        }
+        .navbar .tablet-menu { border-bottom: 1px solid rgba(126,112,81,.14); }
+      }
+      @media (max-width: 767px) { .navbar { border-radius: 12px; } }
+      @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+        .navbar { background: rgba(250,247,239,.97); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .navbar .nav-link, .navbar .w-nav-button { transition: none; }
+      }
+    `;
+    document.head.appendChild(style);
   }
 
   function enlargeNavbarLogo() {
