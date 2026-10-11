@@ -106,9 +106,9 @@ COMMON_TEXT_REPLACEMENTS = [
     ("Thank you! Your submission has been received!", "Teşekkürler! Talebiniz alındı."),
     ("Oops! Something went wrong while submitting the form.", "Bir hata oluştu. Lütfen tekrar deneyin."),
     ("© Ironis. All Rights Reserved.", "© Şimşekler Ferforje. Tüm hakları saklıdır."),
-    ("ironis@example.com", "simsek_ferforje@hotmail.com"),
+    ("ironis@example.com", "info@simseklerferforje.com"),
     ("London office", "Atölye / Bodrum"),
-    ("5 Washington Square, London, Uk", "6171. Sokak No:28, Bodrum/Muğla"),
+    ("5 Washington Square, London, Uk", "Yalıkavak Mahallesi, Yalıkavak Sanayi Sitesi 171. sokak no:26, 48990 Bodrum/Muğla"),
     ("+3 000 00 22 33", "0532 359 53 49"),
     ("LinkedIn", "@simseklerferforje"),
     ("Sheet Metal Work", "Ferforje"),
@@ -147,7 +147,7 @@ COMMON_TEXT_REPLACEMENTS = [
 COMMON_HTML_REPLACEMENTS = [
     (
         '<div class="footer-rights"><a href="https://wcopilot.com/templates" target="_blank" class="footer-copyright-link">Template</a>by <a href="https://wcopilot.com/" target="_blank" class="footer-copyright-link">wCopilot.</a></div><div class="footer-rights">Powered by <a href="https://webflow.com/" target="_blank" class="footer-copyright-link">Webflow</a></div>',
-        '<div class="footer-rights">6171. Sokak No:28, Bodrum/Muğla</div><div class="footer-rights">0532 359 53 49</div>',
+        '<div class="footer-rights">Yalıkavak Mahallesi, Yalıkavak Sanayi Sitesi 171. sokak no:26, 48990 Bodrum/Muğla</div><div class="footer-rights">0532 359 53 49</div>',
     ),
     (
         '<div class="footer-copyright">© Şimşekler Ferforje. Tüm hakları saklıdır. <a href="/templates/licensing" class="footer-copyright-link">Licensing</a></div>',

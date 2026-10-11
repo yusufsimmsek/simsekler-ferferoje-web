@@ -332,7 +332,7 @@ const pageConfigs = {
       [`value="Submit"`, `value="Talep Gönder"`],
       [
         `href="https://www.google.com/maps/place/14+Tottenham+Rd,+London+N1+4EP,+UK/@51.5455362,-0.0809731,17z/data=!3m1!4b1!4m10!1m2!2m1!1s14+Tottenham+Road,+London,+England!3m6!1s0x48761c921c1fe0f3:0xa177cd610facc449!8m2!3d51.545533!4d-0.0761022!15sCiIxNCBUb3R0ZW5oYW0gUm9hZCwgTG9uZG9uLCBFbmdsYW5kkgERY29tcG91bmRfYnVpbGRpbmfgAQA!16s%2Fg%2F11fs__ncrt?entry=ttu"`,
-        `href="https://www.google.com/maps/search/?api=1&query=6171.%20Sokak%20No%3A28%2C%20Bodrum%2FMu%C4%9Fla"`,
+        `href="https://www.google.com/maps/search/?api=1&query=Yal%C4%B1kavak%20Mahallesi%2C%20Yal%C4%B1kavak%20Sanayi%20Sitesi%20171.%20sokak%20no%3A26%2C%2048990%20Bodrum%2FMu%C4%9Fla"`,
       ],
       [
         `Ferforje, kapı, çelik ve BoardeX işleriniz için bize yazın.`,
@@ -621,10 +621,11 @@ function baseBusinessSchema() {
     image: `${baseUrl}/assets/simseklermuhendislik.png`,
     url: `${baseUrl}/`,
     telephone: "+90 532 359 53 49",
-    email: "simsek_ferforje@hotmail.com",
+    email: "info@simseklerferforje.com",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "6171. Sokak No:28",
+      streetAddress: "Yalıkavak Mahallesi, Yalıkavak Sanayi Sitesi 171. sokak no:26",
+      postalCode: "48990",
       addressLocality: "Bodrum",
       addressRegion: "Muğla",
       addressCountry: "TR",

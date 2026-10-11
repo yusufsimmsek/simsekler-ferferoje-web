@@ -2210,15 +2210,15 @@
       }
 
       if (links[0]) {
-        links[0].textContent = "6171. Sokak No:28, Bodrum/Muğla";
+        links[0].textContent = "Yalıkavak Mahallesi, Yalıkavak Sanayi Sitesi 171. sokak no:26, 48990 Bodrum/Muğla";
         links[0].setAttribute("href", "#");
         links[0].classList.add("local-only-disabled-link");
         links[0].setAttribute("aria-disabled", "true");
       }
 
       if (links[1]) {
-        links[1].textContent = "simsek_ferforje@hotmail.com";
-        links[1].setAttribute("href", "mailto:simsek_ferforje@hotmail.com");
+        links[1].textContent = "info@simseklerferforje.com";
+        links[1].setAttribute("href", "mailto:info@simseklerferforje.com");
       }
 
       if (links[2]) {
