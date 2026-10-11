@@ -1,0 +1,32 @@
+.geo-guide { padding: 180px 20px 64px; color: #1d1a16; }
+.geo-guide .base-container { max-width: 1100px; }
+.geo-breadcrumb, .geo-byline { font-size: 14px; color: #665e51; }
+.geo-breadcrumb { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
+.geo-guide h1 { max-width: 900px; font-size: clamp(32px, 4vw, 52px); line-height: 1.15; margin: 12px 0 22px; }
+.geo-guide h2, .geo-business h2, .geo-guide-teaser h2 { font-size: clamp(25px, 2.6vw, 34px); line-height: 1.25; margin: 0 0 18px; }
+.geo-guide h3 { font-size: 22px; line-height: 1.4; margin: 28px 0 14px; }
+.geo-guide p, .geo-guide li, .geo-business p, .geo-guide-teaser p { font-size: 17px; line-height: 1.8; color: #51493e; }
+.geo-guide li { margin: 10px 0; padding-left: 4px; }
+.geo-guide ul, .geo-guide ol { padding-left: 24px; }
+.geo-guide .geo-lead { font-size: 20px; max-width: 820px; }
+.geo-eyebrow { color: #786316 !important; font-size: 13px !important; letter-spacing: .1em; font-weight: 700; }
+.geo-section { padding: 38px 0; border-bottom: 1px solid #d6cebd; scroll-margin-top: 150px; }
+.geo-contents { display: flex; flex-wrap: wrap; gap: 10px 24px; padding: 24px 0; }
+.geo-guide a:not(.primary-button), .geo-business a, .geo-guide-teaser a { text-decoration: underline; text-underline-offset: 4px; }
+.geo-guide a:focus-visible, .geo-business a:focus-visible, .geo-guide-teaser a:focus-visible, .geo-table-scroll:focus-visible { outline: 2px solid #786316; outline-offset: 4px; }
+.geo-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 36px; padding: 24px 0; margin: 0; }
+.geo-facts dt { font-size: 14px; color: #665e51; margin-bottom: 8px; }
+.geo-facts dd { font-size: 17px; line-height: 1.7; margin: 0; overflow-wrap: anywhere; }
+.geo-table-scroll { overflow-x: auto; margin: 20px 0; }
+.geo-guide table { width: 100%; border-collapse: collapse; text-align: left; min-width: 600px; font-size: 16px; line-height: 1.6; }
+.geo-guide caption { text-align: left; margin-bottom: 14px; color: #665e51; font-size: 14px; }
+.geo-guide th, .geo-guide td { padding: 16px; border-bottom: 1px solid #d6cebd; vertical-align: top; }
+.geo-guide thead { background: #ece5d7; }
+.geo-guide tbody th { font-weight: 500; width: 34%; }
+.geo-contact { padding: 36px; margin-top: 40px; background: #ece5d7; border-radius: 16px; }
+.geo-phone { display: inline-block; margin: 16px 0 0 24px; }
+.geo-business { padding: 64px 20px; background: #f4efe5; }
+.geo-business p { max-width: 900px; }
+.geo-guide-link { display: inline-block; font-size: 17px; line-height: 1.6; font-weight: 600; }
+.geo-guide-teaser { padding: 32px 20px 48px; background: #f4efe5; }
+@media (max-width: 600px) { .geo-guide { padding-top: 132px; } .geo-facts { grid-template-columns: 1fr; } .geo-contact { padding: 24px; } .geo-phone { display: block; margin-left: 0; } .geo-section { scroll-margin-top: 110px; } }

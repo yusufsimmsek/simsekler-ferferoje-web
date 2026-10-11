@@ -2,12 +2,15 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const root = path.resolve(__dirname, '..');
+const geo = require('./geo-content.js');
+geo.buildGuide(root);
 const base = 'https://simseklerferforje.com';
 const brand = 'Şimşekler Ferforje';
 const reviewed = '2026-10-11'; // Content review date, not the generator execution date.
 const address = 'Yalıkavak Mahallesi, Yalıkavak Sanayi Sitesi 171. sokak no:26, 48990 Bodrum/Muğla';
 const mapUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(address);
 const pages = [
+  [geo.route, geo.title, geo.description],
   ['/', 'Yalıkavak ve Bodrum Ferforje, Demir Kapı', 'Yalıkavak’taki atölyemizden Bodrum için ölçüye özel ferforje, demir kapı, korkuluk, çelik konstrüksiyon ve BoardeX çözümleri. Keşif ve teklif için ulaşın.'],
   ['/hakkimizda/', 'Hakkımızda · Yalıkavak, Bodrum', 'Şimşekler Ferforje’yi tanıyın. Yalıkavak, Bodrum’da ölçüye özel metal üretimi, ferforje, kapı ve korkuluk işlerinde keşiften montaja çalışma sürecimiz.'],
   ['/hizmetler/', 'Bodrum Ferforje ve Metal İşleri', 'Bodrum ve Yalıkavak’ta ferforje, çelik konstrüksiyon, kapı, korkuluk, özel tasarım ve BoardeX hizmetleri. İhtiyacınıza uygun hizmeti inceleyin.'],
@@ -72,7 +75,7 @@ for (const [route, label, description] of pages) {
   const business=graph.find(n=>n['@type']==='LocalBusiness');
   Object.assign(business, {'@id':base+'/#business',name:brand,logo:base+'/assets/business-logo-square.png',telephone:'+905323595349',hasMap:mapUrl,areaServed:[{'@type':'Place',name:'Bodrum'},{'@type':'Place',name:'Yalıkavak'}]});
   const crumbs=graph.find(n=>n['@type']==='BreadcrumbList');
-  if(crumbs){crumbs['@id']=base+route+'#breadcrumb';crumbs.itemListElement.at(-1).name=route==='/'?'Ana Sayfa':label;}
+  if(crumbs){crumbs['@id']=base+route+'#breadcrumb';crumbs.itemListElement.at(-1).name=route==='/'?'Ana Sayfa':label;crumbs.itemListElement.at(-1).item=base+route;}
   const service=graph.find(n=>n['@type']==='Service');
   if(service){Object.assign(service,{'@id':base+route+'#service',provider:{'@id':base+'/#business'},description,areaServed:business.areaServed});}
   const faq=graph.find(n=>n['@type']==='FAQPage');
@@ -81,6 +84,7 @@ for (const [route, label, description] of pages) {
   const page={'@type':route==='/iletisim/'?'ContactPage':route==='/hakkimizda/'?'AboutPage':route==='/projeler/'||route==='/hizmetler/'?'CollectionPage':'WebPage','@id':base+route+'#webpage',url:base+route,name:title,description,inLanguage:'tr-TR',isPartOf:{'@id':base+'/#website'},about:{'@id':service?service['@id']:base+'/#business'}};
   if(crumbs)page.breadcrumb={'@id':crumbs['@id']};
   if(faq)Object.assign(faq,{...page,'@type':'FAQPage'});else graph.push(page);
+  html=geo.enrichPage(html,route,graph,base);
   html=html.replace(match[0],`<script type="application/ld+json" data-seo-script="simsekler">${JSON.stringify({'@context':'https://schema.org','@graph':graph}).replace(/</g,'\\u003c')}</script>`);
   const key=route.split('/')[2];
   if(route.startsWith('/hizmetler/') && services[key]){

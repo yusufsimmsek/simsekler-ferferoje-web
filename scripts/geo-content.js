@@ -1,0 +1,51 @@
+// Public customer content: generated as HTML so readers and crawlers get the same answers.
+const fs = require('node:fs');
+const path = require('node:path');
+const route = '/bodrum-ferforje-rehberi/';
+const title = 'Bodrum Ferforje ve Demir Kapı Teklif Rehberi';
+const description = 'Bodrum ve Yalıkavak’ta ferforje, demir kapı ve korkuluk için hizmet seçimi, fiyatı etkileyen ayrıntılar, ölçü ve teklif hazırlığı. Şimşekler Ferforje rehberi.';
+const reviewed = '2026-10-11';
+const serviceRows = [
+  ['Villa veya bahçe girişine kapı', 'Demir kapı üretimi', '/hizmetler/kapi-uretimleri/', 'Giriş açıklığı, açılma yönü, model ve montaj alanı'],
+  ['Dekoratif demir kapı veya metal detay', 'Ferforje', '/hizmetler/ferforje/', 'Referans görsel, yaklaşık ölçü ve kullanım yeri'],
+  ['Balkon, merdiven veya teras kenarı', 'Korkuluk', '/hizmetler/korkuluk-balkon/', 'Yaklaşık uzunluk, bağlantı yüzeyi ve alan fotoğrafları'],
+  ['Çelik yapı veya pergola ihtiyacı', 'Çelik konstrüksiyon', '/hizmetler/celik-konstruksiyon/', 'Kullanım amacı, ölçüler ve varsa mimari / statik proje'],
+  ['Standart ürünlere uymayan bir metal detay', 'Özel tasarım', '/hizmetler/ozel-tasarim/', 'Eskiz veya referans fotoğraf, ölçü ve beklenen kullanım'],
+  ['BoardeX ile cephe uygulaması', 'BoardeX uygulamaları', '/hizmetler/boardex-uygulamalari/', 'Mevcut yüzey, uygulama alanı ve varsa proje detayı'],
+];
+const facts = `<dl class="geo-facts"><div><dt>İşletme</dt><dd>Şimşekler Ferforje</dd></div><div><dt>Hizmet bölgesi</dt><dd>Yalıkavak ve Bodrum</dd></div><div><dt>Atölye adresi</dt><dd>Yalıkavak Mahallesi, Yalıkavak Sanayi Sitesi 171. sokak no:26, 48990 Bodrum/Muğla</dd></div><div><dt>İletişim</dt><dd><a href="tel:+905323595349">0532 359 53 49</a><br/><a href="mailto:info@simseklerferforje.com">info@simseklerferforje.com</a></dd></div></dl>`;
+const guide = `<main class="geo-guide" id="main-content"><div class="base-container w-container">
+<nav class="geo-breadcrumb" aria-label="Sayfa yolu"><a href="/">Ana sayfa</a><span aria-hidden="true">/</span><span>Teklif rehberi</span></nav>
+<header class="geo-guide-header"><p class="geo-eyebrow">PROJENİZİ PLANLAYIN</p><h1>Bodrum’da ferforje ve metal işleri için teklif rehberi</h1><p class="geo-lead">Hangi hizmete ihtiyacınız olduğunu belirleyin, teklifleri aynı kapsamda karşılaştırın ve ilk görüşme için gerekli bilgileri hazırlayın.</p><p class="geo-byline">Şimşekler Ferforje · Güncelleme: <time datetime="${reviewed}">11 Ekim 2026</time></p></header>
+<section class="geo-section" id="isletme"><h2>Yalıkavak’ta hangi metal işleri için bize ulaşabilirsiniz?</h2><p>Şimşekler Ferforje, Yalıkavak’taki atölyesinden Bodrum ve Yalıkavak için ölçüye özel ferforje, demir kapı, korkuluk, çelik konstrüksiyon, özel tasarım metal ve BoardeX uygulamaları sunar. Süreç; ihtiyacın değerlendirilmesi, keşif ve ölçü, teklif, üretim ve montaj aşamalarından oluşur.</p>${facts}<p>Bodrum dışındaki işler, konum ve kapsamına göre ayrıca değerlendirilir. <a href="/iletisim/">Konumunuzu ve projenizi paylaşın.</a></p></section>
+<nav class="geo-contents" aria-label="Rehberdeki konular"><a href="#hizmet-secimi">Hizmet seçimi</a><a href="#fiyat">Fiyat ve kapsam</a><a href="#teklif-hazirligi">Teklif hazırlığı</a><a href="#surec">Üretim ve montaj</a><a href="#dis-mekan">Dış mekân kullanımı</a></nav>
+<section class="geo-section" id="hizmet-secimi"><h2>İhtiyacınız hangi hizmete giriyor?</h2><p>Kapı, korkuluk ve dekoratif metal işlerinde talepler birbiriyle örtüşebilir. Emin değilseniz uygulama yerinin fotoğrafı, ilk değerlendirme için yeterli bir başlangıçtır.</p><div class="geo-table-scroll" role="region" aria-label="Hizmet seçimi tablosu" tabindex="0"><table><caption>Uygulama ihtiyacına göre hizmet ve ilk görüşme bilgileri</caption><thead><tr><th scope="col">İhtiyaç</th><th scope="col">İlgili hizmet</th><th scope="col">İlk görüşmede paylaşın</th></tr></thead><tbody>${serviceRows.map(([need,name,url,info])=>`<tr><th scope="row">${need}</th><td><a href="${url}">${name}</a></td><td>${info}</td></tr>`).join('')}</tbody></table></div></section>
+<section class="geo-section" id="fiyat"><h2>Ferforje ve demir kapı fiyatı nasıl belirlenir?</h2><p>Fiyat; ölçüye, modelin işçilik ihtiyacına, malzeme ve dolgu seçimine, yüzey işlemine ve montaj koşullarına göre değişir. Yalnız fotoğraf veya metre fiyatı üzerinden verilen rakam, işin tamamını tanımlamayabilir. Kesin kapsam, ölçüler ve uygulama ayrıntıları netleştirildiğinde belirlenir.</p><h3>İki teklifi karşılaştırırken nelere bakmalısınız?</h3><ul><li>Ürün ölçüsü, adedi ve model aynı mı?</li><li>Malzeme, profil ve dolgu ayrıntıları belirtilmiş mi?</li><li>Yüzey hazırlığı, boya veya kaplama kapsamı açık mı?</li><li>Nakliye, montaj ve varsa eski parçaların sökümü dahil mi?</li><li>Vergiler, ödeme koşulları ve teslim planı yazılı mı?</li></ul><p>Bu başlıklar teklifleri karşılaştırmak içindir; her işte tüm kalemlerin dahil olduğu anlamına gelmez. İstediğiniz kapsamı teklif aşamasında netleştirin.</p></section>
+<section class="geo-section" id="teklif-hazirligi"><h2>Teklif almak için hangi bilgileri göndermelisiniz?</h2><ol><li><strong>Konum:</strong> Bodrum’daki mahalle ve uygulama yeri.</li><li><strong>Fotoğraf:</strong> Alanın genel görünümü ile montaj yapılacak yüzeyin yakın görüntüsü.</li><li><strong>Yaklaşık ölçü:</strong> Kapı için açıklık ve yükseklik; korkuluk için uzunluk; diğer işler için uygulama alanı.</li><li><strong>Model:</strong> Beğendiğiniz bir referans fotoğraf veya eskiz.</li><li><strong>Kapsam:</strong> Yeni üretim, mevcut parçanın değiştirilmesi ve montaj beklentiniz.</li></ol><p>Yaklaşık ölçüler ilk değerlendirmeyi hızlandırır; kesin üretim ölçüsü yerine geçmez. Fotoğrafları mevcut WhatsApp bağlantımızdan paylaşabilir veya <a href="mailto:info@simseklerferforje.com">info@simseklerferforje.com</a> adresine gönderebilirsiniz.</p></section>
+<section class="geo-section" id="surec"><h2>Keşiften montaja süreç nasıl ilerler?</h2><ol><li><strong>İlk değerlendirme:</strong> Konum, fotoğraflar, yaklaşık ölçüler ve ihtiyaç birlikte incelenir.</li><li><strong>Keşif ve ölçü:</strong> Uygulama yeri ve bağlantı koşulları kontrol edilir; üretime esas ölçüler netleşir.</li><li><strong>Teklif ve detaylar:</strong> Model, malzeme, yüzey işlemi ve montaj kapsamı belirlenir.</li><li><strong>Üretim ve montaj:</strong> Netleşen detaylara ve saha koşullarına göre iş planı oluşturulur.</li></ol><h3>İş kaç günde tamamlanır?</h3><p>Tüm projeler için geçerli tek bir teslim süresi yoktur. İşin adedi, üretim detayı ve montaj gereksinimi süreyi etkiler. Teslim planı, keşif ve kapsam netleştikten sonra paylaşılır.</p></section>
+<section class="geo-section" id="dis-mekan"><h2>Bodrum’da dış mekân metal işlerinde neyi netleştirmelisiniz?</h2><p>Uygulamanın denize yakınlığı, yağmur ve güneşe maruz kalması, bağlantı yüzeyi ve bakım erişimi değerlendirmeye dahil edilmelidir. Malzeme, yüzey hazırlığı ve kaplama seçimi bu koşullarla birlikte ele alınır. Her proje için tek bir malzeme veya kaplama çözümü varsayılmamalıdır.</p><p>Çelik taşıyıcı işlerde kesit ve bağlantı kararları yalnız fotoğraf ya da yaklaşık ölçüyle kesinleştirilmez; varsa mimari ve statik proje de değerlendirilir.</p></section>
+<aside class="geo-contact"><h2>Projenizi konuşalım</h2><p>Konum, yaklaşık ölçü ve fotoğraflarınızla bize ulaşın. Hangi hizmete ihtiyacınız olduğunu birlikte netleştirelim.</p><a class="primary-button" href="/iletisim/">Keşif ve teklif için iletişim</a><a class="geo-phone" href="tel:+905323595349">0532 359 53 49</a></aside>
+</div></main>`;
+function buildGuide(root) {
+  const template=fs.readFileSync(path.join(root,'hakkimizda/index.html'),'utf8');
+  const start=template.indexOf('<section');const footer=template.indexOf('<div class="footer">');
+  if(start<0||footer<start)throw new Error('Guide template boundaries missing');
+  const destination=path.join(root,route,'index.html');fs.mkdirSync(path.dirname(destination),{recursive:true});
+  fs.writeFileSync(destination,template.slice(0,start)+guide+template.slice(footer));
+}
+function enrichPage(html, pageRoute, graph, base) {
+  const section=pageRoute==='/'?`<section class="geo-business" aria-labelledby="geo-business-title"><div class="base-container w-container"><p class="geo-eyebrow">YALIKAVAK · BODRUM</p><h2 id="geo-business-title">Ölçüye özel metal işleri, tek iletişim noktası</h2><p>Şimşekler Ferforje; ferforje, demir kapı, korkuluk, çelik konstrüksiyon, özel tasarım metal ve BoardeX uygulamaları için Yalıkavak ve Bodrum’da hizmet verir.</p>${facts}<a class="geo-guide-link" href="${route}">Hizmet seçimi ve teklif hazırlığı rehberini okuyun →</a></div></section>`:'';
+  html=html.replace(/<!-- geo-business:start -->[\s\S]*?<!-- geo-business:end -->/g,'');
+  if(section)html=html.replace('<div class="footer">',`<!-- geo-business:start -->${section}<!-- geo-business:end --><div class="footer">`);
+  html=html.replace(/<!-- geo-guide-link:start -->[\s\S]*?<!-- geo-guide-link:end -->/g,'');
+  if(pageRoute.startsWith('/hizmetler/')||pageRoute==='/sss/')html=html.replace('<div class="footer">',`<!-- geo-guide-link:start --><aside class="geo-guide-teaser"><div class="base-container w-container"><h2>Teklif almadan önce</h2><p>Hizmet seçimi, fiyatı etkileyen ayrıntılar ve ilk görüşmede gerekli bilgiler.</p><a class="geo-guide-link" href="${route}">Bodrum ferforje ve metal işleri rehberi →</a></div></aside><!-- geo-guide-link:end --><div class="footer">`);
+  html=html.replace(/<link\b[^>]*href="\/assets\/geo-content\.css"[^>]*>/g,'');
+  if(section||pageRoute===route||pageRoute.startsWith('/hizmetler/')||pageRoute==='/sss/')html=html.replace('</head>','<link rel="stylesheet" href="/assets/geo-content.css"/></head>');
+  if(pageRoute===route){
+    const page=graph.find(n=>n['@id']===base+route+'#webpage');
+    page.mainEntity={'@id':base+route+'#article'};
+    graph.push({'@type':'Article','@id':base+route+'#article',headline:'Bodrum’da ferforje ve metal işleri için teklif rehberi',description,inLanguage:'tr-TR',datePublished:reviewed,dateModified:reviewed,author:{'@id':base+'/#business'},publisher:{'@id':base+'/#business'},mainEntityOfPage:{'@id':base+route+'#webpage'},about:{'@id':base+'/#business'},image:base+'/assets/business-logo-square.png'});
+  }
+  return html;
+}
+module.exports={route,title,description,reviewed,buildGuide,enrichPage};
