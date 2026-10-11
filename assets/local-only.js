@@ -1243,7 +1243,9 @@
           return;
         }
 
-        link.setAttribute("href", fullLogoSrc);
+        link.setAttribute("href", "/assets/business-logo-square.png");
+        link.setAttribute("type", "image/png");
+        link.setAttribute("sizes", "1254x1254");
       });
   }
 

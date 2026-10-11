@@ -64,8 +64,8 @@ COMMON_TEXT_REPLACEMENTS = [
     ("lang=\"en\"", "lang=\"tr\""),
     ("https://cdn.prod.website-files.com/688b105b2269d2924df670a4/688b757065f51cfc4af0299a_Logo%20Dark%20Ironis.svg", "/assets/simseklermuhendislik.png"),
     ("https://cdn.prod.website-files.com/688b105b2269d2924df670a4/688b83553948907ce70cf6fb_Logo%20Light%20Ironis.svg", "/assets/simseklermuhendislik.png"),
-    ("https://cdn.prod.website-files.com/688b105b2269d2924df670a4/689ddf55ce9c335630506d80_Ironis%20Favicon.png", "/assets/simseklermuhendislik.png"),
-    ("https://cdn.prod.website-files.com/688b105b2269d2924df670a4/689ddf75b00f47eaa96f3fc0_Ironis%20Webclip.png", "/assets/simseklermuhendislik.png"),
+    ("https://cdn.prod.website-files.com/688b105b2269d2924df670a4/689ddf55ce9c335630506d80_Ironis%20Favicon.png", "/assets/business-logo-square.png"),
+    ("https://cdn.prod.website-files.com/688b105b2269d2924df670a4/689ddf75b00f47eaa96f3fc0_Ironis%20Webclip.png", "/assets/business-logo-square.png"),
     ("Demos", "Hızlı Erişim"),
     ("Home 1", "Ana Sayfa"),
     ("Home 2", "Hakkımızda"),
@@ -258,8 +258,8 @@ GLOBAL_BRAND_REPLACEMENTS = [
     ("https://cdn.prod.website-files.com/688b105b2269d2924df670a4/688b757065f51cfc4af0299a_Logo%20Dark%20Ironis.svg", "/assets/simseklermuhendislik.png"),
     ("https://cdn.prod.website-files.com/688b105b2269d2924df670a4/688b83553948907ce70cf6fb_Logo%20Light%20Ironis.svg", "/assets/simseklermuhendislik.png"),
     ("https://cdn.prod.website-files.com/688b105b2269d2924df670a4/688c79bc92ffa5008f67d20d_Icon%20Logo.svg", "/assets/simsekler-mark.svg"),
-    ("https://cdn.prod.website-files.com/688b105b2269d2924df670a4/689ddf55ce9c335630506d80_Ironis%20Favicon.png", "/assets/simseklermuhendislik.png"),
-    ("https://cdn.prod.website-files.com/688b105b2269d2924df670a4/689ddf75b00f47eaa96f3fc0_Ironis%20Webclip.png", "/assets/simseklermuhendislik.png"),
+    ("https://cdn.prod.website-files.com/688b105b2269d2924df670a4/689ddf55ce9c335630506d80_Ironis%20Favicon.png", "/assets/business-logo-square.png"),
+    ("https://cdn.prod.website-files.com/688b105b2269d2924df670a4/689ddf75b00f47eaa96f3fc0_Ironis%20Webclip.png", "/assets/business-logo-square.png"),
 ]
 
 
